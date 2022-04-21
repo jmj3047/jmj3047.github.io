@@ -12,15 +12,15 @@
     
     <meta name="keywords" content="pyspark" />
     
-    <meta name="description" content="01.pipeline.py123456789101112131415161718192021222324from pyspark.sql import SparkSessionfrom pyspark.sql import *from pyspark.sql import functions as F#Create Spark Sessionspark &#x3D; SparkSession.builde">
+    <meta name="description" content="Data cleansing01.pipeline.py123456789101112131415161718192021222324from pyspark.sql import SparkSessionfrom pyspark.sql import *from pyspark.sql import functions as F#Create Spark Sessionspark &#x3D; Spark">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pyspark Tutorial_2">
 <meta property="og:url" content="https://jmj3047.github.io/2022/04/21/Pyspark_Tutorial_2/index.html">
 <meta property="og:site_name" content="Jang Minjee">
-<meta property="og:description" content="01.pipeline.py123456789101112131415161718192021222324from pyspark.sql import SparkSessionfrom pyspark.sql import *from pyspark.sql import functions as F#Create Spark Sessionspark &#x3D; SparkSession.builde">
+<meta property="og:description" content="Data cleansing01.pipeline.py123456789101112131415161718192021222324from pyspark.sql import SparkSessionfrom pyspark.sql import *from pyspark.sql import functions as F#Create Spark Sessionspark &#x3D; Spark">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-20T15:00:00.000Z">
-<meta property="article:modified_time" content="2022-04-21T03:22:21.930Z">
+<meta property="article:modified_time" content="2022-04-21T08:03:09.663Z">
 <meta property="article:author" content="Jang Minjee">
 <meta property="article:tag" content="pyspark">
 <meta name="twitter:card" content="summary">
@@ -63,7 +63,11 @@
     
 
 
-<meta name="generator" content="Hexo 6.1.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head>
 
 <body>
     <div id="wrap">
@@ -86,7 +90,7 @@
                                     <a class="main-nav-list-link" target="_blank" rel="noopener" href="https://minjeejang-95.notion.site/minjeejang-95/MORTUI-VIVOS-DOCENT-51d922d9f4fe4ba99062bdf5a8a59574">About Me</a>
                                 </li>
                             
-                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Convolutional-Neural-Network/">Convolutional Neural Network</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Speaker-Verification/">Speaker Verification</a></li></ul>
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Computer-Vision/">Computer Vision</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Generative-Model/">Generative Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Hexo/">Hexo</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Speaker-Verification/">Speaker Verification</a></li></ul>
                                 
                         </ul>
                         <nav id="sub-nav">
@@ -176,7 +180,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2022/04/21/Pyspark_Tutorial_2/" class="article-date">
-     <time datetime="2022-04-21T03:22:21.930Z" itemprop="dateModified">2022-04-21</time>
+     <time datetime="2022-04-21T08:03:09.663Z" itemprop="dateModified">2022-04-21</time>
   </a>
 </div>
 
@@ -203,7 +207,7 @@
 
             
 
-            <h2 id="01-pipeline-py"><a href="#01-pipeline-py" class="headerlink" title="01.pipeline.py"></a>01.pipeline.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> functions <span class="keyword">as</span> F</span><br><span class="line"></span><br><span class="line"><span class="comment">#Create Spark Session</span></span><br><span class="line">spark = SparkSession.builder.master(<span class="string">&quot;local[1]&quot;</span>).appName(<span class="string">&quot;MLSampleTutorial&quot;</span>).getOrCreate()</span><br><span class="line"></span><br><span class="line"><span class="comment">#Load Data</span></span><br><span class="line">df = spark.read.csv(<span class="string">&quot;data/AA_DFW_2015_Departures_Short.csv.gz&quot;</span>, header = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;file loaded&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(df.show())</span><br><span class="line"></span><br><span class="line"><span class="comment">#remove duration = 0</span></span><br><span class="line">df = df.<span class="built_in">filter</span>(df[<span class="number">3</span>] &gt; <span class="number">0</span>) <span class="comment">#Actual elapsed time (Minutes) 여기 컬럼 값이 0보다 작은건 보여주지 않음</span></span><br><span class="line"><span class="comment"># df.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#ADD ID column</span></span><br><span class="line">df = df.withColumn(<span class="string">&#x27;id&#x27;</span>,F.monotonically_increasing_id()) <span class="comment">#id값을 자동으로 넣어줌</span></span><br><span class="line"></span><br><span class="line">df.write.csv(<span class="string">&quot;data/output.csv&quot;</span>, mode = <span class="string">&#x27;overwrite&#x27;</span>)</span><br><span class="line"></span><br><span class="line">spark.stop()</span><br></pre></td></tr></table></figure>
+            <h1 id="Data-cleansing"><a href="#Data-cleansing" class="headerlink" title="Data cleansing"></a>Data cleansing</h1><h2 id="01-pipeline-py"><a href="#01-pipeline-py" class="headerlink" title="01.pipeline.py"></a>01.pipeline.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> functions <span class="keyword">as</span> F</span><br><span class="line"></span><br><span class="line"><span class="comment">#Create Spark Session</span></span><br><span class="line">spark = SparkSession.builder.master(<span class="string">&quot;local[1]&quot;</span>).appName(<span class="string">&quot;MLSampleTutorial&quot;</span>).getOrCreate()</span><br><span class="line"></span><br><span class="line"><span class="comment">#Load Data</span></span><br><span class="line">df = spark.read.csv(<span class="string">&quot;data/AA_DFW_2015_Departures_Short.csv.gz&quot;</span>, header = <span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;file loaded&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(df.show())</span><br><span class="line"></span><br><span class="line"><span class="comment">#remove duration = 0</span></span><br><span class="line">df = df.<span class="built_in">filter</span>(df[<span class="number">3</span>] &gt; <span class="number">0</span>) <span class="comment">#Actual elapsed time (Minutes) 여기 컬럼 값이 0보다 작은건 보여주지 않음</span></span><br><span class="line"><span class="comment"># df.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#ADD ID column</span></span><br><span class="line">df = df.withColumn(<span class="string">&#x27;id&#x27;</span>,F.monotonically_increasing_id()) <span class="comment">#id값을 자동으로 넣어줌</span></span><br><span class="line"></span><br><span class="line">df.write.csv(<span class="string">&quot;data/output.csv&quot;</span>, mode = <span class="string">&#x27;overwrite&#x27;</span>)</span><br><span class="line"></span><br><span class="line">spark.stop()</span><br></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="02-total-spent-py"><a href="#02-total-spent-py" class="headerlink" title="02.total_spent.py"></a>02.total_spent.py</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># #라이브러리 불러오기</span></span><br><span class="line"><span class="comment"># from pyspark import SparkConf, SparkContext</span></span><br><span class="line"><span class="comment"># #사용자 정의 함수</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># #main함수</span></span><br><span class="line"><span class="comment"># def main():</span></span><br><span class="line"><span class="comment">#     conf = SparkConf.setMaster(&quot;local&quot;).setAppName(&#x27;SpentbyCustomer&#x27;)</span></span><br><span class="line"><span class="comment">#     sc = SparkContext(conf= conf)</span></span><br><span class="line"><span class="comment">#      # 파이썬 코드</span></span><br><span class="line"><span class="comment"># # 실행코드 작성</span></span><br><span class="line"><span class="comment"># if __name__ == &quot;__main__&quot;:</span></span><br><span class="line"><span class="comment">#    main()</span></span><br><span class="line"><span class="comment">########## 이게 spark 기본 세팅 #########</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#라이브러리 불러오기</span></span><br><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkConf, SparkContext</span><br><span class="line"></span><br><span class="line"><span class="comment">#사용자 정의 함수</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">extractCusPrice</span>(<span class="params">line</span>):</span><br><span class="line">    fields = line.split(<span class="string">&quot;,&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span>(<span class="built_in">int</span>(fields[<span class="number">0</span>]), <span class="built_in">float</span>(fields[<span class="number">2</span>]))</span><br><span class="line"></span><br><span class="line"><span class="comment">#main함수</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">main</span>():</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#스파크 설정</span></span><br><span class="line">    conf = SparkConf().setMaster(<span class="string">&quot;local&quot;</span>).setAppName(<span class="string">&#x27;SpentbyCustomer&#x27;</span>)</span><br><span class="line">    sc = SparkContext(conf= conf)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#데이터 불러오기</span></span><br><span class="line">    <span class="built_in">input</span> = sc.textFile(<span class="string">&#x27;data/customer-orders.csv&#x27;</span>)</span><br><span class="line">    <span class="comment">#print(&#x27;is data?&#x27;)</span></span><br><span class="line">    mappedInput = <span class="built_in">input</span>.<span class="built_in">map</span>(extractCusPrice) <span class="comment">#튜플 형태로 나옴</span></span><br><span class="line">    totalByCustomer = mappedInput.reduceByKey(<span class="keyword">lambda</span> x, y : x + y)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#정렬</span></span><br><span class="line">    flipped = totalByCustomer.<span class="built_in">map</span>(<span class="keyword">lambda</span> x: (x[<span class="number">1</span>], x[<span class="number">0</span>]))</span><br><span class="line">    totalByCustomerSorted = flipped.sortByKey()</span><br><span class="line">    </span><br><span class="line">    results = totalByCustomerSorted.collect()</span><br><span class="line">    <span class="keyword">for</span> result <span class="keyword">in</span> results:</span><br><span class="line">        <span class="built_in">print</span>(result)</span><br><span class="line">        </span><br><span class="line">    <span class="comment">#파이썬 코드</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 실행코드 작성</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
@@ -219,7 +223,7 @@
 
 
 
-    <a data-url="https://jmj3047.github.io/2022/04/21/Pyspark_Tutorial_2/" data-id="cl28f193e000068vtedtofo2q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="https://jmj3047.github.io/2022/04/21/Pyspark_Tutorial_2/" data-id="cl28rclaw000634vt4f8hh7br" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -297,8 +301,8 @@
         "dateCreated": "2022-04-21",
         "dateModified": "2022-04-21",
         "url": "https://jmj3047.github.io/2022/04/21/Pyspark_Tutorial_2/",
-        "description": "01.pipeline.py123456789101112131415161718192021222324from pyspark.sql import SparkSessionfrom pyspark.sql import *from pyspark.sql import functions as F#Create Spark Sessionspark = SparkSession.builde",
-        "wordCount": 857
+        "description": "Data cleansing01.pipeline.py123456789101112131415161718192021222324from pyspark.sql import SparkSessionfrom pyspark.sql import *from pyspark.sql import functions as F#Create Spark Sessionspark = Spark",
+        "wordCount": 863
     }
 </script>
 
@@ -330,6 +334,16 @@
         
 <nav id="article-nav">
     
+        <a href="/2022/04/21/Pyspark_Tutorial_3/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Pyspark Tutorial_3
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
     
         <a href="/2022/04/21/Pyspark_Tutorial_1/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
@@ -356,6 +370,33 @@
                     <li>
                         
                         <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Computer-Vision/">Computer Vision</a></p>
+                            <p class="item-title"><a href="/2022/04/21/ImageNet_Classification/" class="title">ImageNet Classification with Deep Convolutional Neural Networks</a></p>
+                            <p class="item-date"><time datetime="2022-04-20T15:00:00.000Z" itemprop="datePublished">2022-04-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Generative-Model/">Generative Model</a></p>
+                            <p class="item-title"><a href="/2022/04/21/Generative_Adversarial_Nets/" class="title">Generative Adversarial Nets</a></p>
+                            <p class="item-date"><time datetime="2022-04-20T15:00:00.000Z" itemprop="datePublished">2022-04-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2022/04/21/Pyspark_Tutorial_3/" class="title">Pyspark Tutorial_3</a></p>
+                            <p class="item-date"><time datetime="2022-04-20T15:00:00.000Z" itemprop="datePublished">2022-04-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
                             <p class="item-title"><a href="/2022/04/21/Pyspark_Tutorial_2/" class="title">Pyspark Tutorial_2</a></p>
                             <p class="item-date"><time datetime="2022-04-20T15:00:00.000Z" itemprop="datePublished">2022-04-21</time></p>
@@ -371,33 +412,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Convolutional-Neural-Network/">Convolutional Neural Network</a></p>
-                            <p class="item-title"><a href="/2022/04/21/ImageNet_Classification/" class="title">ImageNet Classification with Deep Convolutional Neural Networks</a></p>
-                            <p class="item-date"><time datetime="2022-04-20T15:00:00.000Z" itemprop="datePublished">2022-04-21</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
-                            <p class="item-title"><a href="/2022/04/19/install_PySpark/" class="title">How to install PySpark</a></p>
-                            <p class="item-date"><time datetime="2022-04-18T15:00:00.000Z" itemprop="datePublished">2022-04-19</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Speaker-Verification/">Speaker Verification</a></p>
-                            <p class="item-title"><a href="/2022/04/17/Adversaria%202d6a8/" class="title">Adversarial Speaker Verification</a></p>
-                            <p class="item-date"><time datetime="2022-04-16T15:00:00.000Z" itemprop="datePublished">2022-04-17</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -407,7 +421,7 @@
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Convolutional-Neural-Network/">Convolutional Neural Network</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Speaker-Verification/">Speaker Verification</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer Vision</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Generative-Model/">Generative Model</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Speaker-Verification/">Speaker Verification</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -417,7 +431,7 @@
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Adversarial-Speaker-Verification/" style="font-size: 10px;">Adversarial Speaker Verification</a> <a href="/tags/Image-Classification-Computer-Vision/" style="font-size: 10px;">Image Classification, Computer Vision</a> <a href="/tags/pyspark/" style="font-size: 20px;">pyspark</a>
+            <a href="/tags/Adversarial-Speaker-Verification/" style="font-size: 10px;">Adversarial Speaker Verification</a> <a href="/tags/Convolutional-Neural-Networks-Image-Classification/" style="font-size: 10px;">Convolutional Neural Networks, Image Classification</a> <a href="/tags/GAN-Generative-Model/" style="font-size: 10px;">GAN, Generative Model</a> <a href="/tags/hueman/" style="font-size: 10px;">hueman</a> <a href="/tags/pyspark/" style="font-size: 20px;">pyspark</a>
         </div>
     </div>
 
@@ -491,6 +505,13 @@
 <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
 
     
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
     
 
     
