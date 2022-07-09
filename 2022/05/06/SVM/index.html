@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Support Vector Machine | Jang Minjee</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Deep/Machine Learning Paper Study" />
+    
+    <meta name="description" content="1. 분류에 대한 수적 표현 학습 데이터 X(독립변수),Y(종속변수)가 있을 때 (i&#x3D;1,2,3,4,5 ….데이터의 갯수)    Y⇒{-1,1} (두 개의 클래스를 의미)   ⇒ 경우에 따라서, 클래스를 1과 -1 로 나눔 Y(정답) * F(x)(예측한 정답) &gt;0 라는 것은 제대로 분류된 형태 ( 같은 부호끼리 곱하면 양수인 경우니까) 2.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Support Vector Machine">
+<meta property="og:url" content="https://jmj3047.github.io/2022/05/06/SVM/index.html">
+<meta property="og:site_name" content="Jang Minjee">
+<meta property="og:description" content="1. 분류에 대한 수적 표현 학습 데이터 X(독립변수),Y(종속변수)가 있을 때 (i&#x3D;1,2,3,4,5 ….데이터의 갯수)    Y⇒{-1,1} (두 개의 클래스를 의미)   ⇒ 경우에 따라서, 클래스를 1과 -1 로 나눔 Y(정답) * F(x)(예측한 정답) &gt;0 라는 것은 제대로 분류된 형태 ( 같은 부호끼리 곱하면 양수인 경우니까) 2.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jmj3047.github.io/images/SVM/Untitled.png">
+<meta property="article:published_time" content="2022-05-05T15:00:00.000Z">
+<meta property="article:modified_time" content="2022-07-09T05:59:13.910Z">
+<meta property="article:author" content="Jang Minjee">
+<meta property="article:tag" content="Deep&#x2F;Machine Learning Paper Study">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jmj3047.github.io/images/SVM/Untitled.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" target="_blank" rel="noopener" href="https://github.com/jmj3047/mj_portfolio">About Me</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Basic-ML/">Basic ML</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Computer-Vision/">Computer Vision</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Base/">Data Base</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Generative-Model/">Generative Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Django/">Django</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/HTML/">HTML</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Pyspark/">Pyspark</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setting/">Setting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Speaker-Verification/">Speaker Verification</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Basic-ML/">Basic ML</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-SVM" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Support Vector Machine
+        </h1>
+    
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2022/05/06/SVM/" class="article-date">
+       <time datetime="2022-05-05T15:00:00.000Z" itemprop="datePublished">2022-05-06</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2022/05/06/SVM/" class="article-date">
+     <time datetime="2022-07-09T05:59:13.910Z" itemprop="dateModified">2022-07-09</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Deep-Machine-Learning-Paper-Study/" rel="tag">Deep/Machine Learning Paper Study</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="1-분류에-대한-수적-표현"><a href="#1-분류에-대한-수적-표현" class="headerlink" title="1. 분류에 대한 수적 표현"></a>1. 분류에 대한 수적 표현</h1><ul>
+<li>학습 데이터 X(독립변수),Y(종속변수)가 있을 때 (i&#x3D;1,2,3,4,5 ….데이터의 갯수)    Y⇒{-1,1} (두 개의 클래스를 의미)</li>
+</ul>
+<p><img src="/images/SVM/Untitled.png"></p>
+<p>⇒ 경우에 따라서, 클래스를 1과 -1 로 나눔</p>
+<p>Y(정답) * F(x)(예측한 정답) &gt;0 라는 것은 제대로 분류된 형태 ( 같은 부호끼리 곱하면 양수인 경우니까)</p>
+<h1 id="2-선형-분할-Linear-Classifier"><a href="#2-선형-분할-Linear-Classifier" class="headerlink" title="2. 선형 분할(Linear Classifier)"></a>2. 선형 분할(Linear Classifier)</h1><p><img src="/images/SVM/Untitled%201.png"></p>
+<ul>
+<li>f(x)&#x3D;  W transpose X  + b  (선형조합, 각각의 항들이 더하기로 이루어진 조합.)</li>
+<li>선형분할은 직선으로 나누는 것 (2차원이건 3차원이건 그 이상이건 상관 없음)</li>
+<li>b(bias) Y 절편을 의미</li>
+<li>W는 직선의 기울기</li>
+</ul>
+<p><img src="/images/SVM/Untitled%202.png"></p>
+<h1 id="3-초평면-분할"><a href="#3-초평면-분할" class="headerlink" title="3. 초평면 분할"></a>3. 초평면 분할</h1><p><img src="/images/SVM/Untitled%203.png"></p>
+<p>더 나은(최적) 분류를 위한 초평면(Hyperplane)→선 보다 더 큰 차원</p>
+<h2 id="좋은-판별선에-대한-기준"><a href="#좋은-판별선에-대한-기준" class="headerlink" title="좋은 판별선에 대한 기준"></a>좋은 판별선에 대한 기준</h2><ul>
+<li>최적화: 좋은 것 을 극대화 시키고 나쁜 것 을 극소화 시키는 것</li>
+<li>분류에서의 최적화: 잘 안나뉘는것 , 잘 나뉘는 것</li>
+</ul>
+<p><img src="/images/SVM/Untitled%204.png"></p>
+<ul>
+<li>나중에 Testing data 를 돌렸을때, 가장 좋게 나뉜 것은 반절로 나뉜 직선이다. Test data 가 어떻게 들어올지 모르는 것 이기때문에 , 과적합 되어 있는 것보다 확실히 절반으로 나누는것이 좋다.</li>
+</ul>
+<h2 id="최적의-분할-초평면-찾기"><a href="#최적의-분할-초평면-찾기" class="headerlink" title="최적의 분할 초평면 찾기"></a>최적의 분할 초평면 찾기</h2><ul>
+<li>Margin: c는 선형분할의 각 클래스별 거리 각 클래스별 거리를 합친 것</li>
+<li>Margin&#x3D;2c를 최대화 하는, w T x +b&#x3D;0 의 직선을 찾아야 하는것 이다.</li>
+<li>Marign 을 최대화 시키는 초평면이 최적</li>
+<li>“Learning Theory” 에 따르면, Marigin을 최대화 시키는 초평면이 일반화 오류가 가장 낮게 나타남(Test data 에서도 좋은 점수가 나온다)</li>
+<li>Margin:초평면과 가장 근접한 각 클래스 관측치와의 거리의 합.</li>
+</ul>
+<p><img src="/images/SVM/Untitled%205.png"></p>
+<p><img src="/images/SVM/Untitled%206.png"></p>
+<h3 id="Margin-수식-유도"><a href="#Margin-수식-유도" class="headerlink" title="Margin 수식 유도"></a>Margin 수식 유도</h3><ol>
+<li>일반적인 방법</li>
+</ol>
+<p><img src="/images/SVM/Untitled%207.png"></p>
+<ol>
+<li>점과 선 사이의 거리<ul>
+<li>거리 d 가 2개이니까 2&#x2F;||W||</li>
+</ul>
+</li>
+</ol>
+<p><img src="/images/SVM/Untitled%208.png"></p>
+<h2 id="Margin-최대화-최적화"><a href="#Margin-최대화-최적화" class="headerlink" title="Margin 최대화 (최적화)"></a>Margin 최대화 (최적화)</h2><ul>
+<li>||w|| 가 분모에 있기 때문에 결국 ||w|| 를 최소화 해주는것 이 2&#x2F;||w|| 를 최대화 해주는거랑 같다고 할 수 있다</li>
+<li>우리는 결국 w 값을 최소화 시켜주는것이 목적이기 때문에 제곱을 취해주든 상수를 곱해주는 상관이 없다</li>
+</ul>
+<p><img src="/images/SVM/Untitled%209.png"></p>
+<ul>
+<li>Lagrange Multiplier(수학적 기법) ⇒ 제약조건을 최적화 조건에 녹여버리는 기법.</li>
+</ul>
+<p><img src="/images/SVM/Untitled%2010.png"></p>
+<aside>
+💡 라그랑쥬를 다 풀고 나면 판별식이 나온다.
+
+</aside>
+
+<ul>
+<li>Xi tranpose X ( 학습데이터와 분류할 데이터의 내적)</li>
+</ul>
+<p><img src="/images/SVM/Untitled%2011.png"></p>
+<h1 id="4-SVM-Support-Vector-Machine"><a href="#4-SVM-Support-Vector-Machine" class="headerlink" title="4. SVM(Support Vector Machine)"></a>4. SVM(Support Vector Machine)</h1><ul>
+<li>판별식에 서포트벡터만 사용하기 때문에 아웃라이어에 대한 영향을 안 받음(KKT 조건으로 걸러냄)</li>
+<li>KNN 또한 이웃을 확인하는 개수인 K의 한계가 있어서 어느 elbow point 를 지나치면 정확도가 떨어진다. → 비슷한 원리 ⇒ svm 또한 분류를 유효하게 하기위해서 support verctor 만 이용해준다.</li>
+</ul>
+<p><img src="/images/SVM/Untitled%2012.png"></p>
+<ul>
+<li>선형으로 완벽히 나눠지지 않는 데이터라면 테스트 데이터에게는 위의 모델 보다 아래 모델이 더 좋을 것 으로 보인다. 하지만 SVM 의 제약조건에는 트레인데이터가 완벽하게 나누어져야 한다는 제약 조건이 걸려있다. 어떻게 하면 좋을까?</li>
+</ul>
+<p><img src="/images/SVM/Untitled%2013.png"></p>
+<h2 id="Slack-Variable-for-“Soft-Margin”"><a href="#Slack-Variable-for-“Soft-Margin”" class="headerlink" title="Slack Variable for “Soft Margin”"></a>Slack Variable for “Soft Margin”</h2><p><img src="/images/SVM/Untitled%2014.png"></p>
+<h2 id="Soft-Margin-SVM"><a href="#Soft-Margin-SVM" class="headerlink" title="Soft Margin SVM"></a>Soft Margin SVM</h2><p><img src="/images/SVM/Untitled%2015.png"></p>
+<h2 id="Non-linear-SVM"><a href="#Non-linear-SVM" class="headerlink" title="Non-linear SVM"></a>Non-linear SVM</h2><p><img src="/images/SVM/Untitled%2016.png"></p>
+<hr>
+<ul>
+<li>Reference: 한국공학대학교 경영학과 강지훈 교수님 강의</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://jmj3047.github.io/2022/05/06/SVM/" data-id="cl5dh97q7000cnwvtgzyi2ofw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Jang Minjee"
+        },
+        "headline": "Support Vector Machine",
+        "image": "https://jmj3047.github.io/images/SVM/Untitled.png",
+        "keywords": "Deep/Machine Learning Paper Study",
+        "genre": "Basic ML",
+        "datePublished": "2022-05-06",
+        "dateCreated": "2022-05-06",
+        "dateModified": "2022-07-09",
+        "url": "https://jmj3047.github.io/2022/05/06/SVM/",
+        "description": "1. 분류에 대한 수적 표현
+학습 데이터 X(독립변수),Y(종속변수)가 있을 때 (i&#x3D;1,2,3,4,5 ….데이터의 갯수)    Y⇒{-1,1} (두 개의 클래스를 의미)
+
+
+⇒ 경우에 따라서, 클래스를 1과 -1 로 나눔
+Y(정답) * F(x)(예측한 정답) &gt;0 라는 것은 제대로 분류된 형태 ( 같은 부호끼리 곱하면 양수인 경우니까)
+2.",
+        "wordCount": 421
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/jmj3047" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="dropbox" href="https://www.dropbox.com/home" target="_blank" rel="noopener">
+                        <i class="icon fa fa-dropbox"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google" href="https://www.google.com" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="youtube" href="https://www.youtube.com/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-youtube"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="discord" href="https://discord.com/channels/@me" target="_blank" rel="noopener">
+                        <i class="icon fa fa-discord"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+<!-- 
+    <div class="github-card" data-github="jmj3047" data-width="400" data-height="" data-theme="default">
+    </div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js">    </script> -->
+
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2022/05/06/Making_Korean_Chatbot_with_doc2vec(2)/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Making Korean Chatbot with doc2vec(2)
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2022/05/04/HTML_with_Python_CGI/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">HTML with Python_CGI</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+
+
+    <div class="widgets-container">
+        
+        
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Speaker-Verification/">Speaker Verification</a></p>
+                            <p class="item-title"><a href="/2022/07/05/Deep_Embedding_Learning_for_Text-Dependent_Speaker_Verification/" class="title">Deep Embedding Learning for Text-Dependent Speaker Verification</a></p>
+                            <p class="item-date"><time datetime="2022-07-04T15:00:00.000Z" itemprop="datePublished">2022-07-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2022/05/10/Attention_is_all_you_need/" class="title">Attention is all you need</a></p>
+                            <p class="item-date"><time datetime="2022-05-09T15:00:00.000Z" itemprop="datePublished">2022-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Basic-ML/">Basic ML</a></p>
+                            <p class="item-title"><a href="/2022/05/10/LGBM/" class="title">Light Gradient Boosting Machine</a></p>
+                            <p class="item-date"><time datetime="2022-05-09T15:00:00.000Z" itemprop="datePublished">2022-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Setting/">Setting</a></p>
+                            <p class="item-title"><a href="/2022/05/06/Setting_Git_&_Virtualenv/" class="title">Setting Git &amp; Virtualenv</a></p>
+                            <p class="item-date"><time datetime="2022-05-05T15:00:00.000Z" itemprop="datePublished">2022-05-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2022/05/06/What_is_Transformer/" class="title">What is Transformer</a></p>
+                            <p class="item-date"><time datetime="2022-05-05T15:00:00.000Z" itemprop="datePublished">2022-05-06</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Basic-ML/">Basic ML</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer Vision</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Base/">Data Base</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Generative-Model/">Generative Model</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/HTML/">HTML</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pyspark/">Pyspark</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setting/">Setting</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Speaker-Verification/">Speaker Verification</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Adversarial-Speaker-Verification/" style="font-size: 10px;">Adversarial Speaker Verification</a> <a href="/tags/Attention/" style="font-size: 12px;">Attention</a> <a href="/tags/BeautifulSoup/" style="font-size: 14px;">BeautifulSoup</a> <a href="/tags/Brython/" style="font-size: 10px;">Brython</a> <a href="/tags/CGI/" style="font-size: 10px;">CGI</a> <a href="/tags/Chatbot/" style="font-size: 18px;">Chatbot</a> <a href="/tags/Convolutional-Neural-Networks/" style="font-size: 12px;">Convolutional Neural Networks</a> <a href="/tags/DCGAN/" style="font-size: 10px;">DCGAN</a> <a href="/tags/Deep-Machine-Learning-Paper-Study/" style="font-size: 20px;">Deep/Machine Learning Paper Study</a> <a href="/tags/Doc2vec/" style="font-size: 16px;">Doc2vec</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GAN/" style="font-size: 12px;">GAN</a> <a href="/tags/Generative-Model/" style="font-size: 10px;">Generative Model</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML/" style="font-size: 14px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hueman/" style="font-size: 10px;">Hueman</a> <a href="/tags/Image-Classification/" style="font-size: 14px;">Image Classification</a> <a href="/tags/MongoDB/" style="font-size: 14px;">MongoDB</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/TD-SV/" style="font-size: 10px;">TD-SV</a> <a href="/tags/Transformer/" style="font-size: 14px;">Transformer</a> <a href="/tags/Virtualenv/" style="font-size: 10px;">Virtualenv</a> <a href="/tags/WGAN/" style="font-size: 10px;">WGAN</a> <a href="/tags/WGAN-GP/" style="font-size: 10px;">WGAN-GP</a> <a href="/tags/Web-Crawling/" style="font-size: 14px;">Web Crawling</a> <a href="/tags/Web-Server/" style="font-size: 12px;">Web Server</a> <a href="/tags/pyspark/" style="font-size: 16px;">pyspark</a>
+        </div>
+    </div>
+
+
+            
+        
+
+    </div>
+</aside>
+
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 Jang Minjee</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
