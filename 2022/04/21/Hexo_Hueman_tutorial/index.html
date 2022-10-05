@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Hexo Hueman Tutorial | Jang Minjee</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Hueman,Hexo" />
+    
+    <meta name="description" content="1.Starting Hexo Blog1234567891011121314151617181920212223242526username@LAPTOP-D1EUIRLS MINGW64 ~&#x2F;Desktop$ hexo init your_blog_folderusername@LAPTOP-D1EUIRLS MINGW64 ~&#x2F;Desktop$ cd your_blog_folder&#x2F;use">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo Hueman Tutorial">
+<meta property="og:url" content="https://jmj3047.github.io/2022/04/21/Hexo_Hueman_tutorial/index.html">
+<meta property="og:site_name" content="Jang Minjee">
+<meta property="og:description" content="1.Starting Hexo Blog1234567891011121314151617181920212223242526username@LAPTOP-D1EUIRLS MINGW64 ~&#x2F;Desktop$ hexo init your_blog_folderusername@LAPTOP-D1EUIRLS MINGW64 ~&#x2F;Desktop$ cd your_blog_folder&#x2F;use">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-20T15:00:00.000Z">
+<meta property="article:modified_time" content="2022-05-06T06:09:17.001Z">
+<meta property="article:author" content="Jang Minjee">
+<meta property="article:tag" content="Hueman">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" target="_blank" rel="noopener" href="https://github.com/jmj3047/mj_portfolio">About Me</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Basic-ML/">Basic ML</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Computer-Vision/">Computer Vision</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Base/">Data Base</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Generative-Model/">Generative Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Django/">Django</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/HTML/">HTML</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Pyspark/">Pyspark</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setting/">Setting</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Speaker-Verification/">Speaker Verification</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Setting/">Setting</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Hexo_Hueman_tutorial" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Hexo Hueman Tutorial
+        </h1>
+    
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2022/04/21/Hexo_Hueman_tutorial/" class="article-date">
+       <time datetime="2022-04-20T15:00:00.000Z" itemprop="datePublished">2022-04-21</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2022/04/21/Hexo_Hueman_tutorial/" class="article-date">
+     <time datetime="2022-05-06T06:09:17.001Z" itemprop="dateModified">2022-05-06</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Hexo/" rel="tag">Hexo</a>, <a class="tag-link-link" href="/tags/Hueman/" rel="tag">Hueman</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h5 id="1-Starting-Hexo-Blog"><a href="#1-Starting-Hexo-Blog" class="headerlink" title="1.Starting Hexo Blog"></a>1.<a target="_blank" rel="noopener" href="https://futurecreator.github.io/2016/06/14/get-started-with-hexo/">Starting Hexo Blog</a></h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">username@LAPTOP-D1EUIRLS MINGW64 ~/Desktop</span><br><span class="line">$ hexo init your_blog_folder</span><br><span class="line"></span><br><span class="line">username@LAPTOP-D1EUIRLS MINGW64 ~/Desktop</span><br><span class="line">$ <span class="built_in">cd</span> your_blog_folder/</span><br><span class="line"></span><br><span class="line">username@LAPTOP-D1EUIRLS MINGW64 ~/Desktop/your_blog_folder</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;# your_blog_folder&quot;</span> &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line">git branch -M master</span><br><span class="line">git remote add origin https://github.com/your_id/your_blog_folder.git</span><br><span class="line">git push -u origin master</span><br><span class="line"></span><br><span class="line">username@LAPTOP-D1EUIRLS MINGW64 ~/Desktop/your_blog_folder (master)</span><br><span class="line">$ git add .</span><br><span class="line"></span><br><span class="line">username@LAPTOP-D1EUIRLS MINGW64 ~/Desktop/your_blog_folder (master)</span><br><span class="line">$ git commit -m <span class="string">&quot;updated&quot;</span></span><br><span class="line"></span><br><span class="line">username@LAPTOP-D1EUIRLS MINGW64 ~/Desktop/your_blog_folder (master)</span><br><span class="line">$ git push</span><br><span class="line"></span><br><span class="line">username@LAPTOP-D1EUIRLS MINGW64 ~/Desktop/your_blog_folder (master)</span><br><span class="line">$ code .</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="2-Applying-Hueman-Theme"><a href="#2-Applying-Hueman-Theme" class="headerlink" title="2.Applying Hueman Theme"></a>2.<a target="_blank" rel="noopener" href="https://futurecreator.github.io/2016/06/14/hexo-apply-hueman-theme/">Applying Hueman Theme</a></h5><h5 id="3-Basic-Hexo-Tutorial"><a href="#3-Basic-Hexo-Tutorial" class="headerlink" title="3.Basic Hexo Tutorial"></a>3.<a target="_blank" rel="noopener" href="https://futurecreator.github.io/2016/06/21/hexo-basic-usage/">Basic Hexo Tutorial</a></h5><h5 id="4-Hexo-Tag-Plugins"><a href="#4-Hexo-Tag-Plugins" class="headerlink" title="4.Hexo Tag Plugins"></a>4.<a target="_blank" rel="noopener" href="https://futurecreator.github.io/2016/06/19/hexo-tag-plugins/">Hexo Tag Plugins</a></h5><h5 id="5-Add-Math-Formula-without-changing-from-Notion"><a href="#5-Add-Math-Formula-without-changing-from-Notion" class="headerlink" title="5.Add Math Formula(without changing from Notion)"></a>5.Add Math Formula(without changing from Notion)</h5><ol>
+<li>Creat File name <code>mathjax.ejs</code> on <code>themes/hueman/layout</code> folder</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">MathJax.Hub.Config(&#123;</span><br><span class="line">    jax: [<span class="string">&quot;input/TeX&quot;</span>, <span class="string">&quot;output/HTML-CSS&quot;</span>],   <span class="comment">#     mathjax       </span></span><br><span class="line">    tex2jax: &#123;</span><br><span class="line">        inlineMath: [ [<span class="string">&#x27;$&#x27;</span>, <span class="string">&#x27;$&#x27;</span>] ],</span><br><span class="line">        displayMath: [ [<span class="string">&#x27;$$&#x27;</span>, <span class="string">&#x27;$$&#x27;</span>]],</span><br><span class="line">        processEscapes: true,</span><br><span class="line">        skipTags: [<span class="string">&#x27;script&#x27;</span>, <span class="string">&#x27;noscript&#x27;</span>, <span class="string">&#x27;style&#x27;</span>, <span class="string">&#x27;textarea&#x27;</span>, <span class="string">&#x27;pre&#x27;</span>, <span class="string">&#x27;code&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    messageStyle: <span class="string">&quot;none&quot;</span>,</span><br><span class="line">    <span class="string">&quot;HTML-CSS&quot;</span>: &#123; preferredFont: <span class="string">&quot;TeX&quot;</span>, availableFonts: [<span class="string">&quot;STIX&quot;</span>,<span class="string">&quot;TeX&quot;</span>] &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>Check <code>#Plugins</code> in <code>themes/hueman/_config.yml</code> file and change <code>mathjax: false</code> to <code>true</code></li>
+<li>Add <code>mathjax:true</code> at the header when you post</li>
+</ol>
+<ul>
+<li>Reference: <a target="_blank" rel="noopener" href="https://intrepidgeeks.com/tutorial/add-hexo-mathjax-support">Math Formula</a></li>
+</ul>
+<h5 id="6-Font-Change"><a href="#6-Font-Change" class="headerlink" title="6.Font Change"></a>6.<a target="_blank" rel="noopener" href="https://futurecreator.github.io/2018/06/12/hexo-change-font-on-hueman-theme/">Font Change</a></h5><h5 id="7-Deleting-Posts"><a href="#7-Deleting-Posts" class="headerlink" title="7.Deleting Posts"></a>7.<a target="_blank" rel="noopener" href="https://futurecreator.github.io/2017/01/15/how-to-delete-post-in-hexo/">Deleting Posts</a></h5><h5 id="8-Error-in-Hueman-Theme"><a href="#8-Error-in-Hueman-Theme" class="headerlink" title="8.Error in Hueman Theme"></a>8.<a target="_blank" rel="noopener" href="https://pictureyou-neo.github.io/categories/2-Web/Hexo/">Error in Hueman Theme</a></h5><p><code>To Be Continued..</code></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://jmj3047.github.io/2022/04/21/Hexo_Hueman_tutorial/" data-id="cl28v0opx000464vt3cte7n6s" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Jang Minjee"
+        },
+        "headline": "Hexo Hueman Tutorial",
+        "image": "https://jmj3047.github.io",
+        "keywords": "Hueman Hexo",
+        "genre": "Setting",
+        "datePublished": "2022-04-21",
+        "dateCreated": "2022-04-21",
+        "dateModified": "2022-05-06",
+        "url": "https://jmj3047.github.io/2022/04/21/Hexo_Hueman_tutorial/",
+        "description": "1.Starting Hexo Blog1234567891011121314151617181920212223242526username@LAPTOP-D1EUIRLS MINGW64 ~/Desktop$ hexo init your_blog_folderusername@LAPTOP-D1EUIRLS MINGW64 ~/Desktop$ cd your_blog_folder/use",
+        "wordCount": 360
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/jmj3047" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="dropbox" href="https://www.dropbox.com/home" target="_blank" rel="noopener">
+                        <i class="icon fa fa-dropbox"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google" href="https://www.google.com" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="youtube" href="https://www.youtube.com/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-youtube"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="discord" href="https://discord.com/channels/@me" target="_blank" rel="noopener">
+                        <i class="icon fa fa-discord"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+<!-- 
+    <div class="github-card" data-github="jmj3047" data-width="400" data-height="" data-theme="default">
+    </div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js">    </script> -->
+
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2022/04/21/Generative_Adversarial_Nets/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            Generative Adversarial Nets
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2022/04/21/ImageNet_Classification/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">ImageNet Classification with Deep Convolutional Neural Networks</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+
+
+    <div class="widgets-container">
+        
+        
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Basic-ML/">Basic ML</a></p>
+                            <p class="item-title"><a href="/2022/08/12/Growth_Hacking/" class="title">Growth Hacking, AARRR, Funnel, Retention</a></p>
+                            <p class="item-date"><time datetime="2022-08-11T15:00:00.000Z" itemprop="datePublished">2022-08-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Speaker-Verification/">Speaker Verification</a></p>
+                            <p class="item-title"><a href="/2022/07/05/Deep_Embedding_Learning_for_Text-Dependent_Speaker_Verification/" class="title">Deep Embedding Learning for Text-Dependent Speaker Verification</a></p>
+                            <p class="item-date"><time datetime="2022-07-04T15:00:00.000Z" itemprop="datePublished">2022-07-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2022/05/10/Attention_is_all_you_need/" class="title">Attention is all you need</a></p>
+                            <p class="item-date"><time datetime="2022-05-09T15:00:00.000Z" itemprop="datePublished">2022-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Basic-ML/">Basic ML</a></p>
+                            <p class="item-title"><a href="/2022/05/10/LGBM/" class="title">Light Gradient Boosting Machine</a></p>
+                            <p class="item-date"><time datetime="2022-05-09T15:00:00.000Z" itemprop="datePublished">2022-05-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Setting/">Setting</a></p>
+                            <p class="item-title"><a href="/2022/05/06/Setting_Git_&_Virtualenv/" class="title">Setting Git &amp; Virtualenv</a></p>
+                            <p class="item-date"><time datetime="2022-05-05T15:00:00.000Z" itemprop="datePublished">2022-05-06</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Basic-ML/">Basic ML</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Computer-Vision/">Computer Vision</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Base/">Data Base</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Generative-Model/">Generative Model</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP/">NLP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/HTML/">HTML</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pyspark/">Pyspark</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setting/">Setting</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Speaker-Verification/">Speaker Verification</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Adversarial-Speaker-Verification/" style="font-size: 10px;">Adversarial Speaker Verification</a> <a href="/tags/Attention/" style="font-size: 12px;">Attention</a> <a href="/tags/BeautifulSoup/" style="font-size: 14px;">BeautifulSoup</a> <a href="/tags/Brython/" style="font-size: 10px;">Brython</a> <a href="/tags/CGI/" style="font-size: 10px;">CGI</a> <a href="/tags/Chatbot/" style="font-size: 18px;">Chatbot</a> <a href="/tags/Convolutional-Neural-Networks/" style="font-size: 12px;">Convolutional Neural Networks</a> <a href="/tags/DCGAN/" style="font-size: 10px;">DCGAN</a> <a href="/tags/Deep-Machine-Learning-Paper-Study/" style="font-size: 20px;">Deep/Machine Learning Paper Study</a> <a href="/tags/Doc2vec/" style="font-size: 16px;">Doc2vec</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GAN/" style="font-size: 12px;">GAN</a> <a href="/tags/Generative-Model/" style="font-size: 10px;">Generative Model</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/HTML/" style="font-size: 14px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Hueman/" style="font-size: 10px;">Hueman</a> <a href="/tags/Image-Classification/" style="font-size: 14px;">Image Classification</a> <a href="/tags/ML-Analysis/" style="font-size: 10px;">ML Analysis</a> <a href="/tags/MongoDB/" style="font-size: 14px;">MongoDB</a> <a href="/tags/NLP/" style="font-size: 18px;">NLP</a> <a href="/tags/TD-SV/" style="font-size: 10px;">TD-SV</a> <a href="/tags/Transformer/" style="font-size: 14px;">Transformer</a> <a href="/tags/Virtualenv/" style="font-size: 10px;">Virtualenv</a> <a href="/tags/WGAN/" style="font-size: 10px;">WGAN</a> <a href="/tags/WGAN-GP/" style="font-size: 10px;">WGAN-GP</a> <a href="/tags/WP-edu/" style="font-size: 10px;">WP_edu</a> <a href="/tags/Web-Crawling/" style="font-size: 14px;">Web Crawling</a> <a href="/tags/Web-Server/" style="font-size: 12px;">Web Server</a> <a href="/tags/pyspark/" style="font-size: 16px;">pyspark</a>
+        </div>
+    </div>
+
+
+            
+        
+
+    </div>
+</aside>
+
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2022 Jang Minjee</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
