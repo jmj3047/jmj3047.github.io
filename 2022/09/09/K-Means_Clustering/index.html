@@ -22,16 +22,16 @@
     
     <meta name="keywords" content="Clustering,ML Analysis,English,K-Means Clustering,Python" />
     
-    <meta name="description" content="The K-Means clustering algorithm does not automatically identify and group the number of clusters by looking at the data. The number of clusters should be specified and the initial value should be se">
+    <meta name="description" content="1. What is K-means Clustering The K-Means clustering algorithm does not automatically identify and group the number of clusters by looking at the data. The number of clusters should be specified and t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="K-Means Clustering">
 <meta property="og:url" content="https://jmj3047.github.io/2022/09/09/K-Means_Clustering/index.html">
 <meta property="og:site_name" content="Jang Minjee">
-<meta property="og:description" content="The K-Means clustering algorithm does not automatically identify and group the number of clusters by looking at the data. The number of clusters should be specified and the initial value should be se">
+<meta property="og:description" content="1. What is K-means Clustering The K-Means clustering algorithm does not automatically identify and group the number of clusters by looking at the data. The number of clusters should be specified and t">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://jmj3047.github.io/images/K-Means_Clustering/Untitled.png">
 <meta property="article:published_time" content="2022-09-08T15:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-15T07:49:06.457Z">
+<meta property="article:modified_time" content="2022-10-15T09:03:34.375Z">
 <meta property="article:author" content="Jang Minjee">
 <meta property="article:tag" content="Clustering">
 <meta property="article:tag" content="ML Analysis">
@@ -210,7 +210,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2022/09/09/K-Means_Clustering/" class="article-date">
-     <time datetime="2022-10-15T07:49:06.457Z" itemprop="dateModified">2022-10-15</time>
+     <time datetime="2022-10-15T09:03:34.375Z" itemprop="dateModified">2022-10-15</time>
   </a>
 </div>
 
@@ -237,7 +237,7 @@
 
             
 
-            <ul>
+            <h2 id="1-What-is-K-means-Clustering"><a href="#1-What-is-K-means-Clustering" class="headerlink" title="1. What is K-means Clustering"></a>1. What is K-means Clustering</h2><ul>
 <li>The K-Means clustering algorithm does not automatically identify and group the number of clusters by looking at the data.</li>
 <li>The number of clusters should be specified and the initial value should be selected accordingly by user.<ul>
 <li>How to determine the number of clusters<ul>
@@ -255,6 +255,8 @@
 </ul>
 </li>
 <li>It belongs to the hard clustering algorithm, which is a clustering that unconditionally assigns a group of data points to a point close to the center.</li>
+</ul>
+<h2 id="2-Pros-amp-Cons"><a href="#2-Pros-amp-Cons" class="headerlink" title="2. Pros &amp; Cons"></a>2. Pros &amp; Cons</h2><ul>
 <li>Advantages<ul>
 <li>The process is intuitive, easy to understand, and the algorithm is simple so that it is easy to implement.</li>
 <li>It does not require complex calculations, so it can be applied to large-scale data.</li>
@@ -270,15 +272,16 @@
 <li>Because of Euclidean Distance, it cannot be used if there is a categorical variable. In this case, it is possible to use the extended K-Modes Clustering algorithm.</li>
 </ul>
 </li>
-<li>Using python: scikit-learn<ul>
-<li>Put 3 in n_clusters and init_center in init, and create a KMeans instance.</li>
-<li>If you put data(X) into the fit function, clustering is performed.</li>
-<li>The final label can be obtained through the labels_ field.</li>
 </ul>
+<h2 id="3-Using-python-scikit-learn"><a href="#3-Using-python-scikit-learn" class="headerlink" title="3. Using python: scikit-learn"></a>3. Using python: scikit-learn</h2><ul>
+<li><p>Put 3 in n_clusters and init_center in init, and create a KMeans instance.</p>
+</li>
+<li><p>If you put data(X) into the fit function, clustering is performed.</p>
+</li>
+<li><p>The final label can be obtained through the labels_ field.</p>
   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">&#x27;ignore&#x27;</span>)</span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line"> </span><br><span class="line">kmeans = KMeans(n_clusters=<span class="number">3</span>, init=init_center)</span><br><span class="line">kmeans.fit(X)</span><br><span class="line">labels = kmeans.labels_</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Visualization</li>
-</ul>
+</li>
+<li><p>Visualization</p>
   <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">7</span>,<span class="number">7</span>))</span><br><span class="line">fig.set_facecolor(<span class="string">&#x27;white&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> i, label <span class="keyword">in</span> <span class="built_in">enumerate</span>(labels):</span><br><span class="line">    <span class="keyword">if</span> label == <span class="number">0</span>:</span><br><span class="line">        color = <span class="string">&#x27;blue&#x27;</span></span><br><span class="line">    <span class="keyword">elif</span> label ==<span class="number">1</span>:</span><br><span class="line">        color = <span class="string">&#x27;red&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        color = <span class="string">&#x27;green&#x27;</span></span><br><span class="line">    plt.scatter(X[i,<span class="number">0</span>],X[i,<span class="number">1</span>], color=color)</span><br><span class="line">    </span><br><span class="line">plt.xlabel(<span class="string">&#x27;x1&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;x2&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 <p>  <img src="/images/K-Means_Clustering/Untitled.png"></p>
@@ -374,10 +377,10 @@
         "dateCreated": "2022-09-09",
         "dateModified": "2022-10-15",
         "url": "https://jmj3047.github.io/2022/09/09/K-Means_Clustering/",
-        "description": "
+        "description": "1. What is K-means Clustering
 The K-Means clustering algorithm does not automatically identify and group the number of clusters by looking at the data.
-The number of clusters should be specified and the initial value should be se",
-        "wordCount": 582
+The number of clusters should be specified and t",
+        "wordCount": 612
     }
 </script>
 
