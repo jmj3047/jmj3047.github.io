@@ -3,6 +3,16 @@
 <head>
     <meta charset="utf-8" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90VXCLXLJT"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-90VXCLXLJT');
+    </script>
+
     
 
     
@@ -55,13 +65,13 @@
     
     
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-90VXCLXLJT"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-90VXCLXLJT');
+  gtag('config', '[object Object]');
 </script>
 <!-- End Google Analytics -->
 
@@ -207,21 +217,23 @@
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/Python/">Python</a>
+            <a class="article-category-link" href="/categories/Python/">Python</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Django/">Django</a>
             </div>
             <div class="date"><time datetime="2022-05-05T15:00:00.000Z" itemprop="datePublished">2022-05-06</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2022/05/06/Making_English_Chatbot_with_doc2vec(3)/">Making English Chatbot with doc2vec(3)</a>
+        <a href="/2022/05/06/Making_English_Chatbot_with_Django(4)/">Making English Chatbot with Django(4)</a>
         </h1>
     
 
         <p class="article-excerpt">
-            많은 데이터로 실험해보기데이터 살펴보기더 많은 학습 데이터로 모델을 학습한다. 
-데이터 원본 링크: https://www.kaggle.com/jiriroz/qa-jokes총 3만 8천개의 문장
-데이터 불러오기, 전처리12345678import osimport warningsfrom gensim.models import doc2vecfrom gensim.mo
+            실제 서비스 구현해보기**code: https://github.com/jmj3047/faq_chatbot_example.git
+vs code로 django 설정하기: https://integer-ji.tistory.com/81
+채팅창 만들기
+html&#x2F;css를 사용해 간단한 채팅화면을 만들었다.
+123456789101112131415161718192
         </p>
     </div>
 </article>
@@ -240,23 +252,21 @@
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/Python/">Python</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Django/">Django</a>
+            <a class="article-category-link" href="/categories/Python/">Python</a>
             </div>
             <div class="date"><time datetime="2022-05-05T15:00:00.000Z" itemprop="datePublished">2022-05-06</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2022/05/06/Making_English_Chatbot_with_Django(4)/">Making English Chatbot with Django(4)</a>
+        <a href="/2022/05/06/Making_English_Chatbot_with_doc2vec(3)/">Making English Chatbot with doc2vec(3)</a>
         </h1>
     
 
         <p class="article-excerpt">
-            실제 서비스 구현해보기**code: https://github.com/jmj3047/faq_chatbot_example.git
-vs code로 django 설정하기: https://integer-ji.tistory.com/81
-채팅창 만들기
-html&#x2F;css를 사용해 간단한 채팅화면을 만들었다.
-123456789101112131415161718192
+            많은 데이터로 실험해보기데이터 살펴보기더 많은 학습 데이터로 모델을 학습한다. 
+데이터 원본 링크: https://www.kaggle.com/jiriroz/qa-jokes총 3만 8천개의 문장
+데이터 불러오기, 전처리12345678import osimport warningsfrom gensim.models import doc2vecfrom gensim.mo
         </p>
     </div>
 </article>
@@ -444,16 +454,12 @@ GPU 사용
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2022/04/22/Web_Crawling_Basic/">Basic Web Crawling</a>
+        <a href="/2022/04/22/Web_Crawling_Headline/">Web Crawling Practice</a>
         </h1>
     
 
         <p class="article-excerpt">
-            
-Crawling Tools   -Beautifulsoup: 파이썬에서 가장 일반적인 수집도구(CSS 통해서 수집)   -Scrapy (CSS, XPATH 형태로 수집)   -Selenium (CSS, XPATH 통해서 데이터 수집 + Java Script)      →자바 필요 + 몇개 설치 도구 필요
-
-
-웹사이트 만드는 3대 조건 +1   :HTML, 
+            1. Crawling Headline news from Naver12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152import requestsfrom bs4 import BeautifulSoupimport pandas as pddef cr
         </p>
     </div>
 </article>
@@ -475,12 +481,16 @@ Crawling Tools   -Beautifulsoup: 파이썬에서 가장 일반적인 수집도�
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2022/04/22/Web_Crawling_Headline/">Web Crawling Practice</a>
+        <a href="/2022/04/22/Web_Crawling_Basic/">Basic Web Crawling</a>
         </h1>
     
 
         <p class="article-excerpt">
-            1. Crawling Headline news from Naver12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152import requestsfrom bs4 import BeautifulSoupimport pandas as pddef cr
+            
+Crawling Tools   -Beautifulsoup: 파이썬에서 가장 일반적인 수집도구(CSS 통해서 수집)   -Scrapy (CSS, XPATH 형태로 수집)   -Selenium (CSS, XPATH 통해서 데이터 수집 + Java Script)      →자바 필요 + 몇개 설치 도구 필요
+
+
+웹사이트 만드는 3대 조건 +1   :HTML, 
         </p>
     </div>
 </article>
@@ -594,7 +604,7 @@ Crawling Tools   -Beautifulsoup: 파이썬에서 가장 일반적인 수집도�
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Basic-ML/">Basic ML</a></p>
-                            <p class="item-title"><a href="/2022/09/08/K-Means_Clustering/" class="title">K-Means Clustering</a></p>
+                            <p class="item-title"><a href="/2022/09/08/GMM/" class="title">Gaussian Mixture Model</a></p>
                             <p class="item-date"><time datetime="2022-09-07T15:00:00.000Z" itemprop="datePublished">2022-09-08</time></p>
                         </div>
                     </li>
@@ -603,7 +613,7 @@ Crawling Tools   -Beautifulsoup: 파이썬에서 가장 일반적인 수집도�
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Basic-ML/">Basic ML</a></p>
-                            <p class="item-title"><a href="/2022/09/08/GMM/" class="title">Gaussian Mixture Model</a></p>
+                            <p class="item-title"><a href="/2022/09/08/K-Means_Clustering/" class="title">K-Means Clustering</a></p>
                             <p class="item-date"><time datetime="2022-09-07T15:00:00.000Z" itemprop="datePublished">2022-09-08</time></p>
                         </div>
                     </li>

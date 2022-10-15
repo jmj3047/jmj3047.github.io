@@ -3,6 +3,16 @@
 <head>
     <meta charset="utf-8" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90VXCLXLJT"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-90VXCLXLJT');
+    </script>
+
     
 
     
@@ -55,13 +65,13 @@
     
     
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-90VXCLXLJT"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-90VXCLXLJT');
+  gtag('config', '[object Object]');
 </script>
 <!-- End Google Analytics -->
 
@@ -180,21 +190,23 @@
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/NLP/">NLP</a>
+            <a class="article-category-link" href="/categories/Python/">Python</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Django/">Django</a>
             </div>
             <div class="date"><time datetime="2022-05-05T15:00:00.000Z" itemprop="datePublished">2022-05-06</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2022/05/06/What_is_Transformer/">What is Transformer</a>
+        <a href="/2022/05/06/Making_English_Chatbot_with_Django(4)/">Making English Chatbot with Django(4)</a>
         </h1>
     
 
         <p class="article-excerpt">
-            Transformer란?트랜스포머(Transformer)는 구글에서 발표한 논문 “Attention is all you need”에 나오는 모델이다. 아래 글은 이 논문 abstract의 일부분이다. 
-
-The dominant sequence transduction models are based on complex recurrent or convolutio
+            실제 서비스 구현해보기**code: https://github.com/jmj3047/faq_chatbot_example.git
+vs code로 django 설정하기: https://integer-ji.tistory.com/81
+채팅창 만들기
+html&#x2F;css를 사용해 간단한 채팅화면을 만들었다.
+123456789101112131415161718192
         </p>
     </div>
 </article>
@@ -203,37 +215,6 @@ The dominant sequence transduction models are based on complex recurrent or conv
     
     
     
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Python/">Python</a>
-            </div>
-            <div class="date"><time datetime="2022-05-05T15:00:00.000Z" itemprop="datePublished">2022-05-06</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2022/05/06/Making_Chatbot_with_doc2vec_tutorial(1)/">Making Chatbot with doc2vec tutorial(1)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            모델 만들기데이터 만들기doc2vec을 이용해서 FAQ데이터들의 질문들을 벡터화하는 모델을 만들어 본다. word2vec이 단어를 벡터화 하는 것이라면 doc2vec은 단어가 아니라 문서를 기준으로 (여기서는 문장)벡터를 만드는 라이브러리이다. doc2vec을 사용하면 서로 다른 문서들이 같은 차원의 벡터값을 갖게 된다. 각 문서라 갖는 벡터값을 비교해 같
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
-    
-    
-    
-    
-        <div class="article-row">
     
         <article class="article article-summary">
     <div class="article-summary-inner">
@@ -255,37 +236,6 @@ The dominant sequence transduction models are based on complex recurrent or conv
             많은 데이터로 실험해보기데이터 살펴보기더 많은 학습 데이터로 모델을 학습한다. 
 데이터 원본 링크: https://www.kaggle.com/jiriroz/qa-jokes총 3만 8천개의 문장
 데이터 불러오기, 전처리12345678import osimport warningsfrom gensim.models import doc2vecfrom gensim.mo
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Python/">Python</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Python/Django/">Django</a>
-            </div>
-            <div class="date"><time datetime="2022-05-05T15:00:00.000Z" itemprop="datePublished">2022-05-06</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2022/05/06/Making_English_Chatbot_with_Django(4)/">Making English Chatbot with Django(4)</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            실제 서비스 구현해보기**code: https://github.com/jmj3047/faq_chatbot_example.git
-vs code로 django 설정하기: https://integer-ji.tistory.com/81
-채팅창 만들기
-html&#x2F;css를 사용해 간단한 채팅화면을 만들었다.
-123456789101112131415161718192
         </p>
     </div>
 </article>
@@ -352,6 +302,69 @@ html&#x2F;css를 사용해 간단한 채팅화면을 만들었다.
 ⇒ 경우에 따라서, 클래스를 1과 -1 로 나눔
 Y(정답) * F(x)(예측한 정답) &gt;0 라는 것은 제대로 분류된 형태 ( 같은 부호끼리 곱하면 양수인 경우니까)
 2.
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Setting/">Setting</a>
+            </div>
+            <div class="date"><time datetime="2022-05-05T15:00:00.000Z" itemprop="datePublished">2022-05-06</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2022/05/06/Setting_Git_&_Virtualenv/">Setting Git &amp; Virtualenv</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Put Local folder into git repo
+Make folder ‘example’ and git repo ‘example
+
+123456789101112131415161718192021222324#in local cmd example foldergit init #add remote repogit remote add origin &#x27;repo
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/NLP/">NLP</a>
+            </div>
+            <div class="date"><time datetime="2022-05-05T15:00:00.000Z" itemprop="datePublished">2022-05-06</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2022/05/06/What_is_Transformer/">What is Transformer</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            Transformer란?트랜스포머(Transformer)는 구글에서 발표한 논문 “Attention is all you need”에 나오는 모델이다. 아래 글은 이 논문 abstract의 일부분이다. 
+
+The dominant sequence transduction models are based on complex recurrent or convolutio
         </p>
     </div>
 </article>
@@ -601,7 +614,7 @@ $unset: 키와 값을 모두 제거함
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Basic-ML/">Basic ML</a></p>
-                            <p class="item-title"><a href="/2022/09/08/K-Means_Clustering/" class="title">K-Means Clustering</a></p>
+                            <p class="item-title"><a href="/2022/09/08/GMM/" class="title">Gaussian Mixture Model</a></p>
                             <p class="item-date"><time datetime="2022-09-07T15:00:00.000Z" itemprop="datePublished">2022-09-08</time></p>
                         </div>
                     </li>
@@ -610,7 +623,7 @@ $unset: 키와 값을 모두 제거함
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Basic-ML/">Basic ML</a></p>
-                            <p class="item-title"><a href="/2022/09/08/GMM/" class="title">Gaussian Mixture Model</a></p>
+                            <p class="item-title"><a href="/2022/09/08/K-Means_Clustering/" class="title">K-Means Clustering</a></p>
                             <p class="item-date"><time datetime="2022-09-07T15:00:00.000Z" itemprop="datePublished">2022-09-08</time></p>
                         </div>
                     </li>

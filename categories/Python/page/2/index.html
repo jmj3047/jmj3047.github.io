@@ -3,6 +3,16 @@
 <head>
     <meta charset="utf-8" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90VXCLXLJT"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-90VXCLXLJT');
+    </script>
+
     
 
     
@@ -55,13 +65,13 @@
     
     
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-90VXCLXLJT"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-90VXCLXLJT');
+  gtag('config', '[object Object]');
 </script>
 <!-- End Google Analytics -->
 
@@ -187,13 +197,12 @@
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2022/04/21/Pyspark_Tutorial_1/">Pyspark Tutorial(1)</a>
+        <a href="/2022/04/21/Pyspark_Tutorial_2/">Pyspark Tutorial(2)</a>
         </h1>
     
 
         <p class="article-excerpt">
-            Reference: https://spark.apache.org/docs/latest/quick-start.html
-Get Started01.basic.py1234567891011121314# -*- coding: utf-8 -*-import pysparkprint(pyspark.__version__)from pyspark.sql import SparkSe
+            Data cleansing01.pipeline.py123456789101112131415161718192021222324from pyspark.sql import SparkSessionfrom pyspark.sql import *from pyspark.sql import functions as F#Create Spark Sessionspark = Spark
         </p>
     </div>
 </article>
@@ -215,12 +224,12 @@ Get Started01.basic.py1234567891011121314# -*- coding: utf-8 -*-import pysparkpr
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2022/04/21/Pyspark_Tutorial_2/">Pyspark Tutorial(2)</a>
+        <a href="/2022/04/21/Pyspark_Tutorial_3/">Pyspark Tutorial(3)</a>
         </h1>
     
 
         <p class="article-excerpt">
-            Data cleansing01.pipeline.py123456789101112131415161718192021222324from pyspark.sql import SparkSessionfrom pyspark.sql import *from pyspark.sql import functions as F#Create Spark Sessionspark = Spark
+            Machine Learning01.regression.py1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950from pyspark.ml.regression import DecisionTreeRegressorfrom pyspark.sql impor
         </p>
     </div>
 </article>
@@ -246,12 +255,13 @@ Get Started01.basic.py1234567891011121314# -*- coding: utf-8 -*-import pysparkpr
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2022/04/21/Pyspark_Tutorial_3/">Pyspark Tutorial(3)</a>
+        <a href="/2022/04/21/Pyspark_Tutorial_1/">Pyspark Tutorial(1)</a>
         </h1>
     
 
         <p class="article-excerpt">
-            Machine Learning01.regression.py1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950from pyspark.ml.regression import DecisionTreeRegressorfrom pyspark.sql impor
+            Reference: https://spark.apache.org/docs/latest/quick-start.html
+Get Started01.basic.py1234567891011121314# -*- coding: utf-8 -*-import pysparkprint(pyspark.__version__)from pyspark.sql import SparkSe
         </p>
     </div>
 </article>
@@ -402,7 +412,7 @@ Run
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Basic-ML/">Basic ML</a></p>
-                            <p class="item-title"><a href="/2022/09/08/K-Means_Clustering/" class="title">K-Means Clustering</a></p>
+                            <p class="item-title"><a href="/2022/09/08/GMM/" class="title">Gaussian Mixture Model</a></p>
                             <p class="item-date"><time datetime="2022-09-07T15:00:00.000Z" itemprop="datePublished">2022-09-08</time></p>
                         </div>
                     </li>
@@ -411,7 +421,7 @@ Run
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Basic-ML/">Basic ML</a></p>
-                            <p class="item-title"><a href="/2022/09/08/GMM/" class="title">Gaussian Mixture Model</a></p>
+                            <p class="item-title"><a href="/2022/09/08/K-Means_Clustering/" class="title">K-Means Clustering</a></p>
                             <p class="item-date"><time datetime="2022-09-07T15:00:00.000Z" itemprop="datePublished">2022-09-08</time></p>
                         </div>
                     </li>

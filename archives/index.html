@@ -3,6 +3,16 @@
 <head>
     <meta charset="utf-8" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90VXCLXLJT"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-90VXCLXLJT');
+    </script>
+
     
 
     
@@ -55,13 +65,13 @@
     
     
         <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-90VXCLXLJT"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'G-90VXCLXLJT');
+  gtag('config', '[object Object]');
 </script>
 <!-- End Google Analytics -->
 
@@ -266,14 +276,16 @@ It is different from classification, which is supervised lea
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2022/09/08/K-Means_Clustering/">K-Means Clustering</a>
+        <a href="/2022/09/08/GMM/">Gaussian Mixture Model</a>
         </h1>
     
 
         <p class="article-excerpt">
             
-The K-Means clustering algorithm does not automatically identify and group the number of clusters by looking at the data.
-The number of clusters should be specified and the initial value should be se
+It is one of several models applying the Expectation Maximum (EM) algorithm.
+What is EM algorithm?
+EM algorithm is basically an algorithm mainly used for Unsupervised learning.
+It is also used in clu
         </p>
     </div>
 </article>
@@ -295,16 +307,14 @@ The number of clusters should be specified and the initial value should be se
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2022/09/08/GMM/">Gaussian Mixture Model</a>
+        <a href="/2022/09/08/K-Means_Clustering/">K-Means Clustering</a>
         </h1>
     
 
         <p class="article-excerpt">
             
-It is one of several models applying the Expectation Maximum (EM) algorithm.
-What is EM algorithm?
-EM algorithm is basically an algorithm mainly used for Unsupervised learning.
-It is also used in clu
+The K-Means clustering algorithm does not automatically identify and group the number of clusters by looking at the data.
+The number of clusters should be specified and the initial value should be se
         </p>
     </div>
 </article>
@@ -479,22 +489,19 @@ Atte
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/Setting/">Setting</a>
+            <a class="article-category-link" href="/categories/Python/">Python</a>
             </div>
             <div class="date"><time datetime="2022-05-05T15:00:00.000Z" itemprop="datePublished">2022-05-06</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2022/05/06/Setting_Git_&_Virtualenv/">Setting Git &amp; Virtualenv</a>
+        <a href="/2022/05/06/Making_Chatbot_with_doc2vec_tutorial(1)/">Making Chatbot with doc2vec tutorial(1)</a>
         </h1>
     
 
         <p class="article-excerpt">
-            Put Local folder into git repo
-Make folder ‘example’ and git repo ‘example
-
-123456789101112131415161718192021222324#in local cmd example foldergit init #add remote repogit remote add origin &#x27;repo
+            모델 만들기데이터 만들기doc2vec을 이용해서 FAQ데이터들의 질문들을 벡터화하는 모델을 만들어 본다. word2vec이 단어를 벡터화 하는 것이라면 doc2vec은 단어가 아니라 문서를 기준으로 (여기서는 문장)벡터를 만드는 라이브러리이다. doc2vec을 사용하면 서로 다른 문서들이 같은 차원의 벡터값을 갖게 된다. 각 문서라 갖는 벡터값을 비교해 같
         </p>
     </div>
 </article>
@@ -607,7 +614,7 @@ Make folder ‘example’ and git repo ‘example
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Basic-ML/">Basic ML</a></p>
-                            <p class="item-title"><a href="/2022/09/08/K-Means_Clustering/" class="title">K-Means Clustering</a></p>
+                            <p class="item-title"><a href="/2022/09/08/GMM/" class="title">Gaussian Mixture Model</a></p>
                             <p class="item-date"><time datetime="2022-09-07T15:00:00.000Z" itemprop="datePublished">2022-09-08</time></p>
                         </div>
                     </li>
@@ -616,7 +623,7 @@ Make folder ‘example’ and git repo ‘example
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Basic-ML/">Basic ML</a></p>
-                            <p class="item-title"><a href="/2022/09/08/GMM/" class="title">Gaussian Mixture Model</a></p>
+                            <p class="item-title"><a href="/2022/09/08/K-Means_Clustering/" class="title">K-Means Clustering</a></p>
                             <p class="item-date"><time datetime="2022-09-07T15:00:00.000Z" itemprop="datePublished">2022-09-08</time></p>
                         </div>
                     </li>
