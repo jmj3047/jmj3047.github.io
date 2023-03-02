@@ -31,7 +31,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://jmj3047.github.io/images/BQML_Pred/Untitled.png">
 <meta property="article:published_time" content="2023-02-27T15:00:00.000Z">
-<meta property="article:modified_time" content="2023-02-28T08:18:14.920Z">
+<meta property="article:modified_time" content="2023-03-02T04:03:56.468Z">
 <meta property="article:author" content="Jang Minjee">
 <meta property="article:tag" content="Big Query">
 <meta property="article:tag" content="BigQueryML">
@@ -207,7 +207,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2023/02/28/BQML_Pred/" class="article-date">
-     <time datetime="2023-02-28T08:18:14.920Z" itemprop="dateModified">2023-02-28</time>
+     <time datetime="2023-03-02T04:03:56.468Z" itemprop="dateModified">2023-03-02</time>
   </a>
 </div>
 
@@ -254,27 +254,27 @@
 <hr>
 <h2 id="0단계-public-dataset-가져오기"><a href="#0단계-public-dataset-가져오기" class="headerlink" title="0단계: public-dataset 가져오기"></a>0단계: public-dataset 가져오기</h2><ul>
 <li><p>GCP BigQuery로 이동하여 프로젝트를 만들고, 프로젝트 밑에 <code>+ADD DATA</code> 를 클릭한다</p>
-<p>  <img src="/images/BQML_Pred/Untitled.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled.png" alt=" "></p>
 </li>
 <li><p><code>Public Datasets</code> 를 선택한다</p>
-<p>  <img src="/images/BQML_Pred/Untitled%201.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled%201.png" alt=" "></p>
 </li>
 <li><p>데이터 셋중 아무거나 선택 한 후 <code>VIEW DATASET</code> 을 선택하면 새 창이 뜨면서 구글 퍼블릭데이터 셋이 연결 된다.</p>
-<p>  <img src="/images/BQML_Pred/Untitled%202.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled%202.png" alt=" "></p>
 </li>
 <li><p>이번 포스팅에서 다룰 데이터는 <code>bigquery-public-data.ml_datasets.census_adult_income</code> 이다. 아래처럼 창이 뜨면 빅쿼리SQL을 사용할 준비가 다 되었다.</p>
-<p>  <img src="/images/BQML_Pred/Untitled%203.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled%203.png" alt=" "></p>
 </li>
 </ul>
 <hr>
 <h2 id="1단계-데이터-세트-만들기"><a href="#1단계-데이터-세트-만들기" class="headerlink" title="1단계: 데이터 세트 만들기"></a>1단계: 데이터 세트 만들기</h2><ul>
 <li><p>내 프로젝트를 선택하고 옆에 점세개를 누르고 <code>Create dataset</code> 을 눌러서 데이터 세트를 만든다.</p>
-<p>  <img src="/images/BQML_Pred/Untitled%204.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled%204.png" alt=" "></p>
 </li>
 <li><p>데이터 세트 ID에 <code>census</code> 를 입력한다</p>
 </li>
 <li><p>리전을 미국(US)로 선택한다 → public dataset이 US멀티 리전에 있기 때문. 같은 리전에 두어야 혼선을 막을수 있다.</p>
-<p>  <img src="/images/BQML_Pred/Untitled%205.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled%205.png" alt=" "></p>
 </li>
 <li><p>만들어진 데이터 셋을 확인할 수 있다.</p>
 </li>
@@ -306,7 +306,7 @@
   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  age,</span><br><span class="line">  workclass,</span><br><span class="line">  marital_status,</span><br><span class="line">  education_num,</span><br><span class="line">  occupation,</span><br><span class="line">  hours_per_week,</span><br><span class="line">  income_bracket</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">  `bigquery<span class="operator">-</span>public<span class="operator">-</span>data.ml_datasets.census_adult_income`</span><br><span class="line">LIMIT</span><br><span class="line">  <span class="number">100</span>;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>쿼리 실행 결과</p>
-<p>  <img src="/images/BQML_Pred/Untitled%206.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled%206.png" alt=" "></p>
 </li>
 <li><p>분석</p>
 <ul>
@@ -338,7 +338,7 @@
 <li><p>MOD(X,Y): X를 Y로 나눴을때의 나머지</p>
 </li>
 <li><p>위 쿼리를 수행시키면 1단계에서 만든 census에 input_view가 만들어졌음을 알수 있다.</p>
-<p>  <img src="/images/BQML_Pred/Untitled%207.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled%207.png" alt=" "></p>
 </li>
 </ul>
 </li>
@@ -361,17 +361,17 @@
 </ul>
 <h3 id="CREATE-MODEL-쿼리-실행"><a href="#CREATE-MODEL-쿼리-실행" class="headerlink" title="CREATE MODEL 쿼리 실행"></a>CREATE MODEL 쿼리 실행</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">OR</span> REPLACE MODEL</span><br><span class="line">  `census.census_model`</span><br><span class="line">OPTIONS</span><br><span class="line">  ( model_type<span class="operator">=</span><span class="string">&#x27;LOGISTIC_REG&#x27;</span>,</span><br><span class="line">    auto_class_weights<span class="operator">=</span><span class="literal">TRUE</span>,</span><br><span class="line">    data_split_method<span class="operator">=</span><span class="string">&#x27;NO_SPLIT&#x27;</span>,</span><br><span class="line">    input_label_cols<span class="operator">=</span>[<span class="string">&#x27;income_bracket&#x27;</span>],</span><br><span class="line">    max_iterations<span class="operator">=</span><span class="number">15</span>) <span class="keyword">AS</span></span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  <span class="operator">*</span> <span class="keyword">EXCEPT</span>(dataframe)</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">  `census.input_view`</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">  dataframe <span class="operator">=</span> <span class="string">&#x27;training&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/BQML_Pred/Untitled%208.png"></p>
+<p><img src="/images/BQML_Pred/Untitled%208.png" alt=" "></p>
 <ul>
 <li><p>SCHEMA 탭은 BigQuery ML이 로지스틱 회귀를 수행하는데 사용한 속성을 나열한다.</p>
-<p>  <img src="/images/BQML_Pred/Untitled%209.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled%209.png" alt=" "></p>
 </li>
 </ul>
 <hr>
 <h2 id="5단계-ML-EVALUATE-함수를-사용하여-모델-평가"><a href="#5단계-ML-EVALUATE-함수를-사용하여-모델-평가" class="headerlink" title="5단계: ML.EVALUATE 함수를 사용하여 모델 평가"></a>5단계: ML.EVALUATE 함수를 사용하여 모델 평가</h2><ol>
 <li><p>4단계의 <code>CREATE MODEL</code> 문을 수행했을때 모델의 결과 창에 <code>EVALUATION</code> 탭으로 확인할 수 있다.</p>
-<p> <img src="/images/BQML_Pred/Untitled%2010.png"></p>
-<p> <img src="/images/BQML_Pred/Untitled%2011.png"></p>
+<p> <img src="/images/BQML_Pred/Untitled%2010.png" alt=" "></p>
+<p> <img src="/images/BQML_Pred/Untitled%2011.png" alt=" "></p>
 </li>
 <li><p>ML.EVALUATE 함수는 실제 데이터를 기준으로 예측 값을 평가한다.</p>
  <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">  ML.EVALUATE (MODEL `census.census_model`,</span><br><span class="line">    (</span><br><span class="line">    <span class="keyword">SELECT</span></span><br><span class="line">      <span class="operator">*</span></span><br><span class="line">    <span class="keyword">FROM</span></span><br><span class="line">      `census.input_view`</span><br><span class="line">    <span class="keyword">WHERE</span></span><br><span class="line">      dataframe <span class="operator">=</span> <span class="string">&#x27;evaluation&#x27;</span></span><br><span class="line">    )</span><br><span class="line">  )</span><br></pre></td></tr></table></figure>
@@ -383,7 +383,7 @@
 <li><p>input_view 의 데이터를 평가 데이터로 사용한다.</p>
 </li>
 <li><p>실행 결과</p>
-<p>  <img src="/images/BQML_Pred/Untitled%2012.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled%2012.png" alt=" "></p>
 </li>
 <li><p>로지스틱 회귀를 수행했으므로 결과에 <code>precision</code>, <code>recall</code>, <code>accuracy</code>, <code>f1_score</code>, <code>log_loss</code>, <code>roc_auc</code> 열이 포함된다.</p>
 </li>
@@ -404,7 +404,7 @@
 </ul>
 </li>
 <li><p>실행 결과: <code>predicted_income_bracket</code>은 <code>income_bracket</code>의 예측값</p>
-<p>  <img src="/images/BQML_Pred/Untitled%2013.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled%2013.png" alt=" "></p>
 </li>
 </ul>
 <hr>
@@ -419,7 +419,7 @@
   <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">#standardSQL</span><br><span class="line"><span class="keyword">SELECT</span></span><br><span class="line"><span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">ML.EXPLAIN_PREDICT(MODEL `census.census_model`,</span><br><span class="line">  (</span><br><span class="line">  <span class="keyword">SELECT</span></span><br><span class="line">    <span class="operator">*</span></span><br><span class="line">  <span class="keyword">FROM</span></span><br><span class="line">    `census.input_view`</span><br><span class="line">  <span class="keyword">WHERE</span></span><br><span class="line">    dataframe <span class="operator">=</span> <span class="string">&#x27;evaluation&#x27;</span>),</span><br><span class="line">  STRUCT(<span class="number">3</span> <span class="keyword">as</span> top_k_features))</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>실행 결과</p>
-<p>  <img src="/images/BQML_Pred/Untitled%2014.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled%2014.png" alt=" "></p>
 </li>
 <li><p>로지스틱 회귀모델에서 Shapley 값은 머신 러닝 모델의 예측 결과에 각 특성이 기여하는 정도를 평가하기 위해 사용된다. 이 값을 통해 모델의 예측 결과를 해석하고, 모델의 예측 결과를 개선하기 위해 어떤 특성을 수정해야 하는지를 결정하는 데 도움을 준다.</p>
 </li>
@@ -444,7 +444,7 @@
 </ul>
 </li>
 <li><p>실행 결과</p>
-<p>  <img src="/images/BQML_Pred/Untitled%2015.png"></p>
+<p>  <img src="/images/BQML_Pred/Untitled%2015.png" alt=" "></p>
 </li>
 </ul>
 <hr>
@@ -538,7 +538,7 @@
         "genre": "Data Base GCP",
         "datePublished": "2023-02-28",
         "dateCreated": "2023-02-28",
-        "dateModified": "2023-02-28",
+        "dateModified": "2023-03-02",
         "url": "https://jmj3047.github.io/2023/02/28/BQML_Pred/",
         "description": "개인 연간 소득이 5만 달러 이상인지 예측하기개요
 GCP에서 BQML 사용하기
@@ -548,7 +548,7 @@ BQML의 로지스틱 회귀 모델 유형으로 supervised learning을 지원하
 
 
 bigquery-p",
-        "wordCount": 1579
+        "wordCount": 1611
     }
 </script>
 
@@ -620,6 +620,16 @@ bigquery-p",
         
 <nav id="article-nav">
     
+        <a href="/2023/03/02/GCP_LookerStudio/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            GCP - Looker Studio 연결하여 대시보드 작성
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
     
         <a href="/2023/02/27/Bash_Automation/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
@@ -645,6 +655,15 @@ bigquery-p",
         <h3 class="widget-title">recents</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Data-Base/">Data Base</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Base/GCP/">GCP</a></p>
+                            <p class="item-title"><a href="/2023/03/02/GCP_LookerStudio/" class="title">GCP - Looker Studio 연결하여 대시보드 작성</a></p>
+                            <p class="item-date"><time datetime="2023-03-01T15:00:00.000Z" itemprop="datePublished">2023-03-02</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -682,15 +701,6 @@ bigquery-p",
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Data-Analysis/">Data Analysis</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Analysis/Basic/">Basic</a></p>
-                            <p class="item-title"><a href="/2022/11/20/Probability_Distribution_Function/" class="title">Probability Distribution Function &amp; Probability Density Function</a></p>
-                            <p class="item-date"><time datetime="2022-11-19T15:00:00.000Z" itemprop="datePublished">2022-11-20</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -700,7 +710,7 @@ bigquery-p",
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/">Data Analysis</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Model/">Model</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Base/">Data Base</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Base/GCP/">GCP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Base/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/">Paper</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Computer-Vision/">Computer Vision</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Generative-Model/">Generative Model</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Multi-Task-Learning/">Multi-Task Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/NLP/">NLP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speaker-Verification/">Speaker Verification</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/HTML/">HTML</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pyspark/">Pyspark</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setting/">Setting</a><span class="category-list-count">4</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/">Data Analysis</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Model/">Model</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Base/">Data Base</a><span class="category-list-count">6</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Base/GCP/">GCP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Base/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/">Paper</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Computer-Vision/">Computer Vision</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Generative-Model/">Generative Model</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Multi-Task-Learning/">Multi-Task Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/NLP/">NLP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speaker-Verification/">Speaker Verification</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/HTML/">HTML</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pyspark/">Pyspark</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setting/">Setting</a><span class="category-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -710,7 +720,7 @@ bigquery-p",
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/ACF/" style="font-size: 10px;">ACF</a> <a href="/tags/Adversarial-Speaker-Verification/" style="font-size: 10px;">Adversarial Speaker Verification</a> <a href="/tags/Attention/" style="font-size: 11.25px;">Attention</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/BeautifulSoup/" style="font-size: 12.5px;">BeautifulSoup</a> <a href="/tags/Big-Query/" style="font-size: 11.25px;">Big Query</a> <a href="/tags/BigQueryML/" style="font-size: 10px;">BigQueryML</a> <a href="/tags/Brython/" style="font-size: 10px;">Brython</a> <a href="/tags/CGI/" style="font-size: 10px;">CGI</a> <a href="/tags/Chatbot/" style="font-size: 15px;">Chatbot</a> <a href="/tags/Clustering/" style="font-size: 15px;">Clustering</a> <a href="/tags/Confusion-Matrix/" style="font-size: 10px;">Confusion Matrix</a> <a href="/tags/Convolutional-Neural-Networks/" style="font-size: 11.25px;">Convolutional Neural Networks</a> <a href="/tags/DBSCAN/" style="font-size: 10px;">DBSCAN</a> <a href="/tags/DCGAN/" style="font-size: 10px;">DCGAN</a> <a href="/tags/Decision-Tree-Classifier/" style="font-size: 10px;">Decision Tree Classifier</a> <a href="/tags/Deep-Machine-Learning-Paper-Study/" style="font-size: 18.75px;">Deep/Machine Learning Paper Study</a> <a href="/tags/Doc2vec/" style="font-size: 13.75px;">Doc2vec</a> <a href="/tags/English/" style="font-size: 17.5px;">English</a> <a href="/tags/Ensemble-Model/" style="font-size: 10px;">Ensemble Model</a> <a href="/tags/F1-measure/" style="font-size: 10px;">F1 measure</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GAN/" style="font-size: 11.25px;">GAN</a> <a href="/tags/Gaussian-Mixture-Model/" style="font-size: 11.25px;">Gaussian Mixture Model</a> <a href="/tags/Generative-Adversarial-Network/" style="font-size: 10px;">Generative Adversarial Network</a> <a href="/tags/Generative-Model/" style="font-size: 10px;">Generative Model</a> <a href="/tags/Git/" style="font-size: 11.25px;">Git</a> <a href="/tags/Grid-Search-CV/" style="font-size: 10px;">Grid Search CV</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Hueman/" style="font-size: 10px;">Hueman</a> <a href="/tags/Image-Classification/" style="font-size: 12.5px;">Image Classification</a> <a href="/tags/K-Means-Clustering/" style="font-size: 11.25px;">K-Means Clustering</a> <a href="/tags/ML-Analysis/" style="font-size: 20px;">ML Analysis</a> <a href="/tags/ML-Process/" style="font-size: 10px;">ML Process</a> <a href="/tags/MongoDB/" style="font-size: 12.5px;">MongoDB</a> <a href="/tags/Multi-Task-Learning/" style="font-size: 11.25px;">Multi-Task Learning</a> <a href="/tags/NLP/" style="font-size: 15px;">NLP</a> <a href="/tags/Nonprobability-sampling/" style="font-size: 10px;">Nonprobability sampling</a> <a href="/tags/Normal-Distribution/" style="font-size: 10px;">Normal Distribution</a> <a href="/tags/PACF/" style="font-size: 10px;">PACF</a> <a href="/tags/Pandas-Dataframe/" style="font-size: 10px;">Pandas Dataframe</a> <a href="/tags/Precision-Recall/" style="font-size: 10px;">Precision-Recall</a> <a href="/tags/Probabilistic-sampling/" style="font-size: 10px;">Probabilistic sampling</a> <a href="/tags/Probability-Density-Function/" style="font-size: 10px;">Probability Density Function</a> <a href="/tags/Probability-Distribution-Function/" style="font-size: 10px;">Probability Distribution Function</a> <a href="/tags/Python/" style="font-size: 16.25px;">Python</a> <a href="/tags/ROC-curve/" style="font-size: 10px;">ROC curve</a> <a href="/tags/Speaker-GAN/" style="font-size: 10px;">Speaker GAN</a> <a href="/tags/Speaker-Identification/" style="font-size: 10px;">Speaker Identification</a> <a href="/tags/Speaker-Verification/" style="font-size: 10px;">Speaker Verification</a> <a href="/tags/Standard-Normal-Distribution/" style="font-size: 10px;">Standard Normal Distribution</a> <a href="/tags/TD-SV/" style="font-size: 10px;">TD-SV</a> <a href="/tags/Threshold-Adjustment/" style="font-size: 10px;">Threshold Adjustment</a> <a href="/tags/Time-Series/" style="font-size: 10px;">Time Series</a> <a href="/tags/Transformer/" style="font-size: 12.5px;">Transformer</a> <a href="/tags/Virtualenv/" style="font-size: 10px;">Virtualenv</a> <a href="/tags/Voice-Trigger-Detection/" style="font-size: 11.25px;">Voice Trigger Detection</a> <a href="/tags/WGAN/" style="font-size: 10px;">WGAN</a> <a href="/tags/WGAN-GP/" style="font-size: 10px;">WGAN-GP</a> <a href="/tags/Web-Crawling/" style="font-size: 12.5px;">Web Crawling</a> <a href="/tags/Web-Server/" style="font-size: 11.25px;">Web Server</a> <a href="/tags/pyspark/" style="font-size: 13.75px;">pyspark</a>
+            <a href="/tags/ACF/" style="font-size: 10px;">ACF</a> <a href="/tags/Adversarial-Speaker-Verification/" style="font-size: 10px;">Adversarial Speaker Verification</a> <a href="/tags/Attention/" style="font-size: 11.25px;">Attention</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/BeautifulSoup/" style="font-size: 12.5px;">BeautifulSoup</a> <a href="/tags/Big-Query/" style="font-size: 12.5px;">Big Query</a> <a href="/tags/BigQueryML/" style="font-size: 10px;">BigQueryML</a> <a href="/tags/Brython/" style="font-size: 10px;">Brython</a> <a href="/tags/CGI/" style="font-size: 10px;">CGI</a> <a href="/tags/Chatbot/" style="font-size: 15px;">Chatbot</a> <a href="/tags/Clustering/" style="font-size: 15px;">Clustering</a> <a href="/tags/Confusion-Matrix/" style="font-size: 10px;">Confusion Matrix</a> <a href="/tags/Convolutional-Neural-Networks/" style="font-size: 11.25px;">Convolutional Neural Networks</a> <a href="/tags/DBSCAN/" style="font-size: 10px;">DBSCAN</a> <a href="/tags/DCGAN/" style="font-size: 10px;">DCGAN</a> <a href="/tags/Decision-Tree-Classifier/" style="font-size: 10px;">Decision Tree Classifier</a> <a href="/tags/Deep-Machine-Learning-Paper-Study/" style="font-size: 18.75px;">Deep/Machine Learning Paper Study</a> <a href="/tags/Doc2vec/" style="font-size: 13.75px;">Doc2vec</a> <a href="/tags/English/" style="font-size: 17.5px;">English</a> <a href="/tags/Ensemble-Model/" style="font-size: 10px;">Ensemble Model</a> <a href="/tags/F1-measure/" style="font-size: 10px;">F1 measure</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GAN/" style="font-size: 11.25px;">GAN</a> <a href="/tags/Gaussian-Mixture-Model/" style="font-size: 11.25px;">Gaussian Mixture Model</a> <a href="/tags/Generative-Adversarial-Network/" style="font-size: 10px;">Generative Adversarial Network</a> <a href="/tags/Generative-Model/" style="font-size: 10px;">Generative Model</a> <a href="/tags/Git/" style="font-size: 11.25px;">Git</a> <a href="/tags/Grid-Search-CV/" style="font-size: 10px;">Grid Search CV</a> <a href="/tags/HTML/" style="font-size: 12.5px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/Hueman/" style="font-size: 10px;">Hueman</a> <a href="/tags/Image-Classification/" style="font-size: 12.5px;">Image Classification</a> <a href="/tags/K-Means-Clustering/" style="font-size: 11.25px;">K-Means Clustering</a> <a href="/tags/Looker-Studio/" style="font-size: 10px;">Looker Studio</a> <a href="/tags/ML-Analysis/" style="font-size: 20px;">ML Analysis</a> <a href="/tags/ML-Process/" style="font-size: 10px;">ML Process</a> <a href="/tags/MongoDB/" style="font-size: 12.5px;">MongoDB</a> <a href="/tags/Multi-Task-Learning/" style="font-size: 11.25px;">Multi-Task Learning</a> <a href="/tags/NLP/" style="font-size: 15px;">NLP</a> <a href="/tags/Nonprobability-sampling/" style="font-size: 10px;">Nonprobability sampling</a> <a href="/tags/Normal-Distribution/" style="font-size: 10px;">Normal Distribution</a> <a href="/tags/PACF/" style="font-size: 10px;">PACF</a> <a href="/tags/Pandas-Dataframe/" style="font-size: 10px;">Pandas Dataframe</a> <a href="/tags/Precision-Recall/" style="font-size: 10px;">Precision-Recall</a> <a href="/tags/Probabilistic-sampling/" style="font-size: 10px;">Probabilistic sampling</a> <a href="/tags/Probability-Density-Function/" style="font-size: 10px;">Probability Density Function</a> <a href="/tags/Probability-Distribution-Function/" style="font-size: 10px;">Probability Distribution Function</a> <a href="/tags/Python/" style="font-size: 16.25px;">Python</a> <a href="/tags/ROC-curve/" style="font-size: 10px;">ROC curve</a> <a href="/tags/Speaker-GAN/" style="font-size: 10px;">Speaker GAN</a> <a href="/tags/Speaker-Identification/" style="font-size: 10px;">Speaker Identification</a> <a href="/tags/Speaker-Verification/" style="font-size: 10px;">Speaker Verification</a> <a href="/tags/Standard-Normal-Distribution/" style="font-size: 10px;">Standard Normal Distribution</a> <a href="/tags/TD-SV/" style="font-size: 10px;">TD-SV</a> <a href="/tags/Threshold-Adjustment/" style="font-size: 10px;">Threshold Adjustment</a> <a href="/tags/Time-Series/" style="font-size: 10px;">Time Series</a> <a href="/tags/Transformer/" style="font-size: 12.5px;">Transformer</a> <a href="/tags/Virtualenv/" style="font-size: 10px;">Virtualenv</a> <a href="/tags/Voice-Trigger-Detection/" style="font-size: 11.25px;">Voice Trigger Detection</a> <a href="/tags/WGAN/" style="font-size: 10px;">WGAN</a> <a href="/tags/WGAN-GP/" style="font-size: 10px;">WGAN-GP</a> <a href="/tags/Web-Crawling/" style="font-size: 12.5px;">Web Crawling</a> <a href="/tags/Web-Server/" style="font-size: 11.25px;">Web Server</a> <a href="/tags/pyspark/" style="font-size: 13.75px;">pyspark</a>
         </div>
     </div>
 
