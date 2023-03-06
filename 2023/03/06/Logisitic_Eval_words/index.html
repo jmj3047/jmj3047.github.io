@@ -31,7 +31,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://jmj3047.github.io/images/Logisitic_Eval_words/Untitled.png">
 <meta property="article:published_time" content="2023-03-05T15:00:00.000Z">
-<meta property="article:modified_time" content="2023-03-06T04:11:14.870Z">
+<meta property="article:modified_time" content="2023-03-06T04:25:03.003Z">
 <meta property="article:author" content="Jang Minjee">
 <meta property="article:tag" content="ML Analysis">
 <meta property="article:tag" content="Big Query">
@@ -207,7 +207,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2023/03/06/Logisitic_Eval_words/" class="article-date">
-     <time datetime="2023-03-06T04:11:14.870Z" itemprop="dateModified">2023-03-06</time>
+     <time datetime="2023-03-06T04:25:03.003Z" itemprop="dateModified">2023-03-06</time>
   </a>
 </div>
 
@@ -305,6 +305,10 @@
 </li>
 <li><strong>F1 score :</strong> Harmonic mean of precision and recall.<ul>
 <li>정확도 및 회수율의 조화 평균입니다.</li>
+<li>Precision 과 Recall은 서로 Trade-off 관계를 가지면서 접근하는 방식도 Precision은 모델의 예측, Recall은 정답 데이터 기준이므로 서로 상이 합니다. </li>
+<li>하지만 두 지표 모두 모델의 성능을 확인하는 데 중요하므로 둘 다 사용되어야 합니다. 따라서 두 지표를 평균값으로 통해 하나의 값으로 나타내는 방법으로 F1 score를 사용합니다. </li>
+<li>극단적으로 Precision과 Recall 중에 한쪽이 1에 가깝고 한쪽이 0에 가까운 경우 산술 평균과 같이 0.5가 아니라 0에 가깝도록 만들어 줍니다. 따라서 <strong>F1 score를 높이려면 Precision, Recall이 균일한 값이 필요</strong> 하기 때문에 두 지표 성능을 모두 높일 수 있도록 해야 합니다. </li>
+<li>$F_1 &#x3D; 2*\frac{precision X recall}{precision + recall}$</li>
 </ul>
 </li>
 <li><strong>Log loss :</strong> A measure for model performance between 0 (perfect) and 1. The greater the log-loss, the greater the predicted probability diverges from the actual label.<ul>
@@ -365,6 +369,7 @@
 <li>Reference<ul>
 <li><a target="_blank" rel="noopener" href="https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall?hl=ko">https://developers.google.com/machine-learning/crash-course/classification/precision-and-recall?hl=ko</a></li>
 <li><a target="_blank" rel="noopener" href="https://developers.google.com/machine-learning/crash-course/classification/true-false-positive-negative?hl=ko">https://developers.google.com/machine-learning/crash-course/classification/true-false-positive-negative?hl=ko</a></li>
+<li><a target="_blank" rel="noopener" href="https://gaussian37.github.io/ml-concept-ml-evaluation/#f1-score-1">https://gaussian37.github.io/ml-concept-ml-evaluation/#f1-score-1</a></li>
 </ul>
 </li>
 </ul>
@@ -462,7 +467,7 @@
 
 임계값(Threshold)
 로지스틱 회귀 값을 이진 카테고리에 매핑하려면 분류 임계값(결정 임계값)을",
-        "wordCount": 752
+        "wordCount": 843
     }
 </script>
 
