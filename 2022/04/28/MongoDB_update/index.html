@@ -30,7 +30,7 @@
 <meta property="og:description" content="$set: 필드값을 설정하고 필드가 존재하지 않으면 새 필드가 생성됨. 스키마를 갱신하거나 사용자 정의 키를 추가 할때 편리함. $unset: 키와 값을 모두 제거함  1234567891011121314&gt; db.users.insertOne(&amp;#123;&quot;name&quot;:&quot;joe&quot;&amp;#125;)&gt; db.users.upd">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-27T15:00:00.000Z">
-<meta property="article:modified_time" content="2023-02-28T07:40:20.366Z">
+<meta property="article:modified_time" content="2023-03-19T07:04:36.264Z">
 <meta property="article:author" content="Jang Minjee">
 <meta property="article:tag" content="MongoDB">
 <meta name="twitter:card" content="summary">
@@ -113,7 +113,7 @@
                                     <a class="main-nav-list-link" target="_blank" rel="noopener" href="https://github.com/jmj3047/mj_portfolio">About Me</a>
                                 </li>
                             
-                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/">Data Analysis</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/Basic/">Basic</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/Model/">Model</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Base/">Data Base</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Base/GCP/">GCP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Base/MongoDB/">MongoDB</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/">Paper</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Computer-Vision/">Computer Vision</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Generative-Model/">Generative Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Multi-Task-Learning/">Multi-Task Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Speaker-Verification/">Speaker Verification</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Django/">Django</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/HTML/">HTML</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Pyspark/">Pyspark</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Python/">Python</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setting/">Setting</a></li></ul>
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/">Data Analysis</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/Basic/">Basic</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/Model/">Model</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Platform-Base/GCP/">GCP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Platform-Base/MongoDB/">MongoDB</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/">Paper</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Computer-Vision/">Computer Vision</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Generative-Model/">Generative Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Multi-Task-Learning/">Multi-Task Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Speaker-Verification/">Speaker Verification</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Django/">Django</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/HTML/">HTML</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Pyspark/">Pyspark</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Python/">Python</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setting/">Setting</a></li></ul>
                                 
                         </ul>
                         <nav id="sub-nav">
@@ -171,7 +171,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Data-Base/">Data Base</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Data-Base/MongoDB/">MongoDB</a>
+    <a class="page-title-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Data-Platform-Base/MongoDB/">MongoDB</a>
     </h1>
 </div>
 
@@ -204,7 +204,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2022/04/28/MongoDB_update/" class="article-date">
-     <time datetime="2023-02-28T07:40:20.366Z" itemprop="dateModified">2023-02-28</time>
+     <time datetime="2023-03-19T07:04:36.264Z" itemprop="dateModified">2023-03-19</time>
   </a>
 </div>
 
@@ -341,10 +341,10 @@
         "headline": "MongoDB Update Operator",
         "image": "https://jmj3047.github.io",
         "keywords": "MongoDB",
-        "genre": "Data Base MongoDB",
+        "genre": "Data Platform/Base MongoDB",
         "datePublished": "2022-04-28",
         "dateCreated": "2022-04-28",
-        "dateModified": "2023-02-28",
+        "dateModified": "2023-03-19",
         "url": "https://jmj3047.github.io/2022/04/28/MongoDB_update/",
         "description": "
 $set: 필드값을 설정하고 필드가 존재하지 않으면 새 필드가 생성됨. 스키마를 갱신하거나 사용자 정의 키를 추가 할때 편리함.
@@ -462,7 +462,7 @@ $unset: 키와 값을 모두 제거함
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Data-Base/">Data Base</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Base/GCP/">GCP</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Platform-Base/GCP/">GCP</a></p>
                             <p class="item-title"><a href="/2023/03/13/Dataflow_BQML_Looker/" class="title">Datastream, Dataflow, BigQuery ML, Looker Studio를 사용하여 수요 예측 빌드 및 시각화</a></p>
                             <p class="item-date"><time datetime="2023-03-12T15:00:00.000Z" itemprop="datePublished">2023-03-13</time></p>
                         </div>
@@ -480,7 +480,7 @@ $unset: 키와 값을 모두 제거함
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Data-Base/">Data Base</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Base/GCP/">GCP</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Platform-Base/GCP/">GCP</a></p>
                             <p class="item-title"><a href="/2023/03/10/BQML_Classification/" class="title">BQML을 이용한 고객 분류</a></p>
                             <p class="item-date"><time datetime="2023-03-09T15:00:00.000Z" itemprop="datePublished">2023-03-10</time></p>
                         </div>
@@ -489,7 +489,7 @@ $unset: 키와 값을 모두 제거함
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Data-Base/">Data Base</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Base/GCP/">GCP</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Platform-Base/GCP/">GCP</a></p>
                             <p class="item-title"><a href="/2023/03/09/Mac_GCP_Error/" class="title">Mac VScode GCP 인증 관련 오류</a></p>
                             <p class="item-date"><time datetime="2023-03-08T15:00:00.000Z" itemprop="datePublished">2023-03-09</time></p>
                         </div>
@@ -498,7 +498,7 @@ $unset: 키와 값을 모두 제거함
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Data-Base/">Data Base</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Base/GCP/">GCP</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Platform-Base/GCP/">GCP</a></p>
                             <p class="item-title"><a href="/2023/03/08/Game_Modeling/" class="title">BQML을 이용한 게임유저 경향 모델링</a></p>
                             <p class="item-date"><time datetime="2023-03-07T15:00:00.000Z" itemprop="datePublished">2023-03-08</time></p>
                         </div>
@@ -513,7 +513,7 @@ $unset: 키와 값을 모두 제거함
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/">Data Analysis</a><span class="category-list-count">20</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Model/">Model</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Base/">Data Base</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Base/GCP/">GCP</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Base/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/">Paper</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Computer-Vision/">Computer Vision</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Generative-Model/">Generative Model</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Multi-Task-Learning/">Multi-Task Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/NLP/">NLP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speaker-Verification/">Speaker Verification</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/HTML/">HTML</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pyspark/">Pyspark</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setting/">Setting</a><span class="category-list-count">4</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/">Data Analysis</a><span class="category-list-count">20</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Basic/">Basic</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Model/">Model</a><span class="category-list-count">10</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Platform-Base/GCP/">GCP</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Platform-Base/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/">Paper</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Computer-Vision/">Computer Vision</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Generative-Model/">Generative Model</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Multi-Task-Learning/">Multi-Task Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/NLP/">NLP</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speaker-Verification/">Speaker Verification</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/HTML/">HTML</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pyspark/">Pyspark</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setting/">Setting</a><span class="category-list-count">4</span></li></ul>
         </div>
     </div>
 
