@@ -30,7 +30,7 @@
 <meta property="og:description" content="Course Lecture 1 in Machine Learning Course  Regression with multiple input variables1. vectorization  Many CPUs have “vector” or “SIMD” instruction sets which apply the same operation simultaneously">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-03-25T15:00:00.000Z">
-<meta property="article:modified_time" content="2023-04-18T03:34:46.162Z">
+<meta property="article:modified_time" content="2023-04-18T03:36:45.677Z">
 <meta property="article:author" content="Jang Minjee">
 <meta property="article:tag" content="ML Analysis">
 <meta property="article:tag" content="English">
@@ -207,7 +207,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2023/03/26/ML_Part1/" class="article-date">
-     <time datetime="2023-04-18T03:34:46.162Z" itemprop="dateModified">2023-04-18</time>
+     <time datetime="2023-04-18T03:36:45.677Z" itemprop="dateModified">2023-04-18</time>
   </a>
 </div>
 
@@ -281,9 +281,28 @@
 <li>Polynomial regression is a form of regression analysis in which the relationship between the independent variable x and the dependent variable y is modeled as an nth degree polynomial in x.</li>
 <li>Polynomial regression fits a nonlinear relationship between the value of x and the corresponding conditional mean of y, denoted E(y|x).</li>
 <li>Although polynomial regression fits a nonlinear model to the data, as a statistical estimation problem it is linear, in the sense that the regression function E(y|x) is linear in the unknown parameters that are estimated from the data.</li>
-<li>example  Suppose we have a dataset with the following x and y values:  x &#x3D; [1, 2, 3, 4, 5] y &#x3D; [2, 6, 12, 20, 30]  If we plot these points on a graph, we can see that the relationship between x and y is not linear. However, we can use polynomial regression to fit a curve to these points.  First, we need to decide on the degree of the polynomial. In this case, let’s use a second-degree polynomial (a quadratic equation). This means our model will have the form:  y &#x3D; a * x^2 + b * x + c  where a, b, and c are coefficients that we need to estimate from the data.  We can use the <strong><code>polyfit</code></strong> function from the <strong><code>numpy</code></strong> library to estimate these coefficients:  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">y = np.array([<span class="number">2</span>, <span class="number">6</span>, <span class="number">12</span>, <span class="number">20</span>, <span class="number">30</span>])</span><br><span class="line"></span><br><span class="line">coefficients = np.polyfit(x, y, deg=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-  This will return an array of coefficients <strong><code>[a, b, c]</code></strong>. In this case, the coefficients are <strong><code>[1.0, -1.7763568394002505e-15, 1.0]</code></strong>.  Now that we have the coefficients of our polynomial model, we can use it to make predictions for new x values. For example:  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x_new = <span class="number">6</span></span><br><span class="line">y_new = coefficients[<span class="number">0</span>] * x_new**<span class="number">2</span> + coefficients[<span class="number">1</span>] * x_new + coefficients[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-  This will give us a predicted y value of **<code>42</code>**for <strong><code>x=6</code></strong></li>
+<li>example<ul>
+<li><p>Suppose we have a dataset with the following x and y values: <code>x = [1, 2, 3, 4, 5] y = [2, 6, 12, 20, 30]</code></p>
+</li>
+<li><p>If we plot these points on a graph, we can see that the relationship between x and y is not linear. However, we can use polynomial regression to fit a curve to these points.</p>
+</li>
+<li><p>First, we need to decide on the degree of the polynomial. In this case, let’s use a second-degree polynomial (a quadratic equation). This means our model will have the form: <code>y = a * x^2 + b * x + c</code>, where a, b, and c are coefficients that we need to estimate from the data.</p>
+</li>
+<li><p>We can use the <strong><code>polyfit</code></strong> function from the <strong><code>numpy</code></strong> library to estimate these coefficients:</p>
+</li>
+</ul>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">x = np.array([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">y = np.array([<span class="number">2</span>, <span class="number">6</span>, <span class="number">12</span>, <span class="number">20</span>, <span class="number">30</span>])</span><br><span class="line"></span><br><span class="line">coefficients = np.polyfit(x, y, deg=<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>This will return an array of coefficients <strong><code>[a, b, c]</code></strong>. In this case, the coefficients are <strong><code>[1.0, -1.7763568394002505e-15, 1.0]</code></strong>.</p>
+</li>
+<li><p>Now that we have the coefficients of our polynomial model, we can use it to make predictions for new x values. For example:</p>
+</li>
+</ul>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x_new = <span class="number">6</span></span><br><span class="line">y_new = coefficients[<span class="number">0</span>] * x_new**<span class="number">2</span> + coefficients[<span class="number">1</span>] * x_new + coefficients[<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>This will give us a predicted y value of **<code>42</code>**for <strong><code>x=6</code></strong></li>
+</ul>
+</li>
 </ul>
 <h2 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h2><ol>
 <li>Classification and Logistic Regression</li>
@@ -395,7 +414,7 @@ Lecture 1 in Machine Learning Course
 Regression with multiple input variables1. vectorization
 
 Many CPUs have “vector” or “SIMD” instruction sets which apply the same operation simultaneously ",
-        "wordCount": 965
+        "wordCount": 948
     }
 </script>
 
