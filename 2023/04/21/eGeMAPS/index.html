@@ -31,7 +31,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://jmj3047.github.io/images/eGeMAPS/Untitled.png">
 <meta property="article:published_time" content="2023-04-20T15:00:00.000Z">
-<meta property="article:modified_time" content="2023-04-20T20:38:30.797Z">
+<meta property="article:modified_time" content="2023-04-20T20:58:15.413Z">
 <meta property="article:author" content="Jang Minjee">
 <meta property="article:tag" content="Speech Emotion Recognition">
 <meta property="article:tag" content="Acoustic Parameter Set">
@@ -207,7 +207,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2023/04/21/eGeMAPS/" class="article-date">
-     <time datetime="2023-04-20T20:38:30.797Z" itemprop="dateModified">2023-04-21</time>
+     <time datetime="2023-04-20T20:58:15.413Z" itemprop="dateModified">2023-04-21</time>
   </a>
 </div>
 
@@ -244,6 +244,79 @@
 <li>binary arousal 및 binary valence 분류에 대한 요약 결과가 Table 2에 나와 있습니다.</li>
 <li>FAU AIBO를 제외한 모든 데이터베이스와 9개의 최고 SVM 복잡도(C&#x3D;0.0025)에서 UAR(Unweighted Average Recall)을 평균화합니다.</li>
 <li>각 화자에 대한 표준화와 균형 잡힌 훈련 세트를 위해 인스턴스 업샘플링이 수행됩니다.</li>
+</ul>
+<h4 id="88개-파라미터-정리"><a href="#88개-파라미터-정리" class="headerlink" title="88개 파라미터 정리"></a>88개 파라미터 정리</h4><ul>
+<li><p><strong>기본 GeMAPS, 62개 파라미터</strong></p>
+<ol>
+<li>Pitch</li>
+<li>Jitter</li>
+<li>Formant 1 frequency</li>
+<li>Formant 2 frequency</li>
+<li>Formant 3 frequency</li>
+<li>Formant 1</li>
+<li>Shimmer</li>
+<li>Loudness</li>
+<li>Harmonics-to-noise ratio (HNR)</li>
+<li>Alpha Ratio</li>
+<li>Hammarberg Index</li>
+<li>Spectral Slope 0-500 Hz</li>
+<li>Spectral Slope 500-1500 Hz</li>
+<li>Formant 1 relative energy</li>
+<li>Formant 2 relative energy</li>
+<li>Formant 3 relative energy</li>
+<li>Harmonic difference H1-H2</li>
+<li>Harmonic difference H1-A3</li>
+</ol>
+<ul>
+<li>위 18개의 산술평균과 변동계수를 적용 -&gt; 36개 + loudness 8가지 함수 추가 적용 파라미터+ pitch 8가지 함수 추가 적용 파라미터 -&gt; 52개</li>
+</ul>
+<ol start="53">
+<li>Alpha Ratio의 산술평균</li>
+<li>Hammarberg Index의 산술평균</li>
+<li>0-500 Hz 스펙트럼 기울기의 산술평균 (무성음 구간 전체)</li>
+<li>500-1500 Hz 스펙트럼 기울기의 산술평균 (무성음 구간 전체)</li>
+<li>the rate of loudness peaks</li>
+<li>continuously voiced regions의 평균 길이(F0 &gt; 0)</li>
+<li>continuously voiced regions의 표준편차(F0 &gt; 0)</li>
+<li>unvoiced regions (approximating pauses)의 평균 길이(F0 &#x3D; 0)</li>
+<li>unvoiced regions (approximating pauses)의 표준편차(F0 &#x3D; 0)</li>
+<li>continuous voiced regions의 초당 개수 (pseudo syllable rate)</li>
+</ol>
+</li>
+<li><p><strong>extended GeMAPS(eGeMAPS), 추가 26개 파라미터</strong></p>
+<ul>
+<li>7개의 LLD에 대해 산술평균과 변동계수 적용 -&gt; 14개의 discriptor 추가<ol>
+<li>MFCC 1 (MFCC의 첫번째 계수)</li>
+<li>MFCC 2</li>
+<li>MFCC 3</li>
+<li>MFCC 4</li>
+<li>Spectral flux</li>
+<li>Formant 2 bandwidth</li>
+<li>Formant 2 bandwidth</li>
+</ol>
+</li>
+<li>11개의 discriptor가 추가 <ol>
+<li>무성영역에서만 spectral flux의 산술 평균</li>
+<li>유성영역에서만 spectral flux의 산술 평균</li>
+<li>유성영역에서만 spectral flux의 변동 계수</li>
+<li>유성 영역에서만 MFCC 1의 변동 계수</li>
+<li>유성 영역에서만 MFCC 2의 변동 계수</li>
+<li>유성 영역에서만 MFCC 3의 변동 계수</li>
+<li>유성 영역에서만 MFCC 4의 변동 계수</li>
+<li>유성 영역에서만 MFCC 1의 산술 평균</li>
+<li>유성 영역에서만 MFCC 2의 산술 평균</li>
+<li>유성 영역에서만 MFCC 3의 산술 평균</li>
+<li>유성 영역에서만 MFCC 4의 산술 평균</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li>equivalent soud level</li>
+</ul>
+<ul>
+<li>이렇게 하면 확장된 파라미터에는 14+11+1 26개의 파라미터가 추가 됨</li>
+</ul>
+</li>
 </ul>
 <h2 id="0-abstract"><a href="#0-abstract" class="headerlink" title="0.abstract"></a>0.abstract</h2><ul>
 <li>GeMAPS는 음성과 감정 컴퓨팅 분야에서 사용되는 기본 표준 음향 파라미터 세트입니다.</li>
@@ -653,7 +726,7 @@
         "dateModified": "2023-04-21",
         "url": "https://jmj3047.github.io/2023/04/21/eGeMAPS/",
         "description": "Journal&#x2F;Conference : IEEEYear(published year): 2016Author: Florian Eyben, Klaus R. Scherer, Bjorn W. Schuller, Johan Sundberg, Elisabeth Andre, Carlos Busso, Laurence Y. Devillers, Julien Epps, P",
-        "wordCount": 4838
+        "wordCount": 5044
     }
 </script>
 
