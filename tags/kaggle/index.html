@@ -16,13 +16,13 @@
     
 
     
-    <title>Tag: Kaggle | Jang Minjee</title>
+    <title>Tag: kaggle | Jang Minjee</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta property="og:type" content="website">
 <meta property="og:title" content="Jang Minjee">
-<meta property="og:url" content="https://jmj3047.github.io/tags/Kaggle/index.html">
+<meta property="og:url" content="https://jmj3047.github.io/tags/kaggle/index.html">
 <meta property="og:site_name" content="Jang Minjee">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Jang Minjee">
@@ -83,7 +83,11 @@
     
 <link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
 
-<meta name="generator" content="Hexo 6.3.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head>
 
 <body>
     <div id="wrap">
@@ -164,7 +168,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>Tag: <em>Kaggle</em>
+    <i class="icon fa fa-tag"></i>Tag: <em>kaggle</em>
     </h1>
 </div>
 
@@ -192,23 +196,28 @@
             <div class="category">
             <a class="article-category-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Platform-Base/GCP/">GCP</a>
             </div>
-            <div class="date"><time datetime="2023-04-05T15:00:00.000Z" itemprop="datePublished">2023-04-06</time></div>
+            <div class="date"><time datetime="2023-03-02T15:00:00.000Z" itemprop="datePublished">2023-03-03</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2023/04/06/Ecommerce_Reorder_Pred/">Ecommerce Reorder Prediction</a>
+        <a href="/2023/03/03/Kaggle_GCP/">Python으로 kaggle 데이터 GCP에 적재</a>
         </h1>
     
 
         <p class="article-excerpt">
-            개요
-유저들의 재주문 여부 예측하기
-instacart kaggle: https://www.kaggle.com/competitions/instacart-market-basket-analysis/leaderboard
-2위 한 모델 github: https://github.com/KazukiOnodera/Instacart
+            요약
+Kaggle 데이터 다운로드
+GCP에 데이터 세트 만들고 서비스 계정 생성하기
+Python-BigQuery 연결 후 데이터 조회
+데이터 적재 하기
 
-필요 메모리
-약 300GB RAM이 필
+Kaggle 데이터 다운로드
+kaggle을 설치한다
+  1!pip install kaggle
+
+kaggle의 key를 받아온다
+  123!mkdir ~/.kaggle!echo &#x27;&#123;&quo
         </p>
     </div>
 </article>
@@ -297,8 +306,8 @@ instacart kaggle: https://www.kaggle.com/competitions/instacart-market-basket-an
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Speech-Emotion-Recognition/">Speech Emotion Recognition</a></p>
-                            <p class="item-title"><a href="/2023/04/21/eGeMAPS/" class="title">The Geneva Minimalistic Acoustic Parameter Set (GeMAPS) for Voice Research andAffective Computing</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Speech-Representations/">Speech Representations</a></p>
+                            <p class="item-title"><a href="/2023/04/21/Wav2Vec/" class="title">wav2vec 2.0, A Framework for Self-Supervised Learning of Speech Representations</a></p>
                             <p class="item-date"><time datetime="2023-04-20T15:00:00.000Z" itemprop="datePublished">2023-04-21</time></p>
                         </div>
                     </li>
@@ -306,8 +315,8 @@ instacart kaggle: https://www.kaggle.com/competitions/instacart-market-basket-an
                     <li>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Speech-Representations/">Speech Representations</a></p>
-                            <p class="item-title"><a href="/2023/04/21/Wav2Vec/" class="title">wav2vec 2.0, A Framework for Self-Supervised Learning of Speech Representations</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Speech-Emotion-Recognition/">Speech Emotion Recognition</a></p>
+                            <p class="item-title"><a href="/2023/04/21/eGeMAPS/" class="title">The Geneva Minimalistic Acoustic Parameter Set (GeMAPS) for Voice Research andAffective Computing</a></p>
                             <p class="item-date"><time datetime="2023-04-20T15:00:00.000Z" itemprop="datePublished">2023-04-21</time></p>
                         </div>
                     </li>
@@ -453,13 +462,6 @@ instacart kaggle: https://www.kaggle.com/competitions/instacart-market-basket-an
 
 
 <!-- Custom Scripts -->
-
-<script src="/js/main.js"></script>
-
-
-</body>
-</html>
-m Scripts -->
 
 <script src="/js/main.js"></script>
 
