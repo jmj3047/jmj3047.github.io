@@ -9,6 +9,30 @@
 
 
     <url>
+        <loc>https://jmj3047.github.io/2023/05/16/ARIMA/</loc>
+        <lastmod>2023-05-17T11:51:58.842Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jmj3047.github.io/2022/05/04/HTML_with_Python_Flask%26Brython/</loc>
+        <lastmod>2023-05-17T11:50:35.489Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jmj3047.github.io/2022/10/31/MTL_for_SV%26VTD/</loc>
+        <lastmod>2023-05-17T11:50:35.488Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://jmj3047.github.io/2023/05/11/Transfer_Learning_SER/</loc>
         <lastmod>2023-05-11T14:39:31.477Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -83,14 +107,6 @@
     <url>
         <loc>https://jmj3047.github.io/2023/03/26/ML_Part1/</loc>
         <lastmod>2023-04-18T03:38:12.136Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://jmj3047.github.io/2022/10/31/MTL_for_SV%26VTD/</loc>
-        <lastmod>2023-04-17T11:49:01.382Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -547,14 +563,6 @@
     <url>
         <loc>https://jmj3047.github.io/2022/05/06/Making_English_Chatbot_with_Django(4)/</loc>
         <lastmod>2022-05-06T08:28:34.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://jmj3047.github.io/2022/05/04/HTML_with_Python_Flask%26Brython/</loc>
-        <lastmod>2022-05-04T08:42:26.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
