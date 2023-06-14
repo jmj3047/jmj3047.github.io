@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://jmj3047.github.io/2023/06/13/DIFL_Cross_Corpus_SER/</loc>
+        <lastmod>2023-06-14T05:51:27.335Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jmj3047.github.io/2023/05/11/Transfer_Learning_SER/</loc>
+        <lastmod>2023-06-14T05:46:15.955Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://jmj3047.github.io/2023/05/07/DL3_Quiz/</loc>
         <lastmod>2023-06-03T13:54:32.965Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -75,14 +91,6 @@
     <url>
         <loc>https://jmj3047.github.io/2022/10/31/MTL_for_SV%26VTD/</loc>
         <lastmod>2023-05-17T11:50:35.488Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://jmj3047.github.io/2023/05/11/Transfer_Learning_SER/</loc>
-        <lastmod>2023-05-11T14:39:31.477Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
