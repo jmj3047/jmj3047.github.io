@@ -9,6 +9,22 @@
 
 
     <url>
+        <loc>https://jmj3047.github.io/2023/05/05/DL_Part3/</loc>
+        <lastmod>2023-06-19T12:49:03.236Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://jmj3047.github.io/2023/06/03/DL_Part5/</loc>
+        <lastmod>2023-06-19T12:48:18.552Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://jmj3047.github.io/2023/06/19/DL5_Quiz/</loc>
         <lastmod>2023-06-19T12:43:37.995Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -59,14 +75,6 @@
     <url>
         <loc>https://jmj3047.github.io/2023/04/23/DL2_Quiz/</loc>
         <lastmod>2023-06-03T13:33:05.137Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://jmj3047.github.io/2023/05/05/DL_Part3/</loc>
-        <lastmod>2023-05-31T13:16:55.065Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
