@@ -43,7 +43,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://jmj3047.github.io/images/SER_for_self_supervised/Untitled.png">
 <meta property="article:published_time" content="2023-07-14T15:00:00.000Z">
-<meta property="article:modified_time" content="2023-07-15T13:33:51.211Z">
+<meta property="article:modified_time" content="2023-07-18T00:21:15.630Z">
 <meta property="article:author" content="Jang Minjee">
 <meta property="article:tag" content="Speech Emotion Recognition">
 <meta property="article:tag" content="Self-Supervised Features">
@@ -223,7 +223,7 @@
 <div class="article-date">
   <i class="fa fa-calendar-plus-o"></i>
   <a href="/2023/07/15/SER_for_self_supervised/" class="article-date">
-     <time datetime="2023-07-15T13:33:51.211Z" itemprop="dateModified">2023-07-15</time>
+     <time datetime="2023-07-18T00:21:15.630Z" itemprop="dateModified">2023-07-18</time>
   </a>
 </div>
 
@@ -313,21 +313,12 @@
 <p>실험(8)에서는 두개의 ECAPA-TDNN이 생성한 utterance embedding을 나중에 융합했는데, 첫번째는 W2V2 가능에서 작동하고 두번째는 huBERT기능에서 작동합니다. </p>
 <p>In Experiment 8, the authors used later fusion to combine the output features of the Wav2vec 2.0 and huBERT models. Later fusion involves combining the output features of the two models after they have been processed by the Upstream models. Specifically, the authors used two separate ECAPA-TDNN aggregators to process the output features of the two models, and then concatenated the resulting feature vectors before passing them through the final classifier.</p>
 <p>Fusion refers to the process of combining information from multiple sources to produce a single output. In the context of the SER system described in the paper, fusion is used to combine the output features of the Wav2vec 2.0 and huBERT models in order to produce a more robust and accurate feature vector for the Downstream model to work with. By combining the strengths of the two models, the authors were able to improve the overall performance of the SER system.</p>
-<ul>
-<li>huBERT를 사용하면 monomodal model이 아니지 않나?<ul>
-<li>The huBERT model used in the SER system described in the paper is a pre-trained language model that is used to extract text-based features from the input speech signal. This means that the SER system is not strictly monomodal, as it relies on both speech and text modalities to perform emotion recognition.</li>
-<li>However, it is worth noting that the authors of the paper still refer to the system as a monomodal SER system, as the focus of the paper is on the use of different Upstream models to extract features from the speech signal. The use of the huBERT model is seen as a way to complement the speech-based features extracted by the Wav2vec 2.0 model, rather than as a separate modality in its own right.</li>
-<li>Overall, the SER system described in the paper can be seen as a hybrid system that combines both speech and text-based features to perform emotion recognition. This approach has been shown to be effective in improving the accuracy of the system, as it allows the system to capture both the acoustic and linguistic aspects of the speech signal.</li>
-</ul>
-</li>
-</ul>
 <h3 id="Experiments-to-be-used-as-baselines"><a href="#Experiments-to-be-used-as-baselines" class="headerlink" title="Experiments to be used as baselines"></a>Experiments to be used as baselines</h3><p><img src="/images/SER_for_self_supervised/Untitled%203.png" alt=" "></p>
 <p>Fig 3 실험과 비교하기 위한 base line으로 음성 피처는 Fbank, 텍스트는 BERT를 사용하였습니다.</p>
 <p>실험(9)에서는 표준 필터 뱅크가 업스트림모델로 사용되고 실험(10)에서는 BERT 모델이 업스트림 모델로 사용됩니다. 실험 (11)에서는 음성에서는 Fbank, 텍스트 feature는 BERT를 사용하여 later fusion fashion 방식으로 사용됩니다.</p>
 <p>It is important to emphasize that the Fbank used here does not have explicit pitch information attached to it and that the fine-tuning optimization process of the BERT model may not follow the most advanced SOTA techniques available nowadays. However, despite not being as carefully prepared as it could be, these baseline models can help us to obtain insight on how powerful these fine-tuned and averaged Wav2vec 2.0 and huBERT features are.</p>
 <h2 id="RESULTS"><a href="#RESULTS" class="headerlink" title="RESULTS"></a>RESULTS</h2><p><img src="/images/SER_for_self_supervised/Untitled%204.png" alt=" "></p>
 <p>표 설명: In column 2 of Table 1, under the term (#), we indicate the number of the 11 experiments evaluated. In column 3 we indicate the input modality used in each experiment. In column 4 under the term Upstream model we can find the indication of the Input feature; if the Upstream model has been fine-tuned (FT); and if the Upstream model has been Averaged (AVG). The symbol “+” in experiment 7 (huBERT + W2V2) indicates early fusion of the features and the symbol “&amp;” in the experiments 8 and 11 indicates later fusion of the features. In column 5 under the term Downstream model we can find the indication of the Aggregator Model used (AGG); the Classification Model (Classifier) used; and if the full Downstream Model has been averaged (AVG). Since the test sets of IEMOCAP are slightly imbalanced between different emotion categories, in column 6 of Table 1 under the term Accuracy we report both Weighted Accuracy (WACC) and Unweighted Accuracy (UACC). Finally, in column 1 of Table 1 under the term SET we have: in (1.A) the subset of experiments from Figure 3 that use Mean Pooling as Aggregator; in (1.B) the subset of experiments from Figure 3 that use ECAPA-TDNN as Aggregator and in (2) the baseline experiments described in Figure 4.</p>
-<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p>결국 W2V2를 사용하고 huBERT를 fine tune 했는데 왜 multi modal이 아닌 mono modal 인가..?</p>
 
         </div>
         <footer class="article-footer">
@@ -411,10 +402,10 @@
         "genre": "Paper Speech Emotion Recognition",
         "datePublished": "2023-07-15",
         "dateCreated": "2023-07-15",
-        "dateModified": "2023-07-15",
+        "dateModified": "2023-07-18",
         "url": "https://jmj3047.github.io/2023/07/15/SER_for_self_supervised/",
         "description": "Journal&#x2F;Conference : ICASSP IEEEYear(published year): 2022Author: Edmilson Morais, Ron Hoory, Weizhong Zhu, Itai Gat, Matheus Damasceno and Hagai AronowitzSubject: Speech Emotion Recognition, sel",
-        "wordCount": 2106
+        "wordCount": 1903
     }
 </script>
 
