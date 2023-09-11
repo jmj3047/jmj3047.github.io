@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="naver-site-verification" content="760dcf2c928601f50f3941df3b6b4629fd244c7c" />
+    <!-- Google Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2182912223281192"
+    crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90VXCLXLJT"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-90VXCLXLJT');
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-245679127-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-245679127-1');
+    </script>
+
+    
+
+    
+    <title>Sentence Bert | Jang Minjee</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Sentence Bert,Bi Encoder,Cross Encoder" />
+    
+    <meta name="description" content="들어가며이 글은 Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks를소개하고 논문의 핵심 구조인 Sbert를 코드로 구현하는 방법에 대해설명합니다. Sentence Bert가 필요한 이유Sentence Bert는 Bert을 문장 임베딩(Sentence Embedding)을 생성하는 모델로 활용할">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sentence Bert">
+<meta property="og:url" content="https://jmj3047.github.io/2023/09/11/Sentence_Bert/index.html">
+<meta property="og:site_name" content="Jang Minjee">
+<meta property="og:description" content="들어가며이 글은 Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks를소개하고 논문의 핵심 구조인 Sbert를 코드로 구현하는 방법에 대해설명합니다. Sentence Bert가 필요한 이유Sentence Bert는 Bert을 문장 임베딩(Sentence Embedding)을 생성하는 모델로 활용할">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://yangoos57.github.io/static/812fe66e9ad7a89e832b77f4cf7a8c27/3c492/img0.png">
+<meta property="article:published_time" content="2023-09-10T15:00:00.000Z">
+<meta property="article:modified_time" content="2023-09-11T13:19:14.471Z">
+<meta property="article:author" content="Jang Minjee">
+<meta property="article:tag" content="Sentence Bert">
+<meta property="article:tag" content="Bi Encoder">
+<meta property="article:tag" content="Cross Encoder">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yangoos57.github.io/static/812fe66e9ad7a89e832b77f4cf7a8c27/3c492/img0.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '[object Object]');
+</script>
+<!-- End Google Analytics -->
+
+    
+    
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" target="_blank" rel="noopener" href="https://github.com/jmj3047/mj_portfolio">About Me</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/">Data Analysis</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/Basic/">Basic</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/Model/">Model</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Platform-Base/GCP/">GCP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Platform-Base/MongoDB/">MongoDB</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/">Paper</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Computer-Vision/">Computer Vision</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Generative-Model/">Generative Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Multi-Task-Learning/">Multi-Task Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Recommendation-System/">Recommendation System</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Speaker-Verification/">Speaker Verification</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Speech-Emotion-Recognition/">Speech Emotion Recognition</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Speech-Representations/">Speech Representations</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Django/">Django</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/HTML/">HTML</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Pyspark/">Pyspark</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Python/">Python</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setting/">Setting</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Paper/NLP/">NLP</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-Sentence_Bert" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Sentence Bert
+        </h1>
+    
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2023/09/11/Sentence_Bert/" class="article-date">
+       <time datetime="2023-09-10T15:00:00.000Z" itemprop="datePublished">2023-09-11</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2023/09/11/Sentence_Bert/" class="article-date">
+     <time datetime="2023-09-11T13:19:14.471Z" itemprop="dateModified">2023-09-11</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Bi-Encoder/" rel="tag">Bi Encoder</a>, <a class="tag-link-link" href="/tags/Cross-Encoder/" rel="tag">Cross Encoder</a>, <a class="tag-link-link" href="/tags/Sentence-Bert/" rel="tag">Sentence Bert</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <h1 id="들어가며"><a href="#들어가며" class="headerlink" title="들어가며"></a>들어가며</h1><p>이 글은 Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks를<br>소개하고 논문의 핵심 구조인 Sbert를 코드로 구현하는 방법에 대해<br>설명합니다.</p>
+<h1 id="Sentence-Bert가-필요한-이유"><a href="#Sentence-Bert가-필요한-이유" class="headerlink" title="Sentence Bert가 필요한 이유"></a>Sentence Bert가 필요한 이유</h1><p>Sentence Bert는 Bert을 문장 임베딩(Sentence Embedding)을 생성하는 모델로 활용할 수 있도록 Fine-tuning하는 방법(또는 모델명) 을 의미합니다. 이때 Sentence embedding라 함은 문장 정보를 벡터 공간의 위치로 표현한 값을 말하며, 문장을 벡터 공간에 배치함으로서 문장 간 비교, 클러스터링, 시각화 등 다양한 분석 기법을 이용할 수 있는 장점이 있습니다.</p>
+<p>사실 Sbert 이전에도 Bert 모델을 활용해 Sentence Embedding을 생성하는 방법이 존재했지만, 이러한 방법은 과거 모델(Glove,Infer-Sent)의 성능에 미치지 못했습니다. 이러한 이유 때문에 Transformer 기반 모델을 활용해 문장 간 유사도를 비교하는 Task에서는 sentence embedding 방법을 사용하지 않고 주로 두 개의 문장을 모델에 넣어 Cross-Attention을 활용해 비교하는 방식을 활용했습니다. 여기서 일대일로 방식이라 하면 두 개의 문장을 하나로 묶은 Input Data를 Bert 모델에 넣은 뒤 모델 내부에서 두 문장 간 관계를 파악하고 모델의 Output 중  [CLS] 토큰을 활용해 두 문장의 유사도를 파악하는 방법을 의미합니다.</p>
+<p>Sentence Bert 논문에서는 문장과 문장을 비교하는 Task인 Named Entity Recognition(NER), Semantic Textual Similarity(STS)를 수행하는데 Senetnece Embedding을 활용하고 있지만, Senetence Embedding은 이러한 Task 뿐만아니라 문장과 단어 간 연관성 비교를 통한 키워드 추출, 특정 문서의 카테고리 선정 등 다양한 Task에서 응용이 가능하므로 이를 기반으로한 논문이나 라이브러리가 존재합니다. 다음의 링크들은 Setnece Bert를 활용한 라이브러리 및 논문들입니다.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.sbert.net/examples/applications/">Sbert 공식 페이지 응용 예시</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MaartenGr/BERTopic">Bertopic : 토픽 추출 라이브러리</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MaartenGr/BERTopic">keyBert : 문서 키워드 추출 라이브러리</a></li>
+</ul>
+<h1 id="Cross-Encoder와-Bi-Encoder"><a href="#Cross-Encoder와-Bi-Encoder" class="headerlink" title="Cross-Encoder와 Bi-Encoder"></a>Cross-Encoder와 Bi-Encoder</h1><p>해당 논문에서는 Bert 모델 내부의 Cross-Ateention을 활용해 문장 간 관계를 비교했던 기존 방식을 Cross-Encoder라는 용어로 사용하고 있으며, 논문에서 새롭게 소개하는 구조를 Bi-Encoder라는 용어로 사용하고 있습니다. </p>
+<p>Cross-Encoder와 Bi-Encoder의 구조 차이는 아래 그림과 같습니다</p>
+<p align = "center"><img src="https://yangoos57.github.io/static/812fe66e9ad7a89e832b77f4cf7a8c27/3c492/img0.png" width="500" height="500"/></p>
+
+
+<p>위 그림에 대해 설명하면, Bi-Encoder는 두 문장을 비교하기 위해 개별 문장의 Embedding 생성하는 단계 -&gt; 모델 Output을 Pooling하여 Sentence Embedding 생성하는 단계 -&gt; CosineSimilarity를 통해 문장과 문장 간 관계 비교를 비교하는 단계 이렇게 3번의 단계를 거칩니다. 기존 방식인 Cross-Encoder는 두 개의 문장을 Language Model에 넣어 내부에서 문장 간 문장의 관계를 비교합니다.</p>
+<p>절차적 측면에서 보면 Cross-Encoder가 더 간단한 방법인 것 같아 보입니다. 하지만 100개 문장을 비교한다고 가정할 때 Cross-Encoder는 100개의 문장을 1:1로 비교해야 하므로 100C2회를 수행해야 하는 반면 Bi-Encoder는 일단 문장을 embedding하면 비교하는 과정 자체는 단순하므로 문장을 embedding화 하기 위해 100회만 수행하면 됩니다. 구조 자체는 Cross-Encoder가 단순해보이지만 실제로는 Bi-Encoder 방식이 효율성 면에서 훨씬 더 효과적임을 알 수 있습니다.</p>
+<p>Cross-Encoder와 Bi-Encoder에 대해 개별적으로 알아보기 전 Cross-Encoder와 Bi-Encoder의 특징에 대해 간단히 알아보도록 하겠습니다. 먼저 Cross-Encoder는 문장 간 관계를 파악하는 성능이 우수한 장점이 있지만 앞서 설명했듯 비교해야하는 문장수가 많아질수록 연산이 급증한다는 치명적인 단점이 있습니다. 반면 Bi-Encoder는 Embedding 과정에서 정보손실이 발생하므로 성능에 있어서 Cross-Encoder에 미치지 못하지만, 실시간 문제 해결에 활용될 수 있을만한 빠른 연산 속도를 보장합니다.</p>
+<p>이러한 특징에서 보듯 이 둘은 상호 보완적인 관계에 있습니다. Bi-Encoder는 Cross-Encoder의 느린 연산속도를 보완할 수 있고, Cross-Encoder는 Bi-Encoder의 부족한 문장 비교 성능을 보완할 수 있습니다. 실제로도 이러한<br>개별 특징을 활용해 검색 기능을 구현할 수도 있습니다. 아래 그림은 Bi-Encoder와 Cross-Encoder의 개별 장점을 살려 효과적인 검색을 수행할 수 있는 구조를 보여줍니다. 이 구조는 Bi-Encoder의 빠른 연산속도를 활용해 query와 유사한 문장을 추려낸 다음, Cross-Encoder를 활용해 추려낸 문장과 Query 간 연관성을 다시 계산해 순위를 메기는 방식으로 동작합니다.</p>
+<blockquote>
+<p>제가 수행했던 미니프로젝트인 <a target="_blank" rel="noopener" href="https://github.com/yangoos57/Sentence_bert_from_scratch">Sentence Bert를 활용해 연관성 높은 도서 추천하기</a>를 읽어보면 이러한 구조를 어떻게 코드로 구현할 수 있는지 확인하실 수 있습니다.<br> <p align = "center"><img src="https://yangoos57.github.io/static/31659fa96212160ec5c5ec892af7e5d1/3c492/img1.png" width="600" height="300"/></p></p>
+</blockquote>
+<h2 id="Cross-Encoder"><a href="#Cross-Encoder" class="headerlink" title="Cross-Encoder"></a>Cross-Encoder</h2><p>먼저 기존 방식인 Cross-Encoder에 대해서 설명한 뒤, 논문에서 소개하는 Bi-Encoder에 대해서 설명하겠습니다.</p>
+<h3 id="❖-Cross-Encoder-구조-이해하기"><a href="#❖-Cross-Encoder-구조-이해하기" class="headerlink" title="❖ Cross-Encoder 구조 이해하기"></a>❖ Cross-Encoder 구조 이해하기</h3><p>Cross-Encoder 구조는 Language Model에 classification layer를 쌓은 구조입니다. 아래 그림에서 파란색 네모 박스를 Language Model이라 하며 그 위의 노란색 테두리를 Classification Layer라 합니다. Language Model은 Bert 뿐만아니라 Electra, Roberta 등 Encoder 기반 모델이면 모두 활용할 수<br>있습니다.</p>
+<p align = "center"><img src="https://yangoos57.github.io/static/768bc61ae0bef22c4c25914cb3393e76/3c492/img7.png" width="600" height="500"/></p>
+
+
+<p>Cross-Encoder 내부의 데이터 흐름을 보면 Language Model의 Output을 산출한 뒤 CLS Pooling을 거쳐 다시 Classification Layer의 Input Data로 활용되고 있음을 알 수 있습니다. 이때 CLS pooling이라 하면 문장의 여러 token embedding 중 [CLS] token embedding을 문장 embedding으로 사용하는 방식을 의미합니다. CLS Pooling을 다르게 표현하자면 문장과 문장의 관계를 나타내고 있는 정보들은 [CLS] token에 모두 녹아들어있으니 [CLS] token외 나머지는 문장 embedding으로 사용하지 않는다라는 의미로 이해하시면 되겠습니다.</p>
+<p>Cross-Encoder의 구조는 Language Model과 Classification Head로 구성된 매우 간단한 구조이며 아래의 코드는 이러한 구조를 보여줍니다. 아래 코드에서 주목해야할 점은 arguments로 활용되는 num_labels의 존재입니다.</p>
+<p>Cross-Encoder Class에서 num_labels가 활용되는 목적은 모델의 Loss Function을 적용하는데 있습니다. 코드 마지막 부분에서 num_labels가 활용되는 코드를 볼 수 있는데, num_labels이 1인 경우 MSE를 Loss function을 활용하고 그외인 경우 Cross Entropy를 Loss function으로 활용하고 있는 것을 확인할 수 있습니다. num_labels 값에 따라 Loss function이 달라지는 이유는 input Data로 사용되는 타입이 Numerical Data인지 Categorical Data인지 여부에 따라 사용해야하는 Loss function이 다르기 때문입니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.nn <span class="keyword">import</span> CrossEntropyLoss, MSELoss</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CrossEncoder</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, model, num_labels</span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.model = model</span><br><span class="line">        self.model.config.num_labels = num_labels</span><br><span class="line">        self.classifier = classificationHead(self.model.config)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params"></span></span><br><span class="line"><span class="params">        self,</span></span><br><span class="line"><span class="params">        input_ids=<span class="literal">None</span>,</span></span><br><span class="line"><span class="params">        attention_mask=<span class="literal">None</span>,</span></span><br><span class="line"><span class="params">        token_type_ids=<span class="literal">None</span>,</span></span><br><span class="line"><span class="params">        position_ids=<span class="literal">None</span>,</span></span><br><span class="line"><span class="params">        head_mask=<span class="literal">None</span>,</span></span><br><span class="line"><span class="params">        inputs_embeds=<span class="literal">None</span>,</span></span><br><span class="line"><span class="params">        labels=<span class="literal">None</span>,</span></span><br><span class="line"><span class="params">        output_attentions=<span class="literal">None</span>,</span></span><br><span class="line"><span class="params">        output_hidden_states=<span class="literal">None</span>,</span></span><br><span class="line"><span class="params">        return_dict=<span class="literal">None</span>,</span></span><br><span class="line"><span class="params">    </span>):</span><br><span class="line">        model = self.model(</span><br><span class="line">            input_ids,</span><br><span class="line">            attention_mask=attention_mask,</span><br><span class="line">            token_type_ids=token_type_ids,</span><br><span class="line">            position_ids=position_ids,</span><br><span class="line">            head_mask=head_mask,</span><br><span class="line">            inputs_embeds=inputs_embeds,</span><br><span class="line">            output_attentions=output_attentions,</span><br><span class="line">            output_hidden_states=output_hidden_states,</span><br><span class="line">            return_dict=return_dict,</span><br><span class="line">        )</span><br><span class="line">        <span class="comment"># Last-hidden-states 추출</span></span><br><span class="line">        sequence_output = model[<span class="number">0</span>]</span><br><span class="line">        <span class="comment"># classificationHead에 Last-hidden-state 대입</span></span><br><span class="line">        logits = self.classifier(sequence_output)</span><br><span class="line">        loss = <span class="literal">None</span></span><br><span class="line">        <span class="keyword">if</span> labels <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">            <span class="keyword">if</span> self.model.config.num_labels == <span class="number">1</span>:</span><br><span class="line">                <span class="comment"># Regression Model은 MSE Loss 활용</span></span><br><span class="line">                loss_fct = MSELoss()</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># classification Model은 Cross entropy 활용</span></span><br><span class="line">                loss_fct = CrossEntropyLoss()</span><br><span class="line">                loss = loss_fct(logits.view(-<span class="number">1</span>, <span class="number">3</span>), labels.view(-<span class="number">1</span>))</span><br><span class="line">            <span class="keyword">return</span> &#123;<span class="string">&quot;loss&quot;</span>: loss, <span class="string">&quot;logit&quot;</span>: logits&#125;</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> &#123;<span class="string">&quot;logit&quot;</span>: logits&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>CLS 토큰이란?</strong></p>
+<ul>
+<li><p>BERT는 학습을 위해 기존 transformer의 input 구조를 사용하면서도 추가로 변형하여 사용합니다. Tokenization은 WorldPiece 방법을 사용하고 있습니다.</p>
+<p align = "center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpZneZ%2FbtqGg6mCUaU%2FEcXXk5nCUAdTRMK2vXORO0%2Fimg.png" width="700" height="300"/></p>
+</li>
+<li><p>위 그림처럼 세 가지 임베딩(Token, Segment, Position)을 사용해서 문장을 표현합니다.</p>
+</li>
+<li><p>먼저 Token Embedding에서는 두 가지 특수 토큰(CLS, SEP)을 사용하여 문장을 구별하게 되는데요. Special Classification token(CLS)은 모든 문장의 가장 첫 번째(문장의 시작) 토큰으로 삽입됩니다. 이 토큰은 Classification task에서는 사용되지만, 그렇지 않을 경우엔 무시됩니다.</p>
+</li>
+<li><p>또, Special Separator token(SEP)을 사용하여 첫 번째 문장과 두 번째 문장을 구별합니다. 여기에 segment Embedding을 더해서 앞뒤 문장을 더욱 쉽게 구별할 수 있도록 도와줍니다. 이 토큰은 각 문장의 끝에 삽입됩니다.</p>
+</li>
+<li><p>Position Embedding은 transformer 구조에서도 사용된 방법으로 그림과 같이 각 토큰의 위치를 알려주는 임베딩입니다. 최종적으로 세 가지 임베딩을 더한 임베딩을 input으로 사용하게 됩니다.</p>
+</li>
+</ul>
+<h3 id="❖-Classification-layer-구조-이해하기"><a href="#❖-Classification-layer-구조-이해하기" class="headerlink" title="❖ Classification layer 구조 이해하기"></a>❖ Classification layer 구조 이해하기</h3><p>Cross-Encoder의 전체 구조와 코드를 소개했으니 이제 Classification Layer의 내부 구조에 대해서  설명하겠습니다. 아래 그림은 Classification의 내부 구조와 개별 layer를 통해 나오는 Output Tensor의 크기를 보여줍니다. layer의 최종 output의 크기는 [1,N]이며, 여기서 N은 num_labels과 동일한 값이자 산출해야하는 카테고리 개수를 의미합니다. 만약 Regression 유형의 output이 필요한 경우 N &#x3D; 1로 설정해야 하며, k개의 카테고리를 구분해야하는 Output이 필요한 경우 N &#x3D; k로 설정해야 합니다.</p>
+<p align = "center"><img src="https://yangoos57.github.io/static/0ed34c4ed6b114c93110fb7822142201/3c492/img8.png" width="600" height="500"/></p>
+ 
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> Tensor, nn</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">classificationHead</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, config</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.dense = nn.Linear(config.hidden_size, config.hidden_size)</span><br><span class="line">        classifier_dropout = (</span><br><span class="line">            config.classifier_dropout</span><br><span class="line">            <span class="keyword">if</span> config.classifier_dropout <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span></span><br><span class="line">            <span class="keyword">else</span> config.hidden_dropout_prob</span><br><span class="line">        )</span><br><span class="line">        self.gelu = nn.functional.gelu</span><br><span class="line">        self.dropout = nn.Dropout(classifier_dropout)</span><br><span class="line">        <span class="comment"># [batch, embed_size] =&gt; [batch, num_labels]</span></span><br><span class="line">        self.out_proj = nn.Linear(config.hidden_size, config.num_labels)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, features, **kwargs</span>):</span><br><span class="line">        x = features[:, <span class="number">0</span>, :] <span class="comment"># [CLS] 토큰 추출</span></span><br><span class="line">        x = self.dropout(x)</span><br><span class="line">        x = self.dense(x)</span><br><span class="line">        x = self.gelu(x)</span><br><span class="line">        x = self.dropout(x)</span><br><span class="line">        <span class="comment"># label 개수만큼 차원 축소 [batch, embed_size] =&gt; [batch, num_labels]</span></span><br><span class="line">        x = self.out_proj(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+<h3 id="❖-Cross-Encoder-학습"><a href="#❖-Cross-Encoder-학습" class="headerlink" title="❖ Cross-Encoder 학습"></a>❖ Cross-Encoder 학습</h3><p>Cross-Encoder를 실제 학습하는 과정은 <a target="_blank" rel="noopener" href="https://github.com/yangoos57/Sentence_bert_from_scratch">Cross-Encoder 학습 튜토리얼(Jupyter Notebook)</a>을 참고하시기 바랍니다. 해당 튜토리얼은 🤗 Transformers를 활용해 작성되었으므로 Huggingface에 익숙하지 않으신 분들은 추가적으로 <a target="_blank" rel="noopener" href="https://yangoos57.github.io/blog/DeepLearning/paper/Electra/electra/">링크</a>를 참고하시기 바랍니다.</p>
+<h2 id="Bi-Encoder"><a href="#Bi-Encoder" class="headerlink" title="Bi-Encoder"></a>Bi-Encoder</h2><p>이제 Sentence Bert 논문의 핵심 구조인 Bi-Encoder에 대해 설명하도록 하겠습니다. Bi-Encoder는 문장 간 비교가 필요한 Task에 대해 훨신 높은 퍼포먼스를 보여주는 장점이 있다고 설명한 바 있습니다. 이러한 속도를 보장할 수 있는 이유는 Sentence Embedding을 활용해 문장을 벡터 공간에 위치시켜 CosineSimilarity를 활용해 계산하기 때문이었습니다.</p>
+<p>아래 표 주황색으로 쳐져있는 실선 중 Avg. Bert Embeddings는 이전에 시도했던 Sentence Embedding 방식의 성능을 보여주며, 이러한 성능은 과거 모델인 Glove, InferSent 성능에도 미치지 못하고 있음을 확인할 수 있습니다.</p>
+<p>반면 NLI 데이터셋으로 학습한 SentenceBert 모델의 성능은 Glove, InferSent 성능을 압도할 뿐만아니라 기존 방식의 성능 대비 약 1.8배 이상의 성능을 보여줌을 확인할 수 있습니다.</p>
+<p align = "center"><img src="https://yangoos57.github.io/static/402c52b9e63859d06e0456b99dc4b571/13ae7/img2.png" width="500" height="600"/></p>
+
+
+
+<h3 id="❖-Sentence-Bert-구조"><a href="#❖-Sentence-Bert-구조" class="headerlink" title="❖ Sentence Bert 구조"></a>❖ Sentence Bert 구조</h3><p align = "center"><img src="https://yangoos57.github.io/static/39f1a72e77fc2a06fb0f0ccd8489a161/3d64b/img4.png" width="200" height="300"/></p>
+
+
+
+ 
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> transformers <span class="keyword">import</span> ElectraModel, ElectraTokenizer</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">model = ElectraModel.from_pretrained(<span class="string">&quot;monologg/koelectra-base-v3-discriminator&quot;</span>)</span><br><span class="line">tokenizer = ElectraTokenizer.from_pretrained(<span class="string">&quot;monologg/koelectra-base-v3-discriminator&quot;</span>)</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">modelWithPooling</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, model, pooling_type=<span class="string">&quot;mean&quot;</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        self.model = model  <span class="comment"># base model ex)BertModel, ElectraModel ...</span></span><br><span class="line">        self.pooling_type = pooling_type  <span class="comment"># pooling type 설정(기본 mean)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, **kwargs</span>):</span><br><span class="line">        features = self.model(**kwargs)</span><br><span class="line">        <span class="comment"># [batch_size, src_token, embed_size]</span></span><br><span class="line">        attention_mask = kwargs[<span class="string">&quot;attention_mask&quot;</span>]</span><br><span class="line">        last_hidden_state = features[<span class="string">&quot;last_hidden_state&quot;</span>]</span><br><span class="line">        <span class="keyword">if</span> self.pooling_type == <span class="string">&quot;cls&quot;</span>:</span><br><span class="line">            <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">            [cls] 부분만 추출</span></span><br><span class="line"><span class="string">            &quot;&quot;&quot;</span></span><br><span class="line">            cls_token = last_hidden_state[:, <span class="number">0</span>]  <span class="comment"># [batch_size, embed_size]</span></span><br><span class="line">            result = cls_token</span><br><span class="line">        <span class="keyword">if</span> self.pooling_type == <span class="string">&quot;max&quot;</span>:</span><br><span class="line">            <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">            문장 내 토큰 중 가장 값이 큰 token만 추출</span></span><br><span class="line"><span class="string">            &quot;&quot;&quot;</span></span><br><span class="line">            input_mask_expanded = (</span><br><span class="line">                attention_mask.unsqueeze(-<span class="number">1</span>).expand(last_hidden_state.size()).<span class="built_in">float</span>()</span><br><span class="line">            )</span><br><span class="line">            <span class="comment"># Set padding tokens to large negative value</span></span><br><span class="line">            last_hidden_state[input_mask_expanded == <span class="number">0</span>] = -<span class="number">1e9</span></span><br><span class="line">            max_over_time = torch.<span class="built_in">max</span>(last_hidden_state, <span class="number">1</span>)[<span class="number">0</span>]</span><br><span class="line">            result = max_over_time</span><br><span class="line">        <span class="keyword">if</span> self.pooling_type == <span class="string">&quot;mean&quot;</span>:</span><br><span class="line">            <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">            문장 내 토큰을 합한 뒤 평균</span></span><br><span class="line"><span class="string">            &quot;&quot;&quot;</span></span><br><span class="line">            <span class="comment"># padding 부분 찾기 = [batch_size, src_token, embed_size]</span></span><br><span class="line">            input_mask_expanded = (</span><br><span class="line">                attention_mask.unsqueeze(-<span class="number">1</span>).expand(last_hidden_state.size()).<span class="built_in">float</span>()</span><br><span class="line">            )</span><br><span class="line">            <span class="comment"># padding인 경우 0 아닌 경우 1곱한 뒤 총합 = [batch_size, embed_size]</span></span><br><span class="line">            sum_embeddings = torch.<span class="built_in">sum</span>(last_hidden_state * input_mask_expanded, <span class="number">1</span>)</span><br><span class="line">            <span class="comment"># 평균 내기위한 token 개수</span></span><br><span class="line">            sum_mask = input_mask_expanded.<span class="built_in">sum</span>(<span class="number">1</span>)</span><br><span class="line">            sum_mask = torch.clamp(sum_mask, <span class="built_in">min</span>=<span class="number">1e-9</span>)</span><br><span class="line">            result = sum_embeddings / sum_mask</span><br><span class="line">        <span class="comment">#  input.shape : [batch_size, src_token, embed_size] =&gt; output.shape : [batch_size, embed_size]</span></span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="string">&quot;sentence_embedding&quot;</span>: result&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="❖-Sbert-학습-구조-Categorical-Data를-학습하는-경우"><a href="#❖-Sbert-학습-구조-Categorical-Data를-학습하는-경우" class="headerlink" title="❖ Sbert 학습 구조 : Categorical Data를 학습하는 경우"></a>❖ Sbert 학습 구조 : Categorical Data를 학습하는 경우</h3><p>Sbert는 학습에 활용될 데이터셋에 따라 학습 구조가 달라집니다. 따라서 자신이 활용할 데이터셋이 numerical 데이터셋인지, categorical 데이터셋인지 구분을 해야합니다. 먼저 categorical 데이터 유형에 대해서 설명하겠습니다. 예제에서 활용하는 데이터셋은 자연어추론(NLI) 데이터셋이며 구조는 아래와 같습니다.</p>
+<blockquote>
+<p>{&#39;sen1&#39;: &#39;그리고 그가 말했다, &quot;엄마, 저 왔어요.&quot;&#39;,<br>&#39;sen2&#39;: &#39;그는 학교 버스가 그를 내려주자마자 엄마에게 전화를<br>걸었다.&#39;,<br>&#39;gold_label&#39;: &#39;neutral&#39;}</p>
+</blockquote>
+<p>categorical 데이터로 Sbert를 학습하는 구조는 아래와 같습니다. 1차로 SBert 모델을 통해 산출한 embedding vector를 각각 U,V라 할 때 U,V,|U-V|를 하나의 Tensor로 concat을 수행합니다. 그 다음 softmax Classifier를 통해 entailment, neutral, contradition을 판단하고 Loss를 구해 학습을 진행합니다.</p>
+<p align = "center"><img src="https://yangoos57.github.io/static/4ce257bd3b28eebd860c628554145582/e17e5/img5.png" width="300" height="400"/></p>
+
+
+
+
+<h4 id="❖-categorical-Data-학습-구조"><a href="#❖-categorical-Data-학습-구조" class="headerlink" title="❖ categorical Data 학습 구조"></a>❖ categorical Data 학습 구조</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">modelForClassificationTraining</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, model, *inputs, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="comment"># 학습할 모델 불러오기</span></span><br><span class="line">        self.model = modelWithPooling(model)</span><br><span class="line">        <span class="comment"># 모델 embed_size</span></span><br><span class="line">        sentence_embedding_dimension = self.model.model.config.hidden_size</span><br><span class="line">        <span class="comment"># concat 해야하는 vector 개수(U,V, |U-V|)</span></span><br><span class="line">        num_vectors_concatenated = <span class="number">3</span></span><br><span class="line">        <span class="comment"># embed_size * 3 =&gt; 3 차원으로 축소시키는 classifier</span></span><br><span class="line">        self.classifier = nn.Linear(num_vectors_concatenated * sentence_embedding_dimension, <span class="number">3</span>)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, features, answer</span>):</span><br><span class="line">        <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        샴 네트워크는 하나의 모델로 두 개의 output을 산출하는 구조임.</span></span><br><span class="line"><span class="string">        하나의 모델을 사용하지만 각각 출력하므로 Input 데이터 상호 간 영향을 줄 수 없게 됨.</span></span><br><span class="line"><span class="string">        &quot;&quot;&quot;</span></span><br><span class="line">        <span class="comment"># 개별 데이터 생성</span></span><br><span class="line">        embeddings = [self.model(**input_data)[<span class="string">&quot;sentence_embedding&quot;</span>] <span class="keyword">for</span> input_data <span class="keyword">in</span> features]</span><br><span class="line">        rep_a, rep_b = embeddings</span><br><span class="line">        <span class="comment"># U,V, |U-V| vector 병합</span></span><br><span class="line">        vectors_concat = []</span><br><span class="line">        vectors_concat.append(rep_a)</span><br><span class="line">        vectors_concat.append(rep_b)</span><br><span class="line">        vectors_concat.append(torch.<span class="built_in">abs</span>(rep_a - rep_b))</span><br><span class="line">        features = torch.cat(vectors_concat, <span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 병합한 vector 차원 축소</span></span><br><span class="line">        outputs = self.classifier(features)</span><br><span class="line">        <span class="comment"># Loss 계산</span></span><br><span class="line">        loss_fct = nn.CrossEntropyLoss()</span><br><span class="line">        loss = loss_fct(outputs, answer.view(-<span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="string">&quot;loss&quot;</span>: loss&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="❖-Sbert-구조-Numerical-Data를-학습하는-경우"><a href="#❖-Sbert-구조-Numerical-Data를-학습하는-경우" class="headerlink" title="❖ Sbert 구조 : Numerical Data를 학습하는 경우"></a>❖ Sbert 구조 : Numerical Data를 학습하는 경우</h3><p>Numerical Data는 문장과 문장 간 비교를 수치료 표현한 데이터를 말합니다.</p>
+<blockquote>
+<p>{ &#39;sen1&#39;: &#39;비행기가 이륙하고 있다.&#39;,<br>    &#39;sen2&#39;: &#39;비행기가 이륙하고 있다.&#39;,<br>    &#39;score&#39;: &#39;5.000&#39;}</p>
+</blockquote>
+<p>Numerical 학습 구조는 코사인 유사도를 활용해 Embedding Vector를 비교합니다.</p>
+<p align = "center"><img src="https://yangoos57.github.io/static/9c9a98db74d4821476ca98bf435744f4/e17e5/img6.png" width="300" height="400"/></p>
+
+
+
+<h4 id="❖-Numerical-Data-학습-구조"><a href="#❖-Numerical-Data-학습-구조" class="headerlink" title="❖ Numerical Data 학습 구조"></a>❖ Numerical Data 학습 구조</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">modelForRegressionTraining</span>(nn.Module):</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, model, *inputs, **kwargs</span>):</span><br><span class="line">        <span class="built_in">super</span>().__init__()</span><br><span class="line">        <span class="comment"># 학습을 수행할 모델 불러오기</span></span><br><span class="line">        self.model = modelWithPooling(model)</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, features, answer</span>):</span><br><span class="line">        <span class="comment"># Sentence 1, Sentence 2에 대한 Embedding</span></span><br><span class="line">        embeddings = [self.model(**input_data)[<span class="string">&quot;sentence_embedding&quot;</span>] <span class="keyword">for</span> input_data <span class="keyword">in</span> features]</span><br><span class="line">        <span class="comment"># Sentence 1, Sentence 2에 대한 Cosine Similarity 계산</span></span><br><span class="line">        cos_score_transformation = nn.Identity()</span><br><span class="line">        outputs = cos_score_transformation(torch.cosine_similarity(embeddings[<span class="number">0</span>], embeddings[<span class="number">1</span>]))</span><br><span class="line">        <span class="comment"># label score Normalization</span></span><br><span class="line">        answer = answer / <span class="number">5</span>  <span class="comment"># 0 ~ 5 =&gt; 0 ~ 1</span></span><br><span class="line">        loss_fct = nn.MSELoss()</span><br><span class="line">        loss = loss_fct(outputs, answer.view(-<span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="string">&quot;loss&quot;</span>: loss&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="Bi-Encoder-활용"><a href="#Bi-Encoder-활용" class="headerlink" title="Bi-Encoder 활용"></a>Bi-Encoder 활용</h3><p>학습이 완료되면 학습에 활용된 구조는 버리고 Sentence Bert만 추출하여 활용합니다. 이와 관련한 예제는 <a target="_blank" rel="noopener" href="https://github.com/UKPLab/sentence-transformers/tree/master/examples/applications">Sbert 깃허브 페이지</a>에 코드로 자세히 설명하고 있으니 응용 방법에 대해 궁금한 경우 해당 링크를 참고 바랍니다.</p>
+<hr>
+<ul>
+<li>Reference<ul>
+<li><a target="_blank" rel="noopener" href="https://yangoos57.github.io/blog/DeepLearning/paper/Sbert/Sbert/">https://yangoos57.github.io/blog/DeepLearning/paper/Sbert/Sbert/</a></li>
+<li><a target="_blank" rel="noopener" href="https://hwiyong.tistory.com/392">https://hwiyong.tistory.com/392</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://jmj3047.github.io/2023/09/11/Sentence_Bert/" data-id="clmewjiex0000j8u61ajrcc32" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Jang Minjee"
+        },
+        "headline": "Sentence Bert",
+        "image": "https://jmj3047.github.iohttps://yangoos57.github.io/static/812fe66e9ad7a89e832b77f4cf7a8c27/3c492/img0.png",
+        "keywords": "Sentence Bert Bi Encoder Cross Encoder",
+        "genre": "Paper NLP",
+        "datePublished": "2023-09-11",
+        "dateCreated": "2023-09-11",
+        "dateModified": "2023-09-11",
+        "url": "https://jmj3047.github.io/2023/09/11/Sentence_Bert/",
+        "description": "들어가며이 글은 Sentence-BERT: Sentence Embeddings using Siamese BERT-Networks를소개하고 논문의 핵심 구조인 Sbert를 코드로 구현하는 방법에 대해설명합니다.
+Sentence Bert가 필요한 이유Sentence Bert는 Bert을 문장 임베딩(Sentence Embedding)을 생성하는 모델로 활용할 ",
+        "wordCount": 3715
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/jmj3047" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="dropbox" href="https://www.dropbox.com/home" target="_blank" rel="noopener">
+                        <i class="icon fa fa-dropbox"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google" href="https://www.google.com" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="youtube" href="https://www.youtube.com/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-youtube"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="discord" href="https://discord.com/channels/@me" target="_blank" rel="noopener">
+                        <i class="icon fa fa-discord"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+<!-- 
+    <div class="github-card" data-github="jmj3047" data-width="400" data-height="" data-theme="default">
+    </div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js">    </script> -->
+
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2023/08/17/MLOps4_Quiz/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Deploying Machine Learning Models in Production_Quiz</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+
+
+    <div class="widgets-container">
+        
+        
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2023/09/11/Sentence_Bert/" class="title">Sentence Bert</a></p>
+                            <p class="item-date"><time datetime="2023-09-10T15:00:00.000Z" itemprop="datePublished">2023-09-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Data-Analysis/">Data Analysis</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Analysis/Basic/">Basic</a></p>
+                            <p class="item-title"><a href="/2023/08/17/MLOps4_Quiz/" class="title">Deploying Machine Learning Models in Production_Quiz</a></p>
+                            <p class="item-date"><time datetime="2023-08-16T15:00:00.000Z" itemprop="datePublished">2023-08-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Data-Analysis/">Data Analysis</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Data-Analysis/Basic/">Basic</a></p>
+                            <p class="item-title"><a href="/2023/08/16/MLOps3_Quiz/" class="title">Machine Learning Modeling Pipelines in Production_Quiz</a></p>
+                            <p class="item-date"><time datetime="2023-08-15T15:00:00.000Z" itemprop="datePublished">2023-08-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Speech-Emotion-Recognition/">Speech Emotion Recognition</a></p>
+                            <p class="item-title"><a href="/2023/08/04/wav2vec_hubert_for_SER_SV_SLU/" class="title">A fine-tuned wav2vec2.0/Hubert benchmark for SER, Speaker verification and spoken language understanding</a></p>
+                            <p class="item-date"><time datetime="2023-08-03T15:00:00.000Z" itemprop="datePublished">2023-08-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Speech-Representations/">Speech Representations</a></p>
+                            <p class="item-title"><a href="/2023/08/02/SUPERB/" class="title">SUPERB, Speech processing Universal PERformance Benchmark</a></p>
+                            <p class="item-date"><time datetime="2023-08-01T15:00:00.000Z" itemprop="datePublished">2023-08-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/">Data Analysis</a><span class="category-list-count">40</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Basic/">Basic</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Model/">Model</a><span class="category-list-count">16</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Platform-Base/GCP/">GCP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Platform-Base/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/">Paper</a><span class="category-list-count">24</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Computer-Vision/">Computer Vision</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Generative-Model/">Generative Model</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Multi-Task-Learning/">Multi-Task Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/NLP/">NLP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Recommendation-System/">Recommendation System</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speaker-Verification/">Speaker Verification</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speech-Emotion-Recognition/">Speech Emotion Recognition</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speech-Representations/">Speech Representations</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/HTML/">HTML</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pyspark/">Pyspark</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setting/">Setting</a><span class="category-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ACF/" style="font-size: 10px;">ACF</a> <a href="/tags/AI-Studies/" style="font-size: 16.67px;">AI Studies</a> <a href="/tags/AI-tool/" style="font-size: 10px;">AI tool</a> <a href="/tags/ARIMA/" style="font-size: 10px;">ARIMA</a> <a href="/tags/Acoustic-Parameter-Set/" style="font-size: 10px;">Acoustic Parameter Set</a> <a href="/tags/Adversarial-Domain-Adaptation/" style="font-size: 10px;">Adversarial Domain Adaptation</a> <a href="/tags/Adversarial-Speaker-Verification/" style="font-size: 10px;">Adversarial Speaker Verification</a> <a href="/tags/Attention/" style="font-size: 10.83px;">Attention</a> <a href="/tags/Auth/" style="font-size: 10px;">Auth</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/BeautifulSoup/" style="font-size: 11.67px;">BeautifulSoup</a> <a href="/tags/Benchmark/" style="font-size: 10px;">Benchmark</a> <a href="/tags/Bi-Encoder/" style="font-size: 10px;">Bi Encoder</a> <a href="/tags/Big-Query/" style="font-size: 15.83px;">Big Query</a> <a href="/tags/BigQueryML/" style="font-size: 14.17px;">BigQueryML</a> <a href="/tags/Brython/" style="font-size: 10px;">Brython</a> <a href="/tags/CGI/" style="font-size: 10px;">CGI</a> <a href="/tags/Center-Loss/" style="font-size: 10px;">Center Loss</a> <a href="/tags/Chatbot/" style="font-size: 13.33px;">Chatbot</a> <a href="/tags/Clustering/" style="font-size: 14.17px;">Clustering</a> <a href="/tags/Confusion-Matrix/" style="font-size: 10px;">Confusion Matrix</a> <a href="/tags/Convolutional-Neural-Networks/" style="font-size: 10.83px;">Convolutional Neural Networks</a> <a href="/tags/Coursera/" style="font-size: 18.33px;">Coursera</a> <a href="/tags/Cross-Encoder/" style="font-size: 10px;">Cross Encoder</a> <a href="/tags/Cross-domain/" style="font-size: 10px;">Cross-domain</a> <a href="/tags/DBSCAN/" style="font-size: 10px;">DBSCAN</a> <a href="/tags/DCGAN/" style="font-size: 10px;">DCGAN</a> <a href="/tags/DataFlow/" style="font-size: 10px;">DataFlow</a> <a href="/tags/Decision-Tree-Classifier/" style="font-size: 10px;">Decision Tree Classifier</a> <a href="/tags/Deep-Nueral-Networks/" style="font-size: 10.83px;">Deep Nueral Networks</a> <a href="/tags/Deep-Machine-Learning-Paper-Study/" style="font-size: 17.5px;">Deep/Machine Learning Paper Study</a> <a href="/tags/Doc2vec/" style="font-size: 12.5px;">Doc2vec</a> <a href="/tags/Domain-Adaptation/" style="font-size: 10px;">Domain Adaptation</a> <a href="/tags/Domain-Adversarial-Layer/" style="font-size: 10px;">Domain Adversarial Layer</a> <a href="/tags/Domain-Invariant-Feature-Learning/" style="font-size: 10.83px;">Domain Invariant Feature Learning</a> <a href="/tags/English/" style="font-size: 19.17px;">English</a> <a href="/tags/Ensemble-Model/" style="font-size: 10px;">Ensemble Model</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Evaluation/" style="font-size: 10px;">Evaluation</a> <a href="/tags/F1-measure/" style="font-size: 10px;">F1 measure</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GAN/" style="font-size: 10.83px;">GAN</a> <a href="/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/tags/Gaussian-Mixture-Model/" style="font-size: 10.83px;">Gaussian Mixture Model</a> <a href="/tags/Gen-App-Builder/" style="font-size: 10px;">Gen App Builder</a> <a href="/tags/Generative-Adversarial-Network/" style="font-size: 10px;">Generative Adversarial Network</a> <a href="/tags/Generative-Model/" style="font-size: 10px;">Generative Model</a> <a href="/tags/Git/" style="font-size: 10.83px;">Git</a> <a href="/tags/Grid-Search-CV/" style="font-size: 10px;">Grid Search CV</a> <a href="/tags/HTML/" style="font-size: 11.67px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/HuBERT/" style="font-size: 10px;">HuBERT</a> <a href="/tags/Hueman/" style="font-size: 10px;">Hueman</a> <a href="/tags/Image-Classification/" style="font-size: 11.67px;">Image Classification</a> <a href="/tags/K-Means-Clustering/" style="font-size: 11.67px;">K-Means Clustering</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Looker-Studio/" style="font-size: 11.67px;">Looker Studio</a> <a href="/tags/ML-Analysis/" style="font-size: 20px;">ML Analysis</a> <a href="/tags/ML-Operations/" style="font-size: 10.83px;">ML Operations</a> <a href="/tags/ML-Process/" style="font-size: 10.83px;">ML Process</a> <a href="/tags/Model-Generalization/" style="font-size: 10px;">Model Generalization</a> <a href="/tags/MongoDB/" style="font-size: 11.67px;">MongoDB</a> <a href="/tags/Multi-Task-Learning/" style="font-size: 10.83px;">Multi-Task Learning</a> <a href="/tags/NLP/" style="font-size: 13.33px;">NLP</a> <a href="/tags/Nonprobability-sampling/" style="font-size: 10px;">Nonprobability sampling</a> <a href="/tags/Normal-Distribution/" style="font-size: 10px;">Normal Distribution</a> <a href="/tags/PACF/" style="font-size: 10px;">PACF</a> <a href="/tags/Pandas-Dataframe/" style="font-size: 10px;">Pandas Dataframe</a> <a href="/tags/Precision-Recall/" style="font-size: 10px;">Precision-Recall</a> <a href="/tags/Probabilistic-sampling/" style="font-size: 10px;">Probabilistic sampling</a> <a href="/tags/Probability-Density-Function/" style="font-size: 10px;">Probability Density Function</a> <a href="/tags/Probability-Distribution-Function/" style="font-size: 10px;">Probability Distribution Function</a> <a href="/tags/Python/" style="font-size: 16.67px;">Python</a> <a href="/tags/Quiz/" style="font-size: 15.83px;">Quiz</a> <a href="/tags/ROC-curve/" style="font-size: 10px;">ROC curve</a> <a href="/tags/Recommendation-System/" style="font-size: 10.83px;">Recommendation System</a> <a href="/tags/Representation-Learning/" style="font-size: 10px;">Representation Learning</a> <a href="/tags/Self-Supervised-Features/" style="font-size: 10px;">Self-Supervised Features</a> <a href="/tags/Self-Supervised-Learning/" style="font-size: 11.67px;">Self-Supervised Learning</a> <a href="/tags/Sentence-Bert/" style="font-size: 10px;">Sentence Bert</a> <a href="/tags/Speaker-GAN/" style="font-size: 10px;">Speaker GAN</a> <a href="/tags/Speaker-Identification/" style="font-size: 10px;">Speaker Identification</a> <a href="/tags/Speaker-Independent/" style="font-size: 10px;">Speaker Independent</a> <a href="/tags/Speaker-Normalization/" style="font-size: 10px;">Speaker Normalization</a> <a href="/tags/Speaker-Verification/" style="font-size: 10px;">Speaker Verification</a> <a href="/tags/Speaker-Verification/" style="font-size: 10px;">Speaker Verification,</a> <a href="/tags/Speech-Emotion-Recognition/" style="font-size: 15px;">Speech Emotion Recognition</a> <a href="/tags/Speech-Feature-Extraction/" style="font-size: 10px;">Speech Feature Extraction</a> <a href="/tags/Speech-Representations/" style="font-size: 10px;">Speech Representations</a> <a href="/tags/Spoken-Language-Understanding/" style="font-size: 10px;">Spoken Language Understanding</a> <a href="/tags/Standard-Normal-Distribution/" style="font-size: 10px;">Standard Normal Distribution</a> <a href="/tags/TD-SV/" style="font-size: 10px;">TD-SV</a> <a href="/tags/Threshold-Adjustment/" style="font-size: 10px;">Threshold Adjustment</a> <a href="/tags/Time-Series/" style="font-size: 10px;">Time Series</a> <a href="/tags/Transfer-Learning/" style="font-size: 10px;">Transfer Learning</a> <a href="/tags/Transformer/" style="font-size: 11.67px;">Transformer</a> <a href="/tags/Vertex-AI/" style="font-size: 10px;">Vertex AI</a> <a href="/tags/Virtualenv/" style="font-size: 10px;">Virtualenv</a> <a href="/tags/Voice-Trigger-Detection/" style="font-size: 10.83px;">Voice Trigger Detection</a> <a href="/tags/WGAN/" style="font-size: 10px;">WGAN</a> <a href="/tags/WGAN-GP/" style="font-size: 10px;">WGAN-GP</a> <a href="/tags/Wake-Up-Words/" style="font-size: 10px;">Wake-Up Words</a> <a href="/tags/Wav2vec-2-0/" style="font-size: 10px;">Wav2vec 2.0</a> <a href="/tags/Web-Crawling/" style="font-size: 11.67px;">Web Crawling</a> <a href="/tags/Web-Server/" style="font-size: 10.83px;">Web Server</a> <a href="/tags/kaggle/" style="font-size: 10px;">kaggle</a> <a href="/tags/pyspark/" style="font-size: 12.5px;">pyspark</a>
+        </div>
+    </div>
+
+
+            
+        
+
+    </div>
+</aside>
+
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2023 Jang Minjee</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+      <script data-ad-client="ca-pub-2182912223281192" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
