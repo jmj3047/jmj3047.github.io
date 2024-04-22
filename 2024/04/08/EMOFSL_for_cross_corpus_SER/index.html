@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="naver-site-verification" content="760dcf2c928601f50f3941df3b6b4629fd244c7c" />
+    <!-- Google Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2182912223281192"
+    crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90VXCLXLJT"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-90VXCLXLJT');
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-245679127-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-245679127-1');
+    </script>
+
+    
+
+    
+    <title>Few Shot Learning Guided by Emotion Distance for Cross-corpus Speech Emotion Recognition | Jang Minjee</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Speech Emotion Recognition,Few Shot Learning,Metric Learning" />
+    
+    <meta name="description" content="Journal&#x2F;Conference: Asia Pacific Signal and Information Processing Association Annual Summit and Conference (APSIPA ASC) (pp. 1008-1012). IEEE.Year(published year): 2023Author: Yue, P., Wu, Y., Q">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Few Shot Learning Guided by Emotion Distance for Cross-corpus Speech Emotion Recognition">
+<meta property="og:url" content="https://jmj3047.github.io/2024/04/08/EMOFSL_for_cross_corpus_SER/index.html">
+<meta property="og:site_name" content="Jang Minjee">
+<meta property="og:description" content="Journal&#x2F;Conference: Asia Pacific Signal and Information Processing Association Annual Summit and Conference (APSIPA ASC) (pp. 1008-1012). IEEE.Year(published year): 2023Author: Yue, P., Wu, Y., Q">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jmj3047.github.io/images/EMOFSL_for_cross_corpus_SER/Untitled.png">
+<meta property="article:published_time" content="2024-04-07T15:00:00.000Z">
+<meta property="article:modified_time" content="2024-04-22T11:19:18.904Z">
+<meta property="article:author" content="Jang Minjee">
+<meta property="article:tag" content="Speech Emotion Recognition">
+<meta property="article:tag" content="Few Shot Learning">
+<meta property="article:tag" content="Metric Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jmj3047.github.io/images/EMOFSL_for_cross_corpus_SER/Untitled.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '[object Object]');
+</script>
+<!-- End Google Analytics -->
+
+    
+    
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" target="_blank" rel="noopener" href="https://github.com/jmj3047/mj_portfolio">About Me</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/">Data Analysis</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/Basic/">Basic</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/Model/">Model</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Platform-Base/GCP/">GCP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Platform-Base/MongoDB/">MongoDB</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/">Paper</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Computer-Vision/">Computer Vision</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Generative-Model/">Generative Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Multi-Task-Learning/">Multi-Task Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Recommendation-System/">Recommendation System</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Speaker-Verification/">Speaker Verification</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Speech-Emotion-Recognition/">Speech Emotion Recognition</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Speech-Representations/">Speech Representations</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Django/">Django</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/HTML/">HTML</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Pyspark/">Pyspark</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Python/">Python</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setting/">Setting</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-EMOFSL_for_cross_corpus_SER" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Few Shot Learning Guided by Emotion Distance for Cross-corpus Speech Emotion Recognition
+        </h1>
+    
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2024/04/08/EMOFSL_for_cross_corpus_SER/" class="article-date">
+       <time datetime="2024-04-07T15:00:00.000Z" itemprop="datePublished">2024-04-08</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2024/04/08/EMOFSL_for_cross_corpus_SER/" class="article-date">
+     <time datetime="2024-04-22T11:19:18.904Z" itemprop="dateModified">2024-04-22</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Few-Shot-Learning/" rel="tag">Few Shot Learning</a>, <a class="tag-link-link" href="/tags/Metric-Learning/" rel="tag">Metric Learning</a>, <a class="tag-link-link" href="/tags/Speech-Emotion-Recognition/" rel="tag">Speech Emotion Recognition</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>Journal&#x2F;Conference: Asia Pacific Signal and Information Processing Association Annual Summit and Conference (APSIPA ASC) (pp. 1008-1012). IEEE.<br>Year(published year): 2023<br>Author: Yue, P., Wu, Y., Qu, L., Zheng, S., Zhao, S., &amp; Li, T.<br>Subject: Few-shot Learning, Speech Emotion Recognition, Metric Learning</p>
+<h1 id="Few-Shot-Learning-Guided-by-Emotion-Distance-for-Cross-corpus-Speech-Emotion-Recognition"><a href="#Few-Shot-Learning-Guided-by-Emotion-Distance-for-Cross-corpus-Speech-Emotion-Recognition" class="headerlink" title="Few Shot Learning Guided by Emotion Distance for Cross-corpus Speech Emotion Recognition"></a>Few Shot Learning Guided by Emotion Distance for Cross-corpus Speech Emotion Recognition</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+<li>Two main types of emotion classification systems have been widely used in emotion research and applications, namely discrete emotion categories and continuous emotion. Discrete emotion theories propose that there are a number of emotion categories, such as anger, fear, happiness, sadness, disgust and surprise, that are biologically based and universally recognizable by facial expressions and physiological responses [6][7][8]. Dimensional models of emotion suggest that emotions can be described along a few continuous dimensions, such as valence (positive-negative), arousal (high-low) and dominance (active-passive) [9][10][11].</li>
+<li>감정 연구와 응용 분야에서 널리 사용되는 두 가지 주요 유형의 감정 분류 체계는 Discrete 감정 범주와 Dimensional 감정입니다. Discrete 감정에서는 분노, 공포, 행복, 슬픔 혐오, 놀라움과 같은 여러 가지 감정 범주가 있으며, 이는 생물학에 근거하여 얼굴 표정과 생리적 반응에 의해 보편적으로 인식될 수 있다고 제안합니다. Dimensional 감정 모델은 valence(pos-neg), arousal(high-low), dominance(active-passive)와 같은 몇가지 연속적인 차원을 따라 감정을 설명할 수 있다고 제안합니다.</li>
+<li>In recent years, there have been articles verifying that discrete emotion labeling and continuous emotion labeling can complement each other, and better emotion recognition performance can be achieved through multi-task learning[12][13][14][15]. The logic behind these articles is that both discrete and continuous emotion annotation information can provide a basic emotion feature extraction capability for emotion recognition models, and the information provided by the two is complementary. Especially, continuous emotion annotations can provide useful information for discrete emotion recognition.</li>
+<li>지난 몇년 동안 두 감정 체계들의 라벨링이 서로 보완된다는 논문들이 발표 되었고, multi task learning에 높은 성능을 달성하였습니다. Continuous 감정 주석은 discrete 감정 인식에 유용한 정보를 제공합니다.</li>
+<li>Another problem with traditional cross-corpus SER methods is their weak ability in speech representation because they use traditional speech features mostly coming from openSMILE toolkit or low-level speech descriptor instead of state-of-the-art unsupervised pre-trained speech features.</li>
+<li>Inspired by the above series of studies on discrete versus continuous emotions, this paper quantifies the distance between emotion categories through their distribution in continuous emotion space, and uses this as prior knowledge in discrete emotion category learning.</li>
+<li>For instance, the Euclidean distance between the two emotions of happy and sad is the farthest, because they are relatively far apart in the two dimensions of valence and arousal. According to the distribution, one can divide the distance between pairs of emotion categories into several levels.</li>
+<li>The emotion distance guides the metric loss construction in fewshot learning to learn more meaningful and generalizable representations of emotions that are consistent across domains.</li>
+<li>The contributions of this paper are as follows: 1) This paper introduces emotion distance for the first time to the cross corpus SER task. 2) This paper adopts a self-supervised speech feature extractor instead of traditional features for cross-corpus SER. 3) The proposed few-shot learning guided by emotion distance method achieves good cross-corpus SER performance.</li>
+</ul>
+<p><img src="/images/EMOFSL_for_cross_corpus_SER/Untitled.png" alt=" "></p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p><img src="/images/EMOFSL_for_cross_corpus_SER/Untitled%201.png" alt=" "></p>
+<ul>
+<li>Figure 2 shows the fine-tuning and testing stage of the baseline and emotion distance-guided few-shot learning, from which one can also see how the emotional distance knowledge is used in the construction of the metric loss.</li>
+<li>Some general notation assumptions of this paper are as follows. x represents a speech sample and F represents the speech emotion feature extractor. F(x) is the emotion embedding of sample x, and cen represents the shot average embedding of a certain emotion in the support set. The parameters of the SER model can be represented as W and the loss function is L(W).</li>
+</ul>
+<h3 id="A-Baseline-transfer-learning-based-on-few-shot-learning"><a href="#A-Baseline-transfer-learning-based-on-few-shot-learning" class="headerlink" title="A. Baseline transfer learning based on few-shot learning"></a>A. Baseline transfer learning based on few-shot learning</h3><ul>
+<li><p>The baseline method consists of three steps: 1) Training a feature extractor on a large source corpus using a self-supervised contrastive learning objective. 2) Fine-tuning a classifier on a few labeled examples from the target corpus using the extracted features. 3) Testing the SER model on the target corpus.</p>
+</li>
+<li><p>During the fine-tuning stage on the target corpus, the training loss of basic transfer learning (BTL) only contains the CE loss related to emotion labels, while the few-shot learning based transfer learning (FSTL) also takes into account the relationship between categories, as shown in the ‘metric loss’ in Figure 2.</p>
+</li>
+<li><p>The SNN is trained by creating positive and negative pairs of inputs, where positive pairs belong to the same class and negative pairs belong to different classes. The network uses a contrastive loss to minimize the distance between similar inputs and maximize the distance between dissimilar inputs:</p>
+<p>  <img src="/images/EMOFSL_for_cross_corpus_SER/Untitled%202.png" alt=" "></p>
+</li>
+<li><p>where Xc is the set of data belonging to class c,Xc′ is the set of data belonging to class c′ different than c, d is the Euclidean distance between sample pair embeddings and κ determines the trade-off between penalizing dissimilarity between samples belonging to the same class against similarity between samples belonging to different classes.</p>
+</li>
+<li><p>BTL은 기본적인 FSL과 CE loss를 사용하여 finetuning, FSTL은 SNN은 사용하여 Negative pair, Positive pair로 나눈 input으로 훈련됨 → contrasive loss를 사용하는데 비슷한 input은 서로 붙고, 다른 input은 멀리 떨어뜨려 놓음</p>
+</li>
+</ul>
+<h3 id="B-Few-shot-learning-guided-by-emotion-distance"><a href="#B-Few-shot-learning-guided-by-emotion-distance" class="headerlink" title="B. Few-shot learning guided by emotion distance"></a>B. Few-shot learning guided by emotion distance</h3><ul>
+<li><p>Inspired by the distribution of emotion categories in the valence-arousal continuous emotion space, this study proposes few-shot learning based on a fine-grained emotion relationship metric.</p>
+</li>
+<li><p>본 연구에서는 valence-arousal 연속 감정 공간의 감정 범주 분포에서 영감을 얻어 세분화된 감정 관계 메트릭을 기반으로 한 few-shot learning 학습을 제안</p>
+</li>
+<li><p>As shown in Figure 1, in the continuous emotion space, the {happy, sad} sample pair has the farthest Euclidean distance. In addition, in the learning of speech emotion representation, the representation ability of emotion representation in the arousal dimension is stronger than that of the valence dimension, so when we consider the distance between emotion categories, the distance in the valence dimension is compressed, which leads to the emotion distance between {anger, sadness} sample pair being as far as that between {happy, sad} sample pair. These two types of emotion sample pairs are considered to be pure negative (PN) pairs.</p>
+</li>
+<li><p>{화남, 슬픔} 그리고 {행복, 슬픔}의 두 쌍을 PN 쌍이라고 간주</p>
+</li>
+<li><p>For pairs of samples with the same emotion category, we believe that the distance between them should be as close as possible and they are pure positive (PP) pairs. For other emotion sample pairs, such as {happy, neutral} and {happy, angry}, we consider the distance between them to be at an intermediate level, not as far away as PN pairs, and we call them medium negative (MN) sample pairs.</p>
+</li>
+<li><p>동일한 감정 카테고리를 가진 샘플 쌍의 경우 그 사이 거리는 가능한한 가까워야 하며 PP 쌍으로 간주.</p>
+</li>
+<li><p>{행복, 중립}, {행복, 분노}와 같은 다른 감정 샘플 쌍의 경우 PN 쌍만큼 거리가 멀지 않다고 간주하여 이를 MN 이라고 간주.</p>
+</li>
+<li><p>Following the above discussion of emotion distance, we construct a fine-grained metric loss function for few-shot learning guided by emotion distance (EMOFSL):</p>
+<p>  <img src="/images/EMOFSL_for_cross_corpus_SER/Untitled%203.png" alt=" "></p>
+</li>
+<li><p>where α &gt; β and represent the restricted distance margin of the PN pairs and the MN pairs, respectively, and κ1 and κ2 determine the trade-off among different parts of the loss.</p>
+</li>
+<li><p>여기서 α는 β보다 크며, PN과 MN의 제한된 거리 마진을 나타냄. 그리고 κ1과 κ2는 손실의 다른 부분의 트레이드 오프를 결정.</p>
+<ul>
+<li>제한된 거리 마진: 제공한 문장의 맥락에서 PN 쌍과 MN 쌍에 대한 ‘제한된 거리 여백’은 서로 다른 감정 카테고리의 임베딩 간에 허용되는 거리 또는 간격을 나타냅니다. 특정 여백(PN 쌍의 경우 α, MN 쌍의 경우 β)을 설정함으로써 모델은 서로 다른 감정 카테고리의 임베딩이 특징 공간에서 얼마나 멀리 떨어져 있어야 하는지에 대한 제약을 적용합니다.</li>
+<li>α와 β: α와 β는 다양한 유형의 감정 샘플 쌍에 대한 제한된 거리 마진을 정의하는 데 사용되는 매개변수입니다. 구체적으로 α는 순수 음수(PN) 쌍의 제한된 거리 마진을 나타내고 β는 중간 음수(MN) 쌍의 제한된 거리 마진을 나타냅니다. α &gt; β 조건은 PN 쌍의 마진이 MN 쌍의 마진보다 크다는 것을 나타냅니다.</li>
+<li>κ1 및 κ2: κ1과 κ2는 손실 함수의 여러 부분 간의 트레이드오프 또는 균형을 결정하는 계수입니다. 이 계수는 학습 과정에서 손실 함수의 여러 구성 요소의 중요도 또는 영향을 제어합니다. κ1과 κ2를 조정함으로써 모델은 원하는 학습 목표에 따라 손실 함수의 특정 측면을 다른 측면보다 우선순위를 정할 수 있습니다.</li>
+<li>손실의 다른 부분 간의 트레이드 오프: 이 문장은 κ1과 κ2가 훈련 중에 손실 함수의 가중치와 균형을 결정하는 데 중요한 역할을 한다는 점을 강조합니다. κ1과 κ2를 적절하게 설정하면 모델은 전체 손실에 대한 다양한 구성 요소(예: PN 및 MN 쌍의 거리 마진)의 기여도를 효과적으로 관리하여 학습 과정과 감정 범주 간의 관계를 포착하는 모델의 능력에 영향을 줄 수 있습니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="EXPERIMENTAL-RESULTS-AND-DISCUSSIONS"><a href="#EXPERIMENTAL-RESULTS-AND-DISCUSSIONS" class="headerlink" title="EXPERIMENTAL RESULTS AND DISCUSSIONS"></a>EXPERIMENTAL RESULTS AND DISCUSSIONS</h2><h3 id="A-Experimental-setup"><a href="#A-Experimental-setup" class="headerlink" title="A. Experimental setup"></a>A. Experimental setup</h3><ul>
+<li>In this section, we evaluate the proposed framework for cross-corpus SER. Three most common emotion corpora<br>containing English speech, including IEMOCAP (I) [21], RAVDESS (R) [22], and MSP-IMPROV (M) [23], are employed in our experiments. Two of the above corpora are randomly selected as the source and target corpora respectively, and six groups of cross-corpus SER tasks (source corpus-target corpus) I-R, I-M, R-M, R-I, M-I, M-R, are conducted. We select four common emotional categories, i.e., anger, neutral, happy, and sad, in our experiments.</li>
+<li>전이 학습 과정에서는 실험 결과의 신뢰성을 확인하기위해 각 타겟 코퍼스 마다 다른 설정으로 교차검증(CV)을 실시했습니다. IEMOCAP의 경우, 한 세션을 사용하는 방식으로 데이터셋을 분할했습니다. RAVDESS의 경우 화자의 id에 따라 데이터셋을 6개의 동일한 하위집합으로 분할한 후 하나의 집합을 테스트 집합으로, 나머지를 학습데이터로 선택했습니다. MSP의 경우 6 fold leave-one-speaker-out CV를 수행했습니다(각 폴드 내에서 ‘한 명의 화자만 남겨두기’ 전략이 사용되었습니다. 즉, 각 폴드마다 한 화자의 데이터는 테스트 세트로 남겨두고 나머지 화자의 데이터는 모델 학습에 사용했습니다.)</li>
+<li>For few-shot learning based transfer learning, 5 random fixed samples of each emotion in the training set of the target corpus are selected for fine-tuning, and all of the samples in the testing set are used for testing. The training set and the testing set are obtained from the cross-validation settings.</li>
+<li>We compared the proposed EMOFSL with basic transfer learning(BTL) and few shot learning based transfer learning(FSTL) in terms of unweighted accuracy assessing the SER performance.</li>
+</ul>
+<h3 id="B-Results-and-discussions"><a href="#B-Results-and-discussions" class="headerlink" title="B. Results and discussions"></a>B. Results and discussions</h3><p><img src="/images/EMOFSL_for_cross_corpus_SER/Untitled%204.png" alt=" "></p>
+<ul>
+<li>Table II shows the cross-corpus SER performance of the compared methods, in which 5 samples from each of the 4 emotions are selected to form the support set in the fine-tuning process. Few-shot learning method guided by emotion distance (EMOFSL) is compared with basic transfer learning (BTL) and few-shot learning based transfer learning (FSTL) in terms of unweighted accuracy rate (UAR).</li>
+</ul>
+<p><img src="/images/EMOFSL_for_cross_corpus_SER/Untitled%205.png" alt=" "></p>
+<ul>
+<li>It can be observed that our proposed EMOFSL performs better than the other two baseline methods, which proves the effectiveness of emotion category distance prior knowledge for cross-corpus SER task. It can be also observed that in most cross-corpus tasks, the few-shot learning-based transfer learning performs better than the basic transfer learning, which verifies that metric loss obtained from the positive and negative sample pairs helps the learning of speech emotion on the target corpus.</li>
+</ul>
+<p><img src="/images/EMOFSL_for_cross_corpus_SER/Untitled%206.png" alt=" "></p>
+<ul>
+<li>Figure 3 presents the confusion matrices of the proposed EMOFSL method for six cross-corpus tasks. One can observe that the recognition results of anger and sad in all tasks are generally better than other emotions, indicating that these two emotions in speech are easier to be recognized, which is partly related to the prior knowledge of the emotional distance we added to the metric loss.</li>
+</ul>
+<p><img src="/images/EMOFSL_for_cross_corpus_SER/Untitled%207.png" alt=" "></p>
+<ul>
+<li>Figure 4 shows the confusion matrix comparison between the proposed method and the baseline methods. We can see that with metric loss representing the distance relationship of different emotion categories, FSTL and EMOFSL achieve better recognition on anger and sad.</li>
+<li>Figure 3 and 4 also indicate that happy is often misidentified as anger and neutral is often misidentified as sad, which is consistent with our previous understanding in the continuous emotion space that arousal is easier to distinguish than valence in speech emotion expression.</li>
+</ul>
+<p><img src="/images/EMOFSL_for_cross_corpus_SER/Untitled%208.png" alt=" "></p>
+<ul>
+<li>Figure 5 shows the performance comparison of BTL, FSTL, and EMOFSL when the size of support set k is 5, 10,<br>and 15, respectively. The source corpus of the cross-corpus task is RAVDESS, and the target corpus is IEMOCAP. One can observe that: 1) As the number of training samples in the support set increases, the SER performance of the three methods improves accordingly. 2) In the case of different support set sizes, the performance of EMOFSL is better than the other comparison methods. 3) The performance of FSTL is better than that of BTL in most cases.</li>
+</ul>
+<h2 id="CONCLUSION"><a href="#CONCLUSION" class="headerlink" title="CONCLUSION"></a>CONCLUSION</h2><ul>
+<li>Cross-corpus speech emotion recognition faces the problem of sparse target set data. To solve this problem, this study introduces the prior knowledge of emotion distance to guide the few-shot learning process of cross-corpus emotion recognition, thereby alleviating the problem of insufficient emotional information to a certain extent. Experimental results show that the proposed method performs better than traditional few-shot learning verifying the efficiency of the emotion distance prior knowledge. In addition, this paper introduces a self-supervised pre-training model with stronger speech representation ability than traditional features as a feature extractor, which also improves the performance of cross-corpus speech emotion recognition.</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://jmj3047.github.io/2024/04/08/EMOFSL_for_cross_corpus_SER/" data-id="clvav6ugf000084u6bbsiesdi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Jang Minjee"
+        },
+        "headline": "Few Shot Learning Guided by Emotion Distance for Cross-corpus Speech Emotion Recognition",
+        "image": "https://jmj3047.github.io/images/EMOFSL_for_cross_corpus_SER/Untitled.png",
+        "keywords": "Speech Emotion Recognition Few Shot Learning Metric Learning",
+        "genre": "Paper Few Shot Learning",
+        "datePublished": "2024-04-08",
+        "dateCreated": "2024-04-08",
+        "dateModified": "2024-04-22",
+        "url": "https://jmj3047.github.io/2024/04/08/EMOFSL_for_cross_corpus_SER/",
+        "description": "Journal&#x2F;Conference: Asia Pacific Signal and Information Processing Association Annual Summit and Conference (APSIPA ASC) (pp. 1008-1012). IEEE.Year(published year): 2023Author: Yue, P., Wu, Y., Q",
+        "wordCount": 2153
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/jmj3047" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="dropbox" href="https://www.dropbox.com/home" target="_blank" rel="noopener">
+                        <i class="icon fa fa-dropbox"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google" href="https://www.google.com" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="youtube" href="https://www.youtube.com/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-youtube"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="discord" href="https://discord.com/channels/@me" target="_blank" rel="noopener">
+                        <i class="icon fa fa-discord"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+<!-- 
+    <div class="github-card" data-github="jmj3047" data-width="400" data-height="" data-theme="default">
+    </div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js">    </script> -->
+
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2024/02/20/Transductive_Inductive/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Transductive learning VS Inductive Learning</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+
+
+    <div class="widgets-container">
+        
+        
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a></p>
+                            <p class="item-title"><a href="/2024/04/08/EMOFSL_for_cross_corpus_SER/" class="title">Few Shot Learning Guided by Emotion Distance for Cross-corpus Speech Emotion Recognition</a></p>
+                            <p class="item-date"><time datetime="2024-04-07T15:00:00.000Z" itemprop="datePublished">2024-04-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a></p>
+                            <p class="item-title"><a href="/2024/02/20/Transductive_Inductive/" class="title">Transductive learning VS Inductive Learning</a></p>
+                            <p class="item-date"><time datetime="2024-02-19T15:00:00.000Z" itemprop="datePublished">2024-02-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a></p>
+                            <p class="item-title"><a href="/2024/01/29/MTL_for_FSL/" class="title">Meta Transfer Learning for Few Shot Learning</a></p>
+                            <p class="item-date"><time datetime="2024-01-28T15:00:00.000Z" itemprop="datePublished">2024-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Speech-Emotion-Recognition/">Speech Emotion Recognition</a></p>
+                            <p class="item-title"><a href="/2023/11/07/Speaker_to_Emotion/" class="title">Speaker to Emotion, Domain Adaptation for Speech Emotion Recognition with Residual Adapters</a></p>
+                            <p class="item-date"><time datetime="2023-11-06T15:00:00.000Z" itemprop="datePublished">2023-11-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/NLP/">NLP</a></p>
+                            <p class="item-title"><a href="/2023/09/11/Sentence_Bert/" class="title">Sentence Bert</a></p>
+                            <p class="item-date"><time datetime="2023-09-10T15:00:00.000Z" itemprop="datePublished">2023-09-11</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/">Data Analysis</a><span class="category-list-count">40</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Basic/">Basic</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Model/">Model</a><span class="category-list-count">16</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Platform-Base/GCP/">GCP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Platform-Base/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/">Paper</a><span class="category-list-count">28</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Computer-Vision/">Computer Vision</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Generative-Model/">Generative Model</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Multi-Task-Learning/">Multi-Task Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/NLP/">NLP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Recommendation-System/">Recommendation System</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speaker-Verification/">Speaker Verification</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speech-Emotion-Recognition/">Speech Emotion Recognition</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speech-Representations/">Speech Representations</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/HTML/">HTML</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pyspark/">Pyspark</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setting/">Setting</a><span class="category-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ACF/" style="font-size: 10px;">ACF</a> <a href="/tags/AI-Studies/" style="font-size: 16.36px;">AI Studies</a> <a href="/tags/AI-tool/" style="font-size: 10px;">AI tool</a> <a href="/tags/ARIMA/" style="font-size: 10px;">ARIMA</a> <a href="/tags/Acoustic-Parameter-Set/" style="font-size: 10px;">Acoustic Parameter Set</a> <a href="/tags/Adversarial-Domain-Adaptation/" style="font-size: 10px;">Adversarial Domain Adaptation</a> <a href="/tags/Adversarial-Speaker-Verification/" style="font-size: 10px;">Adversarial Speaker Verification</a> <a href="/tags/Attention/" style="font-size: 10.91px;">Attention</a> <a href="/tags/Auth/" style="font-size: 10px;">Auth</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/BeautifulSoup/" style="font-size: 11.82px;">BeautifulSoup</a> <a href="/tags/Benchmark/" style="font-size: 10px;">Benchmark</a> <a href="/tags/Bi-Encoder/" style="font-size: 10px;">Bi Encoder</a> <a href="/tags/Big-Query/" style="font-size: 15.45px;">Big Query</a> <a href="/tags/BigQueryML/" style="font-size: 14.55px;">BigQueryML</a> <a href="/tags/Brython/" style="font-size: 10px;">Brython</a> <a href="/tags/CGI/" style="font-size: 10px;">CGI</a> <a href="/tags/Center-Loss/" style="font-size: 10px;">Center Loss</a> <a href="/tags/Chatbot/" style="font-size: 13.64px;">Chatbot</a> <a href="/tags/Clustering/" style="font-size: 14.55px;">Clustering</a> <a href="/tags/Confusion-Matrix/" style="font-size: 10px;">Confusion Matrix</a> <a href="/tags/Convolutional-Neural-Networks/" style="font-size: 10.91px;">Convolutional Neural Networks</a> <a href="/tags/Coursera/" style="font-size: 18.18px;">Coursera</a> <a href="/tags/Cross-Encoder/" style="font-size: 10px;">Cross Encoder</a> <a href="/tags/Cross-domain/" style="font-size: 10px;">Cross-domain</a> <a href="/tags/DBSCAN/" style="font-size: 10px;">DBSCAN</a> <a href="/tags/DCGAN/" style="font-size: 10px;">DCGAN</a> <a href="/tags/DataFlow/" style="font-size: 10px;">DataFlow</a> <a href="/tags/Decision-Tree-Classifier/" style="font-size: 10px;">Decision Tree Classifier</a> <a href="/tags/Deep-Nueral-Networks/" style="font-size: 10.91px;">Deep Nueral Networks</a> <a href="/tags/Deep-Machine-Learning-Paper-Study/" style="font-size: 17.27px;">Deep/Machine Learning Paper Study</a> <a href="/tags/Doc2vec/" style="font-size: 12.73px;">Doc2vec</a> <a href="/tags/Domain-Adaptation/" style="font-size: 10.91px;">Domain Adaptation</a> <a href="/tags/Domain-Adversarial-Layer/" style="font-size: 10px;">Domain Adversarial Layer</a> <a href="/tags/Domain-Invariant-Feature-Learning/" style="font-size: 10.91px;">Domain Invariant Feature Learning</a> <a href="/tags/English/" style="font-size: 19.09px;">English</a> <a href="/tags/Ensemble-Model/" style="font-size: 10px;">Ensemble Model</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Evaluation/" style="font-size: 10px;">Evaluation</a> <a href="/tags/F1-measure/" style="font-size: 10px;">F1 measure</a> <a href="/tags/Few-Shot-Learning/" style="font-size: 10.91px;">Few Shot Learning</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GAN/" style="font-size: 10.91px;">GAN</a> <a href="/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/tags/Gaussian-Mixture-Model/" style="font-size: 10.91px;">Gaussian Mixture Model</a> <a href="/tags/Gen-App-Builder/" style="font-size: 10px;">Gen App Builder</a> <a href="/tags/Generative-Adversarial-Network/" style="font-size: 10px;">Generative Adversarial Network</a> <a href="/tags/Generative-Model/" style="font-size: 10px;">Generative Model</a> <a href="/tags/Git/" style="font-size: 10.91px;">Git</a> <a href="/tags/Grid-Search-CV/" style="font-size: 10px;">Grid Search CV</a> <a href="/tags/HTML/" style="font-size: 11.82px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 12.73px;">Hexo</a> <a href="/tags/HuBERT/" style="font-size: 10px;">HuBERT</a> <a href="/tags/Hueman/" style="font-size: 10px;">Hueman</a> <a href="/tags/Image-Classification/" style="font-size: 11.82px;">Image Classification</a> <a href="/tags/Inductive-Learning/" style="font-size: 10px;">Inductive Learning</a> <a href="/tags/K-Means-Clustering/" style="font-size: 11.82px;">K-Means Clustering</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Looker-Studio/" style="font-size: 11.82px;">Looker Studio</a> <a href="/tags/ML-Analysis/" style="font-size: 20px;">ML Analysis</a> <a href="/tags/ML-Operations/" style="font-size: 10.91px;">ML Operations</a> <a href="/tags/ML-Process/" style="font-size: 10.91px;">ML Process</a> <a href="/tags/Meta-Transfer-Learning/" style="font-size: 10px;">Meta Transfer Learning</a> <a href="/tags/Metric-Learning/" style="font-size: 10px;">Metric Learning</a> <a href="/tags/Model-Generalization/" style="font-size: 10px;">Model Generalization</a> <a href="/tags/MongoDB/" style="font-size: 11.82px;">MongoDB</a> <a href="/tags/Multi-Task-Learning/" style="font-size: 10.91px;">Multi-Task Learning</a> <a href="/tags/NLP/" style="font-size: 13.64px;">NLP</a> <a href="/tags/Nonprobability-sampling/" style="font-size: 10px;">Nonprobability sampling</a> <a href="/tags/Normal-Distribution/" style="font-size: 10px;">Normal Distribution</a> <a href="/tags/PACF/" style="font-size: 10px;">PACF</a> <a href="/tags/Pandas-Dataframe/" style="font-size: 10px;">Pandas Dataframe</a> <a href="/tags/Precision-Recall/" style="font-size: 10px;">Precision-Recall</a> <a href="/tags/Probabilistic-sampling/" style="font-size: 10px;">Probabilistic sampling</a> <a href="/tags/Probability-Density-Function/" style="font-size: 10px;">Probability Density Function</a> <a href="/tags/Probability-Distribution-Function/" style="font-size: 10px;">Probability Distribution Function</a> <a href="/tags/Python/" style="font-size: 16.36px;">Python</a> <a href="/tags/Quiz/" style="font-size: 15.45px;">Quiz</a> <a href="/tags/ROC-curve/" style="font-size: 10px;">ROC curve</a> <a href="/tags/Recommendation-System/" style="font-size: 10.91px;">Recommendation System</a> <a href="/tags/Representation-Learning/" style="font-size: 10px;">Representation Learning</a> <a href="/tags/Self-Supervised-Features/" style="font-size: 10px;">Self-Supervised Features</a> <a href="/tags/Self-Supervised-Learning/" style="font-size: 11.82px;">Self-Supervised Learning</a> <a href="/tags/Sentence-Bert/" style="font-size: 10px;">Sentence Bert</a> <a href="/tags/Speaker-GAN/" style="font-size: 10px;">Speaker GAN</a> <a href="/tags/Speaker-Identification/" style="font-size: 10px;">Speaker Identification</a> <a href="/tags/Speaker-Independent/" style="font-size: 10px;">Speaker Independent</a> <a href="/tags/Speaker-Normalization/" style="font-size: 10px;">Speaker Normalization</a> <a href="/tags/Speaker-Verification/" style="font-size: 10px;">Speaker Verification</a> <a href="/tags/Speaker-Verification/" style="font-size: 10px;">Speaker Verification,</a> <a href="/tags/Speech-Emotion-Recognition/" style="font-size: 16.36px;">Speech Emotion Recognition</a> <a href="/tags/Speech-Feature-Extraction/" style="font-size: 10px;">Speech Feature Extraction</a> <a href="/tags/Speech-Representations/" style="font-size: 10px;">Speech Representations</a> <a href="/tags/Spoken-Language-Understanding/" style="font-size: 10px;">Spoken Language Understanding</a> <a href="/tags/Standard-Normal-Distribution/" style="font-size: 10px;">Standard Normal Distribution</a> <a href="/tags/TD-SV/" style="font-size: 10px;">TD-SV</a> <a href="/tags/Threshold-Adjustment/" style="font-size: 10px;">Threshold Adjustment</a> <a href="/tags/Time-Series/" style="font-size: 10px;">Time Series</a> <a href="/tags/Transductive-Learning/" style="font-size: 10px;">Transductive Learning</a> <a href="/tags/Transfer-Learning/" style="font-size: 10px;">Transfer Learning</a> <a href="/tags/Transformer/" style="font-size: 11.82px;">Transformer</a> <a href="/tags/Vertex-AI/" style="font-size: 10px;">Vertex AI</a> <a href="/tags/Virtualenv/" style="font-size: 10px;">Virtualenv</a> <a href="/tags/Voice-Trigger-Detection/" style="font-size: 10.91px;">Voice Trigger Detection</a> <a href="/tags/WGAN/" style="font-size: 10px;">WGAN</a> <a href="/tags/WGAN-GP/" style="font-size: 10px;">WGAN-GP</a> <a href="/tags/Wake-Up-Words/" style="font-size: 10px;">Wake-Up Words</a> <a href="/tags/Wav2vec-2-0/" style="font-size: 10px;">Wav2vec 2.0</a> <a href="/tags/Web-Crawling/" style="font-size: 11.82px;">Web Crawling</a> <a href="/tags/Web-Server/" style="font-size: 10.91px;">Web Server</a> <a href="/tags/kaggle/" style="font-size: 10px;">kaggle</a> <a href="/tags/pyspark/" style="font-size: 12.73px;">pyspark</a>
+        </div>
+    </div>
+
+
+            
+        
+
+    </div>
+</aside>
+
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2024 Jang Minjee</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+      <script data-ad-client="ca-pub-2182912223281192" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
