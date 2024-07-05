@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="naver-site-verification" content="760dcf2c928601f50f3941df3b6b4629fd244c7c" />
+    <!-- Google Ads -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2182912223281192"
+    crossorigin="anonymous"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-90VXCLXLJT"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-90VXCLXLJT');
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-245679127-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-245679127-1');
+    </script>
+
+    
+
+    
+    <title>Personalized Adaptation with Pre-trained Speech Encoders for Continuous Emotion Recognition | Jang Minjee</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="Speech Emotion Recognition,Personalization,Adaptation" />
+    
+    <meta name="description" content="Journal&#x2F;Conference : INTERSPEECHYear(published year): 2023Author: Tran, M., Yin, Y., Soleymani, M.Subject: Speech Emotion Recognition, Personalization, Adaptation Personalized Adaptation with Pre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Personalized Adaptation with Pre-trained Speech Encoders for Continuous Emotion Recognition">
+<meta property="og:url" content="https://jmj3047.github.io/2024/06/14/PAPT_SER/index.html">
+<meta property="og:site_name" content="Jang Minjee">
+<meta property="og:description" content="Journal&#x2F;Conference : INTERSPEECHYear(published year): 2023Author: Tran, M., Yin, Y., Soleymani, M.Subject: Speech Emotion Recognition, Personalization, Adaptation Personalized Adaptation with Pre">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jmj3047.github.io/images/PAPT_SER/Untitled.png">
+<meta property="article:published_time" content="2024-06-13T15:00:00.000Z">
+<meta property="article:modified_time" content="2024-07-05T07:04:11.745Z">
+<meta property="article:author" content="Jang Minjee">
+<meta property="article:tag" content="Speech Emotion Recognition">
+<meta property="article:tag" content="Personalization">
+<meta property="article:tag" content="Adaptation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jmj3047.github.io/images/PAPT_SER/Untitled.png">
+    
+
+    
+
+    
+        <link rel="icon" href="/images/favicon.png" />
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.5.0/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=[object Object]"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '[object Object]');
+</script>
+<!-- End Google Analytics -->
+
+    
+    
+    
+
+
+    
+<link rel="stylesheet" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css">
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" target="_blank" rel="noopener" href="https://github.com/jmj3047/mj_portfolio">About Me</a>
+                                </li>
+                            
+                                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/">Data Analysis</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/Basic/">Basic</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Analysis/Model/">Model</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Platform-Base/GCP/">GCP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Data-Platform-Base/MongoDB/">MongoDB</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/">Paper</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Computer-Vision/">Computer Vision</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Generative-Model/">Generative Model</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Multi-Task-Learning/">Multi-Task Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Recommendation-System/">Recommendation System</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Speaker-Verification/">Speaker Verification</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Speech-Emotion-Recognition/">Speech Emotion Recognition</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Paper/Speech-Representations/">Speech Representations</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Django/">Django</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/HTML/">HTML</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Pyspark/">Pyspark</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/Python/">Python</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Setting/">Setting</a></li></ul>
+                                
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="page-title-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-PAPT_SER" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Personalized Adaptation with Pre-trained Speech Encoders for Continuous Emotion Recognition
+        </h1>
+    
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                
+  <div class="article-date">
+    <i class="fa fa-calendar"></i>
+    <a href="/2024/06/14/PAPT_SER/" class="article-date">
+       <time datetime="2024-06-13T15:00:00.000Z" itemprop="datePublished">2024-06-14</time>
+    </a>
+  </div>
+
+
+<div class="article-date">
+  <i class="fa fa-calendar-plus-o"></i>
+  <a href="/2024/06/14/PAPT_SER/" class="article-date">
+     <time datetime="2024-07-05T07:04:11.745Z" itemprop="dateModified">2024-07-05</time>
+  </a>
+</div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Adaptation/" rel="tag">Adaptation</a>, <a class="tag-link-link" href="/tags/Personalization/" rel="tag">Personalization</a>, <a class="tag-link-link" href="/tags/Speech-Emotion-Recognition/" rel="tag">Speech Emotion Recognition</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            
+
+            
+
+            
+
+            <p>Journal&#x2F;Conference : INTERSPEECH<br>Year(published year): 2023<br>Author: Tran, M., Yin, Y., Soleymani, M.<br>Subject: Speech Emotion Recognition, Personalization, Adaptation</p>
+<h1 id="Personalized-Adaptation-with-Pre-trained-Speech-Encoders-for-Continuous-Emotion-Recognition"><a href="#Personalized-Adaptation-with-Pre-trained-Speech-Encoders-for-Continuous-Emotion-Recognition" class="headerlink" title="Personalized Adaptation with Pre-trained Speech Encoders for Continuous Emotion Recognition"></a>Personalized Adaptation with Pre-trained Speech Encoders for Continuous Emotion Recognition</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><ul>
+<li>To achieve unsupervised personalized emotion recognition, we first pre-train an encoder with learnable speaker embeddings in a self-supervised manner to learn robust speech representations conditioned on speakers.</li>
+<li>We propose an unsupervised method to compensate for the label distribution shifts by finding similar speakers and leveraging their label distributions from the training set.</li>
+</ul>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>(1) What happens to the personalization gap as the number of speakers increases for fine-tuned encoders? </p>
+<p>(2) How do existing personalization methods behave when the input speech features are not fixed? </p>
+<p>(3) How can we incorporate personalization with pre-trained encoders to boost performance?</p>
+<ul>
+<li><p>We first show that as the number of speakers increases, the personalization gap (the performance difference between speaker-dependent and speaker-independent) of fine-tuned models decreases, which motivates the need for methods that adapts the pre-trained weights for personalization prior to fine-tuning. Hence, we propose to continue the pre-training process of the speech encoder jointly with speaker embeddings (see Figure 2 (a)). </p>
+</li>
+<li><p>We also introduce a simple yet effective unsupervised personalized calibration step to adjust label distribution per speaker for better accuracy (see Figure 2 (b)). The proposed methods are unsupervised, requiring no prior knowledge of the test labels. </p>
+</li>
+<li><p>The major contributions of this work are as follows.</p>
+</li>
+</ul>
+<p>(1)We propose a method for personalized adaptive pre-training to adjust the existing speech encoders for a fixed set of speakers.</p>
+<p>(2) We propose an unsupervised personalized post-inference technique to adjust the label distributions. </p>
+<p>(3)We provide extensive experimental results along with an ablation study to demonstrate the effectiveness of the methods. </p>
+<p>(4) We further show that our methods can be extended to unseen speakers without the need to re-train any component, achieving superior performance compared to the baselines</p>
+<h2 id="Related-work"><a href="#Related-work" class="headerlink" title="Related work"></a>Related work</h2><h3 id="Adaptive-Pre-training"><a href="#Adaptive-Pre-training" class="headerlink" title="Adaptive Pre-training"></a>Adaptive Pre-training</h3><ul>
+<li>In the field of speech emotion recognition, Chen et al. [10] propose a novel pseudo-label generation method in combination with task-adaptive pre-training for wav2vec2.0 [12] to boost emotion recognition accuracy. However, there is no prior work exploring personalized adaptive pre-training.</li>
+</ul>
+<h3 id="Personalized-Speech-Emotion-Recognition"><a href="#Personalized-Speech-Emotion-Recognition" class="headerlink" title="Personalized Speech Emotion Recognition"></a>Personalized Speech Emotion Recognition</h3><ul>
+<li><p>Most relevant to our work is the unsupervised personalized method proposed by Sridhar et al. [14], which is validated on the same dataset (MSP-Podcast) as in this paper. They propose to find speakers in the train set to form the adaptation set whose acoustic patterns closely resemble those of the speakers in the test set. Specifically, they apply Principal Component Analysis (PCA) on the feature set proposed for the computational paralinguistics challenge (ComParE) [19] and fit Gaussian Mixture Models to measure the speaker similarity based on the KL divergence metric.</p>
+</li>
+<li><p>we explore personalization with fine-tuned encoders instead of pre-extracted features, which achieves superior performance compared to the best-performing models. For example, our weakest baseline (HuBERT-large fine-tuning) achieves a two times higher Concordance Correlation Coefficient (CCC) compared to the reported results from Sridhar et al. [14] for valence estimation. More importantly, our method is extensible and remains effective for unseen speakers without the need to re-train any components.</p>
+</li>
+</ul>
+<h2 id="Preliminary-information"><a href="#Preliminary-information" class="headerlink" title="Preliminary information"></a>Preliminary information</h2><h3 id="Problem-Formulation"><a href="#Problem-Formulation" class="headerlink" title="Problem Formulation"></a>Problem Formulation</h3><ul>
+<li>Our goal is to produce a robust emotion recognition model that performs better than a model exposed to the same amount of data excluding speaker ID information. We further want our method to be extensible to new speakers outside of D.</li>
+</ul>
+<h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><ul>
+<li><p>We use the MSP-Podcast corpus [13] as our dataset D. MSP-Podcast is the largest corpus for speech emotion recognition in English, containing emotionally rich podcast segments retrieved from audio-sharing websites.</p>
+</li>
+<li><p>In this paper, we focus on arousal and valence estimation. The labels range from 1 to 7. The dataset contains pre-defined train, validation, and test sets, namely $D_{tr}, D_{val}, D_{te}$, which are subject independent.</p>
+</li>
+<li><p>We use two versions of the dataset, namely v1.6 and v1.10, for the experiments. To be consistent with prior studies [20, 14, 9], most of our experiments are based on MSP-Podcast v1.6. We remove all the utterances marked with “Unknown” speakers in accordance with our problem formulation.</p>
+</li>
+</ul>
+<p><img src="/images/PAPT_SER/Untitled.png" alt=" "></p>
+<h3 id="Pre-trained-Speech-Encoder"><a href="#Pre-trained-Speech-Encoder" class="headerlink" title="Pre-trained Speech Encoder"></a>Pre-trained Speech Encoder</h3><ul>
+<li><p>HuBERT consists of two main components, namely a 1D CNN and a Transformer encoder [22]. The 1D CNN takes raw waveforms as inputs and returns low-level feature representations of speech.</p>
+</li>
+<li><p>Therefore, the pre-training loss $L_{pt}$ for HuBERT can be defined as the sum of the cross-entropy loss computed over the masked frames.</p>
+</li>
+</ul>
+<h3 id="Personalization-Gap"><a href="#Personalization-Gap" class="headerlink" title="Personalization Gap"></a>Personalization Gap</h3><ul>
+<li>The concept of the personalization gap is introduced and investigated. The personalization gap refers to the performance difference between speaker-dependent models (trained on data specific to individual speakers) and speaker-independent models (trained without considering speaker information). The study explores how the personalization gap changes as the number of speakers in the dataset increases. By conducting experiments with subsets of data containing different numbers of speakers, the authors demonstrate that as the dataset becomes more diverse with a larger number of speakers, the personalization gap decreases.</li>
+</ul>
+<p><img src="/images/PAPT_SER/Untitled%201.png" alt=" "></p>
+<ul>
+<li><p>Figure 1 demonstrates the inverse relationship between k and the performance gap.</p>
+</li>
+<li><p>It suggests that given sufficiently large and diverse training data, the pre-trained encoders become robust enough to learn both the general emotional patterns and the unique characteristics of different groups of speech expressions such that supervised training of the model on the test speakers leads to marginal gains.</p>
+</li>
+<li><p>Hence, to enhance the performance of the pre-trained encoders for a target speaker, we can: (1) make the input data personalized (pre-processing); (2) modify the weights of the pre-trained encoder for the target speaker; or (3) adjust the label predictions to be more personalized (post-processing). Existing studies on personalized SER, e.g., [5, 8, 14], focus on the first approach.</p>
+</li>
+</ul>
+<h3 id="Performance-variance-across-speakers"><a href="#Performance-variance-across-speakers" class="headerlink" title="Performance variance across speakers"></a>Performance variance across speakers</h3><ul>
+<li><p>We investigate whether the performance variance is due to the feature shift or the label shift. Specifically, to measure the feature and label shift for each target speaker, we calculate the KL divergence between the feature and label distributions of the target speaker and those of the whole training set. Then we calculate the Pearson correlation coefficient (PCC) between the feature&#x2F;label shift and the speaker performance. For arousal estimation, we find that the PCC between the feature shift and the regression performance is −0.714 while the PCC between the label shift and performance is −0.502.</p>
+</li>
+<li><p>The results suggest that both feature and label shifts contribute to the performance variance. Moreover, the correlation between the feature shift and label shift is 0.285, which suggests the potential of using features to detect and remove label shifts.</p>
+<ul>
+<li>화자 간 성능 차이를 논의하는 섹션에서는 데이터 세트의 여러 화자에서 관찰되는 성능의 변동성에 기여하는 요인을 살펴봅니다. 이 맥락에서 언급되는 두 가지 핵심 개념은 feature shift와 label shift입니다:</li>
+<li>feature shift: 특징 이동은 개별 화자 간의 입력 특징(예: 음성의 음향적 특성) 분포의 차이 또는 변동을 의미합니다. 음성 감정 인식의 맥락에서 화자마다 음성 패턴, 억양 또는 기타 음향적 특징에 차이가 있을 수 있으며, 이는 모델의 정확한 감정 인식 능력에 영향을 미칠 수 있습니다. 특징 편차는 특정 화자의 입력 특징이 훈련 세트의 전체 특징 분포에서 얼마나 벗어나는지를 정량화 합니다.</li>
+<li>label shift: 반면에 레이블 이동은 여러 화자에 걸쳐 음성 샘플에 할당된 감정 레이블 분포의 불일치 또는 변화와 관련이 있습니다. 이는 데이터 세트에서 화자마다 감정 주석(레이블)의 분포가 달라지는 것을 반영합니다. 라벨 이동은 개인이 감정을 표현하거나 인지하는 방식의 차이로 인해 발생할 수 있으며, 화자 간 일관된 감정 인식에 문제를 일으킬 수 있습니다.</li>
+<li>이 논문은 데이터 세트의 각 대상 화자에 대한 특징 및 라벨 이동을 분석하여 이러한 이동이 음성 감정 인식 작업에서 화자 간에 관찰되는 성능 차이에 어떻게 기여하는지 이해하는 것을 목표로 합니다. 특징 이동, 라벨 이동, 화자 성능 간의 상관관계는 모델이 다양한 화자에 대해 감정을 정확하게 인식하는 능력에 영향을 미치는 요인을 파악하는 데 도움이 됩니다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p><img src="/images/PAPT_SER/Untitled%202.png" alt=" "></p>
+<h3 id="Personalized-Adaptive-Pre-training-PAPT"><a href="#Personalized-Adaptive-Pre-training-PAPT" class="headerlink" title="Personalized Adaptive Pre-training (PAPT)"></a>Personalized Adaptive Pre-training (PAPT)</h3><ul>
+<li><p>we propose to perform adaptive pre-training on $D &#x3D; {(u_i, s_i)}^N_{i&#x3D;1}$ along with trainable speaker embeddings in a self-supervised manner. </p>
+</li>
+<li><p>Specifically, in addition to the original speech encoder E, we train a speaker embedding network S to extract the speaker embedding $e_i &#x3D; S(s_i) ∈ R^d$, where d is the embedding size for the Transformer.</p>
+</li>
+<li><p>Then, the speaker embedding $e_i$ is summed with the utterance feature $f_i &#x3D; E(u_i)$ to get a personalized feature representation $f^p_i &#x3D; f_i + e_i$. For personalized pre-training, $f^p_i$ is used to compute the pre-training loss (cross-entropy) on pseudo-label prediction for masked frames.</p>
+</li>
+</ul>
+<p>$L_(pt) &#x3D; - \sum\limits_{i&#x3D;1}^{N_b}  \sum\limits_{t&#x3D;1}^{M_i}logP(l_{it}|f_{it}^p)$ </p>
+<ul>
+<li><p>$N_b$ is the number of utterances in the batch</p>
+</li>
+<li><p>$M_i$ is the number of masked frames for utterance $u_i$, </p>
+</li>
+<li><p>$l_{it}$ denotes the pseudo-label for the $t$-th masked frame in utterance $u_i$. </p>
+</li>
+<li><p>For ER downstream tasks, we reduce the temporal dimension for $f_i^p$ by mean-pooling and feed the output to a fully-connected layer to produce the label predictions.</p>
+</li>
+</ul>
+<h3 id="Personalized-Label-Distribution-Calibration-PLDC"><a href="#Personalized-Label-Distribution-Calibration-PLDC" class="headerlink" title="Personalized Label Distribution Calibration (PLDC)"></a>Personalized Label Distribution Calibration (PLDC)</h3><ul>
+<li><p>we further want to add a personalized post-inference technique to correct the predicted label distributions. Specifically, given the predictions for a target speaker, the main idea is to identify the most similar speakers from the train set based on the feature similarity and use their label distribution statistics (means and standard deviations) to calibrate the predicted label distributions of the target test speaker.</p>
+</li>
+<li><p>In particular, for speaker s in both the train and test set, we extract the features for each utterance of s and average them to form the speaker vector</p>
+</li>
+</ul>
+<p>$v_s &#x3D; \frac{\sum\limits_{k&#x3D;1}^{N_s} \bar{E}_{ft}^p(u_s^k)}{N_s}$</p>
+<ul>
+<li><p>Where $E_{ft}^p$ denotes the ER-fine-tuned model of $E^p$ (the personalized adapted version of E), $\bar{E}_{ft}^p(u_s^k)$ denotes the mean-pooled vector representation for utterance $u_s^k$ , and $N_s$ is the number of utterances from speaker s.</p>
+</li>
+<li><p>Then, for each speaker in the test set, we retrieve the top-k most similar speakers in the train set based on the cosine similarity between the speaker vectors. Next, we average the label distribution statistics from the retrieved speakers to get an estimation of the mean $\bar{μ}$ and standard deviation $\bar{σ}$.</p>
+</li>
+<li><p>Finally, each predicted label y for the target speaker would be shifted as</p>
+</li>
+</ul>
+<p>$\tilde{y} &#x3D; \frac{y-\mu}{\sigma} * \bar{\sigma} + \bar{\mu}$</p>
+<ul>
+<li>μ and σ are the mean and standard deviation for the predicted label distribution.</li>
+</ul>
+<h2 id="Experiments-and-Discussions"><a href="#Experiments-and-Discussions" class="headerlink" title="Experiments and Discussions"></a>Experiments and Discussions</h2><h3 id="Implementation-and-Training-Details"><a href="#Implementation-and-Training-Details" class="headerlink" title="Implementation and Training Details"></a>Implementation and Training Details</h3><ul>
+<li><p>we perform adaptive pre-training for ten epochs using the Adam optimizer with a linear learning rate scheduler (5% warm-up and a maximum learning rate of 1e−5) on a single NVIDIA Quadro RTX8000 GPU.</p>
+</li>
+<li><p>All other settings are identical to HuBERT’s pre-training configurations.</p>
+</li>
+<li><p>For downstream fine-tuning experiments, we add a light interpreter on top of the HuBERT encoder to process the mean-pooled extracted representations.</p>
+</li>
+<li><p>Following prior work [14], the models are optimized with a CCC loss LCCC &#x3D; 1 − CCC for arousal and valence estimation</p>
+</li>
+<li><p>All of our experiments are performed with the HuBERT-large architecture, except for the personalization  gap experiments, as the model used to generate the pseudo-labels for HuBERT-base is not publicly available.</p>
+</li>
+<li><p>We report two evaluation metrics, namely the Overall CCC (O-CCC), which concatenates the predictions on all test speakers before computing a single CCC score for the test set, and A-CCC, which denotes the average CCC scores computed for each test speaker.</p>
+</li>
+</ul>
+<h3 id="Baselines"><a href="#Baselines" class="headerlink" title="Baselines"></a>Baselines</h3><ul>
+<li>We compare our method to three baselines: (1) Vanilla-FT in which E is fine-tuned on Dtr. (2) B2 represents the data weighting method proposed by Sridhar et al. [14]. (3) Task-Adaptive Pre-Training (TAPT) in which encoder E is continued pre-training on D for ten epochs.</li>
+</ul>
+<h3 id="Experimental-Results-on-test-b"><a href="#Experimental-Results-on-test-b" class="headerlink" title="Experimental Results on test-b"></a>Experimental Results on test-b</h3><ul>
+<li><p>Compared to the best-performing baselines, our methods achieve superior performance on both arousal and valence estimation, with a gain of 0.023 and 0.009 on arousal and valence A-CCC respectively. Notably, we achieve state-of-the-art results for the task of valence estimation, in which our Overall-CCC score achieves 0.665.</p>
+</li>
+<li><p>We attribute this to the high variance in the number of utterances of each speaker in the test set. Furthermore, Table 2 also demonstrates that PLDC consistently achieves the best performance when we only perform σ shifting, while μ shifting often reduces both A-CCC and O-CCC.</p>
+</li>
+</ul>
+<p><img src="/images/PAPT_SER/Untitled%203.png" alt=" "></p>
+<h3 id="Ablation-Study"><a href="#Ablation-Study" class="headerlink" title="Ablation Study"></a>Ablation Study</h3><ul>
+<li><p>Table 4 shows the experimental results for arousal estimation on test-b of fine-tuned encoders (without PLDC) adaptively pre-trained with different fusion positions of the speaker embeddings.</p>
+</li>
+<li><p>In particular, Last refers to our proposed setting in which the speaker embeddings are added to the output of the Transformer encoder; First refers to speaker embeddings being added to the inputs of the first layer of the Transformer encoder, and Prefix refers to the setting in which the speaker embeddings are concatenated as prefixes to the inputs of the Transformer encoder. None refers to the vanilla HuBERT encoder.</p>
+</li>
+</ul>
+<p>We find that Last provides the best results.</p>
+<p><img src="/images/PAPT_SER/Untitled%204.png" alt=" "></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><ul>
+<li><p>In this paper, we propose two methods to adapt pre-trained speech encoders for personalized speech emotion recognition, namely PAPT, which jointly pre-trains speech encoders with speaker embeddings to produce personalized speech representations, and PLDC, which performs distribution calibration for the predicted labels based on retrieved similar speakers.</p>
+</li>
+<li><p>We validate the effectiveness of the proposed techniques via extensive experiments on the MSP-Podcast dataset, in which our models consistently outperform strong baselines and reach state-of-the-art performance for valence estimation.</p>
+</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://jmj3047.github.io/2024/06/14/PAPT_SER/" data-id="cly8cmv0l0000oou6ai41awns" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Jang Minjee"
+        },
+        "headline": "Personalized Adaptation with Pre-trained Speech Encoders for Continuous Emotion Recognition",
+        "image": "https://jmj3047.github.io/images/PAPT_SER/Untitled.png",
+        "keywords": "Speech Emotion Recognition Personalization Adaptation",
+        "genre": "Paper Few Shot Learning",
+        "datePublished": "2024-06-14",
+        "dateCreated": "2024-06-14",
+        "dateModified": "2024-07-05",
+        "url": "https://jmj3047.github.io/2024/06/14/PAPT_SER/",
+        "description": "Journal&#x2F;Conference : INTERSPEECHYear(published year): 2023Author: Tran, M., Yin, Y., Soleymani, M.Subject: Speech Emotion Recognition, Personalization, Adaptation
+Personalized Adaptation with Pre",
+        "wordCount": 2196
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/jmj3047" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="dropbox" href="https://www.dropbox.com/home" target="_blank" rel="noopener">
+                        <i class="icon fa fa-dropbox"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google" href="https://www.google.com" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="youtube" href="https://www.youtube.com/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-youtube"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="discord" href="https://discord.com/channels/@me" target="_blank" rel="noopener">
+                        <i class="icon fa fa-discord"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+<!-- 
+    <div class="github-card" data-github="jmj3047" data-width="400" data-height="" data-theme="default">
+    </div>
+    <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js">    </script> -->
+
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2024/04/08/EMOFSL_for_cross_corpus_SER/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">Few Shot Learning Guided by Emotion Distance for Cross-corpus Speech Emotion Recognition</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+
+
+    <div class="widgets-container">
+        
+        
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a></p>
+                            <p class="item-title"><a href="/2024/06/14/PAPT_SER/" class="title">Personalized Adaptation with Pre-trained Speech Encoders for Continuous Emotion Recognition</a></p>
+                            <p class="item-date"><time datetime="2024-06-13T15:00:00.000Z" itemprop="datePublished">2024-06-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a></p>
+                            <p class="item-title"><a href="/2024/04/08/EMOFSL_for_cross_corpus_SER/" class="title">Few Shot Learning Guided by Emotion Distance for Cross-corpus Speech Emotion Recognition</a></p>
+                            <p class="item-date"><time datetime="2024-04-07T15:00:00.000Z" itemprop="datePublished">2024-04-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a></p>
+                            <p class="item-title"><a href="/2024/02/20/Transductive_Inductive/" class="title">Transductive learning VS Inductive Learning</a></p>
+                            <p class="item-date"><time datetime="2024-02-19T15:00:00.000Z" itemprop="datePublished">2024-02-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a></p>
+                            <p class="item-title"><a href="/2024/01/29/MTL_for_FSL/" class="title">Meta Transfer Learning for Few Shot Learning</a></p>
+                            <p class="item-date"><time datetime="2024-01-28T15:00:00.000Z" itemprop="datePublished">2024-01-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Paper/">Paper</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/Paper/Speech-Emotion-Recognition/">Speech Emotion Recognition</a></p>
+                            <p class="item-title"><a href="/2023/11/07/Speaker_to_Emotion/" class="title">Speaker to Emotion, Domain Adaptation for Speech Emotion Recognition with Residual Adapters</a></p>
+                            <p class="item-date"><time datetime="2023-11-06T15:00:00.000Z" itemprop="datePublished">2023-11-07</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/">Data Analysis</a><span class="category-list-count">40</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Basic/">Basic</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Analysis/Model/">Model</a><span class="category-list-count">16</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Platform-Base/">Data Platform/Base</a><span class="category-list-count">16</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Platform-Base/GCP/">GCP</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Data-Platform-Base/MongoDB/">MongoDB</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/">Paper</a><span class="category-list-count">29</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Computer-Vision/">Computer Vision</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Few-Shot-Learning/">Few Shot Learning</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Generative-Model/">Generative Model</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Multi-Task-Learning/">Multi-Task Learning</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/NLP/">NLP</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Recommendation-System/">Recommendation System</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speaker-Verification/">Speaker Verification</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speech-Emotion-Recognition/">Speech Emotion Recognition</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Paper/Speech-Representations/">Speech Representations</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">15</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Django/">Django</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/HTML/">HTML</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Pyspark/">Pyspark</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/Python/">Python</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Setting/">Setting</a><span class="category-list-count">5</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/ACF/" style="font-size: 10px;">ACF</a> <a href="/tags/AI-Studies/" style="font-size: 15.83px;">AI Studies</a> <a href="/tags/AI-tool/" style="font-size: 10px;">AI tool</a> <a href="/tags/ARIMA/" style="font-size: 10px;">ARIMA</a> <a href="/tags/Acoustic-Parameter-Set/" style="font-size: 10px;">Acoustic Parameter Set</a> <a href="/tags/Adaptation/" style="font-size: 10px;">Adaptation</a> <a href="/tags/Adversarial-Domain-Adaptation/" style="font-size: 10px;">Adversarial Domain Adaptation</a> <a href="/tags/Adversarial-Speaker-Verification/" style="font-size: 10px;">Adversarial Speaker Verification</a> <a href="/tags/Attention/" style="font-size: 10.83px;">Attention</a> <a href="/tags/Auth/" style="font-size: 10px;">Auth</a> <a href="/tags/Automation/" style="font-size: 10px;">Automation</a> <a href="/tags/Bash/" style="font-size: 10px;">Bash</a> <a href="/tags/BeautifulSoup/" style="font-size: 11.67px;">BeautifulSoup</a> <a href="/tags/Benchmark/" style="font-size: 10px;">Benchmark</a> <a href="/tags/Bi-Encoder/" style="font-size: 10px;">Bi Encoder</a> <a href="/tags/Big-Query/" style="font-size: 15px;">Big Query</a> <a href="/tags/BigQueryML/" style="font-size: 14.17px;">BigQueryML</a> <a href="/tags/Brython/" style="font-size: 10px;">Brython</a> <a href="/tags/CGI/" style="font-size: 10px;">CGI</a> <a href="/tags/Center-Loss/" style="font-size: 10px;">Center Loss</a> <a href="/tags/Chatbot/" style="font-size: 13.33px;">Chatbot</a> <a href="/tags/Clustering/" style="font-size: 14.17px;">Clustering</a> <a href="/tags/Confusion-Matrix/" style="font-size: 10px;">Confusion Matrix</a> <a href="/tags/Convolutional-Neural-Networks/" style="font-size: 10.83px;">Convolutional Neural Networks</a> <a href="/tags/Coursera/" style="font-size: 18.33px;">Coursera</a> <a href="/tags/Cross-Encoder/" style="font-size: 10px;">Cross Encoder</a> <a href="/tags/Cross-domain/" style="font-size: 10px;">Cross-domain</a> <a href="/tags/DBSCAN/" style="font-size: 10px;">DBSCAN</a> <a href="/tags/DCGAN/" style="font-size: 10px;">DCGAN</a> <a href="/tags/DataFlow/" style="font-size: 10px;">DataFlow</a> <a href="/tags/Decision-Tree-Classifier/" style="font-size: 10px;">Decision Tree Classifier</a> <a href="/tags/Deep-Nueral-Networks/" style="font-size: 10.83px;">Deep Nueral Networks</a> <a href="/tags/Deep-Machine-Learning-Paper-Study/" style="font-size: 17.5px;">Deep/Machine Learning Paper Study</a> <a href="/tags/Doc2vec/" style="font-size: 12.5px;">Doc2vec</a> <a href="/tags/Domain-Adaptation/" style="font-size: 10.83px;">Domain Adaptation</a> <a href="/tags/Domain-Adversarial-Layer/" style="font-size: 10px;">Domain Adversarial Layer</a> <a href="/tags/Domain-Invariant-Feature-Learning/" style="font-size: 10.83px;">Domain Invariant Feature Learning</a> <a href="/tags/English/" style="font-size: 19.17px;">English</a> <a href="/tags/Ensemble-Model/" style="font-size: 10px;">Ensemble Model</a> <a href="/tags/Error/" style="font-size: 10px;">Error</a> <a href="/tags/Evaluation/" style="font-size: 10px;">Evaluation</a> <a href="/tags/F1-measure/" style="font-size: 10px;">F1 measure</a> <a href="/tags/Few-Shot-Learning/" style="font-size: 10.83px;">Few Shot Learning</a> <a href="/tags/Flask/" style="font-size: 10px;">Flask</a> <a href="/tags/GAN/" style="font-size: 10.83px;">GAN</a> <a href="/tags/GCP/" style="font-size: 10px;">GCP</a> <a href="/tags/Gaussian-Mixture-Model/" style="font-size: 10.83px;">Gaussian Mixture Model</a> <a href="/tags/Gen-App-Builder/" style="font-size: 10px;">Gen App Builder</a> <a href="/tags/Generative-Adversarial-Network/" style="font-size: 10px;">Generative Adversarial Network</a> <a href="/tags/Generative-Model/" style="font-size: 10px;">Generative Model</a> <a href="/tags/Git/" style="font-size: 10.83px;">Git</a> <a href="/tags/Grid-Search-CV/" style="font-size: 10px;">Grid Search CV</a> <a href="/tags/HTML/" style="font-size: 11.67px;">HTML</a> <a href="/tags/Hexo/" style="font-size: 12.5px;">Hexo</a> <a href="/tags/HuBERT/" style="font-size: 10px;">HuBERT</a> <a href="/tags/Hueman/" style="font-size: 10px;">Hueman</a> <a href="/tags/Image-Classification/" style="font-size: 11.67px;">Image Classification</a> <a href="/tags/Inductive-Learning/" style="font-size: 10px;">Inductive Learning</a> <a href="/tags/K-Means-Clustering/" style="font-size: 11.67px;">K-Means Clustering</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Looker-Studio/" style="font-size: 11.67px;">Looker Studio</a> <a href="/tags/ML-Analysis/" style="font-size: 20px;">ML Analysis</a> <a href="/tags/ML-Operations/" style="font-size: 10.83px;">ML Operations</a> <a href="/tags/ML-Process/" style="font-size: 10.83px;">ML Process</a> <a href="/tags/Meta-Transfer-Learning/" style="font-size: 10px;">Meta Transfer Learning</a> <a href="/tags/Metric-Learning/" style="font-size: 10px;">Metric Learning</a> <a href="/tags/Model-Generalization/" style="font-size: 10px;">Model Generalization</a> <a href="/tags/MongoDB/" style="font-size: 11.67px;">MongoDB</a> <a href="/tags/Multi-Task-Learning/" style="font-size: 10.83px;">Multi-Task Learning</a> <a href="/tags/NLP/" style="font-size: 13.33px;">NLP</a> <a href="/tags/Nonprobability-sampling/" style="font-size: 10px;">Nonprobability sampling</a> <a href="/tags/Normal-Distribution/" style="font-size: 10px;">Normal Distribution</a> <a href="/tags/PACF/" style="font-size: 10px;">PACF</a> <a href="/tags/Pandas-Dataframe/" style="font-size: 10px;">Pandas Dataframe</a> <a href="/tags/Personalization/" style="font-size: 10px;">Personalization</a> <a href="/tags/Precision-Recall/" style="font-size: 10px;">Precision-Recall</a> <a href="/tags/Probabilistic-sampling/" style="font-size: 10px;">Probabilistic sampling</a> <a href="/tags/Probability-Density-Function/" style="font-size: 10px;">Probability Density Function</a> <a href="/tags/Probability-Distribution-Function/" style="font-size: 10px;">Probability Distribution Function</a> <a href="/tags/Python/" style="font-size: 15.83px;">Python</a> <a href="/tags/Quiz/" style="font-size: 15px;">Quiz</a> <a href="/tags/ROC-curve/" style="font-size: 10px;">ROC curve</a> <a href="/tags/Recommendation-System/" style="font-size: 10.83px;">Recommendation System</a> <a href="/tags/Representation-Learning/" style="font-size: 10px;">Representation Learning</a> <a href="/tags/Self-Supervised-Features/" style="font-size: 10px;">Self-Supervised Features</a> <a href="/tags/Self-Supervised-Learning/" style="font-size: 11.67px;">Self-Supervised Learning</a> <a href="/tags/Sentence-Bert/" style="font-size: 10px;">Sentence Bert</a> <a href="/tags/Speaker-GAN/" style="font-size: 10px;">Speaker GAN</a> <a href="/tags/Speaker-Identification/" style="font-size: 10px;">Speaker Identification</a> <a href="/tags/Speaker-Independent/" style="font-size: 10px;">Speaker Independent</a> <a href="/tags/Speaker-Normalization/" style="font-size: 10px;">Speaker Normalization</a> <a href="/tags/Speaker-Verification/" style="font-size: 10px;">Speaker Verification</a> <a href="/tags/Speaker-Verification/" style="font-size: 10px;">Speaker Verification,</a> <a href="/tags/Speech-Emotion-Recognition/" style="font-size: 16.67px;">Speech Emotion Recognition</a> <a href="/tags/Speech-Feature-Extraction/" style="font-size: 10px;">Speech Feature Extraction</a> <a href="/tags/Speech-Representations/" style="font-size: 10px;">Speech Representations</a> <a href="/tags/Spoken-Language-Understanding/" style="font-size: 10px;">Spoken Language Understanding</a> <a href="/tags/Standard-Normal-Distribution/" style="font-size: 10px;">Standard Normal Distribution</a> <a href="/tags/TD-SV/" style="font-size: 10px;">TD-SV</a> <a href="/tags/Threshold-Adjustment/" style="font-size: 10px;">Threshold Adjustment</a> <a href="/tags/Time-Series/" style="font-size: 10px;">Time Series</a> <a href="/tags/Transductive-Learning/" style="font-size: 10px;">Transductive Learning</a> <a href="/tags/Transfer-Learning/" style="font-size: 10px;">Transfer Learning</a> <a href="/tags/Transformer/" style="font-size: 11.67px;">Transformer</a> <a href="/tags/Vertex-AI/" style="font-size: 10px;">Vertex AI</a> <a href="/tags/Virtualenv/" style="font-size: 10px;">Virtualenv</a> <a href="/tags/Voice-Trigger-Detection/" style="font-size: 10.83px;">Voice Trigger Detection</a> <a href="/tags/WGAN/" style="font-size: 10px;">WGAN</a> <a href="/tags/WGAN-GP/" style="font-size: 10px;">WGAN-GP</a> <a href="/tags/Wake-Up-Words/" style="font-size: 10px;">Wake-Up Words</a> <a href="/tags/Wav2vec-2-0/" style="font-size: 10px;">Wav2vec 2.0</a> <a href="/tags/Web-Crawling/" style="font-size: 11.67px;">Web Crawling</a> <a href="/tags/Web-Server/" style="font-size: 10.83px;">Web Server</a> <a href="/tags/kaggle/" style="font-size: 10px;">kaggle</a> <a href="/tags/pyspark/" style="font-size: 12.5px;">pyspark</a>
+        </div>
+    </div>
+
+
+            
+        
+
+    </div>
+</aside>
+
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2024 Jang Minjee</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+    </div>
+    
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+      <script data-ad-client="ca-pub-2182912223281192" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    
+    
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+</body>
+</html>
